@@ -5,6 +5,13 @@ using namespace std;
 
 int main()
 {
+    try{
+        Fraction a(12,-16),g(2,0);
+    }
+    catch(Fraction_exception e)
+    {
+        cout<<e.getInfo()<<endl;
+    }
     Fraction a(12,-16),b(2,3);
     Fraction c,d,e,f,g,h,i;
     c = a+b;

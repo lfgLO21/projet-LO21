@@ -2,7 +2,18 @@
 #define FRACTION_H
 
 #include <iostream>
+#include <string>
 #include <cmath>
+
+class Fraction_exception
+{
+    std::string info;
+
+public:
+    Fraction_exception(const std::string& s):info(s){}
+    const std::string& getInfo()const{return info;}
+};
+
 
 class Fraction
 {
@@ -14,7 +25,9 @@ class Fraction
 
 public:
     //constructeur
-    Fraction(int n=0, int d=1):_numerateur(n),_denominateur(d){simplification();}
+    Fraction(int n=0, int d=1):_numerateur(n),_denominateur(d){
+        if (d==0)throw Fraction_exception("numerateur nul");
+        else simplification();}
     Fraction(const Fraction& a);
 
     //destructeur
