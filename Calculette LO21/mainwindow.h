@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QListView>
 #include <QStringListModel>
+#include <QActionGroup>
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +36,7 @@ public slots:
     void mulPressed();
     void divPressed();
     void supprPressed();
+    void quotePressed();
 
     void enterPressed();
     

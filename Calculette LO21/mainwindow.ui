@@ -20,14 +20,14 @@
       <x>0</x>
       <y>0</y>
       <width>431</width>
-      <height>261</height>
+      <height>263</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0,0,0">
+        <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0,0,0,0">
          <property name="sizeConstraint">
           <enum>QLayout::SetMinimumSize</enum>
          </property>
@@ -50,16 +50,6 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
-          <widget class="QPushButton" name="num5Button">
-           <property name="text">
-            <string>5</string>
-           </property>
-           <property name="shortcut">
-            <string>5</string>
-           </property>
-          </widget>
-         </item>
          <item row="3" column="1">
           <widget class="QPushButton" name="num8Button">
            <property name="text">
@@ -70,46 +60,6 @@
            </property>
           </widget>
          </item>
-         <item row="6" column="1">
-          <widget class="QPushButton" name="num2Button">
-           <property name="text">
-            <string>2</string>
-           </property>
-           <property name="shortcut">
-            <string>2</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QPushButton" name="num1Button">
-           <property name="text">
-            <string>1</string>
-           </property>
-           <property name="shortcut">
-            <string>1</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="0" colspan="2">
-          <widget class="QPushButton" name="num0Button">
-           <property name="text">
-            <string>0</string>
-           </property>
-           <property name="shortcut">
-            <string>0</string>
-           </property>
-          </widget>
-         </item>
-         <item row="9" column="0" colspan="2">
-          <widget class="QPushButton" name="spaceButton">
-           <property name="text">
-            <string>Space</string>
-           </property>
-           <property name="shortcut">
-            <string>Space</string>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="0" colspan="4">
           <widget class="QLineEdit" name="inputLine">
            <property name="readOnly">
@@ -117,7 +67,57 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
+         <item row="3" column="2">
+          <widget class="QPushButton" name="num9Button">
+           <property name="text">
+            <string>9</string>
+           </property>
+           <property name="shortcut">
+            <string>9</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3" rowspan="2">
+          <widget class="QPushButton" name="plusButton">
+           <property name="text">
+            <string>+</string>
+           </property>
+           <property name="shortcut">
+            <string>+</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="divButton">
+           <property name="text">
+            <string>/</string>
+           </property>
+           <property name="shortcut">
+            <string>/</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QPushButton" name="lessButton">
+           <property name="text">
+            <string>-</string>
+           </property>
+           <property name="shortcut">
+            <string>-</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QPushButton" name="mulButton">
+           <property name="text">
+            <string>*</string>
+           </property>
+           <property name="shortcut">
+            <string>*</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
           <widget class="QPushButton" name="num4Button">
            <property name="text">
             <string>4</string>
@@ -127,7 +127,57 @@
            </property>
           </widget>
          </item>
-         <item row="8" column="3" rowspan="2">
+         <item row="4" column="1">
+          <widget class="QPushButton" name="num5Button">
+           <property name="text">
+            <string>5</string>
+           </property>
+           <property name="shortcut">
+            <string>5</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="2">
+          <widget class="QPushButton" name="num6Button">
+           <property name="text">
+            <string>6</string>
+           </property>
+           <property name="shortcut">
+            <string>6</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QPushButton" name="num1Button">
+           <property name="text">
+            <string>1</string>
+           </property>
+           <property name="shortcut">
+            <string>1</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QPushButton" name="num2Button">
+           <property name="text">
+            <string>2</string>
+           </property>
+           <property name="shortcut">
+            <string>2</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QPushButton" name="num3Button">
+           <property name="text">
+            <string>3</string>
+           </property>
+           <property name="shortcut">
+            <string>3</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="3" rowspan="2">
           <widget class="QPushButton" name="enterButton">
            <property name="baseSize">
             <size>
@@ -146,37 +196,17 @@
            </property>
           </widget>
          </item>
+         <item row="6" column="0" colspan="2">
+          <widget class="QPushButton" name="num0Button">
+           <property name="text">
+            <string>0</string>
+           </property>
+           <property name="shortcut">
+            <string>0</string>
+           </property>
+          </widget>
+         </item>
          <item row="6" column="2">
-          <widget class="QPushButton" name="num3Button">
-           <property name="text">
-            <string>3</string>
-           </property>
-           <property name="shortcut">
-            <string>3</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="2">
-          <widget class="QPushButton" name="num6Button">
-           <property name="text">
-            <string>6</string>
-           </property>
-           <property name="shortcut">
-            <string>6</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QPushButton" name="num9Button">
-           <property name="text">
-            <string>9</string>
-           </property>
-           <property name="shortcut">
-            <string>9</string>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="2">
           <widget class="QPushButton" name="pointButton">
            <property name="text">
             <string>.</string>
@@ -186,17 +216,27 @@
            </property>
           </widget>
          </item>
-         <item row="5" column="3" rowspan="2">
-          <widget class="QPushButton" name="plusButton">
+         <item row="7" column="0" colspan="2">
+          <widget class="QPushButton" name="spaceButton">
            <property name="text">
-            <string>+</string>
+            <string>Space</string>
            </property>
            <property name="shortcut">
-            <string>+</string>
+            <string>Space</string>
            </property>
           </widget>
          </item>
-         <item row="9" column="2">
+         <item row="7" column="2">
+          <widget class="QPushButton" name="clearButton">
+           <property name="text">
+            <string>Suppr</string>
+           </property>
+           <property name="shortcut">
+            <string>Del</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="3">
           <widget class="QPushButton" name="supprButton">
            <property name="text">
             <string>Del</string>
@@ -207,42 +247,12 @@
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QPushButton" name="clearButton">
+          <widget class="QPushButton" name="quoteButton">
            <property name="text">
-            <string>Suppr</string>
+            <string>'</string>
            </property>
            <property name="shortcut">
-            <string>Del</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="divButton">
-           <property name="text">
-            <string>/</string>
-           </property>
-           <property name="shortcut">
-            <string>/</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QPushButton" name="mulButton">
-           <property name="text">
-            <string>*</string>
-           </property>
-           <property name="shortcut">
-            <string>*</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="3" rowspan="2">
-          <widget class="QPushButton" name="lessButton">
-           <property name="text">
-            <string>-</string>
-           </property>
-           <property name="shortcut">
-            <string>-</string>
+            <string>'</string>
            </property>
           </widget>
          </item>
@@ -298,12 +308,6 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="actionQuit"/>
-   </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
      <string>Help</string>
@@ -311,10 +315,57 @@
    </widget>
    <widget class="QMenu" name="menuOption">
     <property name="title">
-     <string>Option</string>
+     <string>&amp;Option</string>
     </property>
+    <widget class="QMenu" name="menuComplex_mode">
+     <property name="title">
+      <string>mode complexe</string>
+     </property>
+     <addaction name="actionYes"/>
+     <addaction name="actionNo"/>
+    </widget>
+    <widget class="QMenu" name="menuType_mode">
+     <property name="title">
+      <string>choix type</string>
+     </property>
+     <addaction name="actionInteger"/>
+     <addaction name="actionFloat"/>
+     <addaction name="actionRational"/>
+    </widget>
+    <widget class="QMenu" name="menuChoix_degr_s">
+     <property name="title">
+      <string>choix degrés</string>
+     </property>
+     <addaction name="actionRadian"/>
+     <addaction name="actionDegr"/>
+    </widget>
+    <widget class="QMenu" name="menuUtilisation_clavier">
+     <property name="title">
+      <string>utilisation clavier</string>
+     </property>
+     <addaction name="actionOui"/>
+     <addaction name="actionNon"/>
+    </widget>
+    <addaction name="menuComplex_mode"/>
+    <addaction name="menuType_mode"/>
+    <addaction name="menuChoix_degr_s"/>
+    <addaction name="menuUtilisation_clavier"/>
+   </widget>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menu_Edit">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="action_Undo"/>
+    <addaction name="action_Redo"/>
    </widget>
    <addaction name="menuFile"/>
+   <addaction name="menu_Edit"/>
    <addaction name="menuOption"/>
    <addaction name="menuHelp"/>
   </widget>
@@ -330,6 +381,112 @@
   <action name="actionQuit">
    <property name="text">
     <string>Quit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="action_Undo">
+   <property name="text">
+    <string>&amp;Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WindowShortcut</enum>
+   </property>
+  </action>
+  <action name="action_Redo">
+   <property name="text">
+    <string>&amp;Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="actionYes">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>oui</string>
+   </property>
+  </action>
+  <action name="actionNo">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>non</string>
+   </property>
+  </action>
+  <action name="actionInteger">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>entier</string>
+   </property>
+  </action>
+  <action name="actionFloat">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>réel</string>
+   </property>
+  </action>
+  <action name="actionRational">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>rationnel</string>
+   </property>
+  </action>
+  <action name="actionRadian">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>radiant</string>
+   </property>
+  </action>
+  <action name="actionDegr">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>degré</string>
+   </property>
+  </action>
+  <action name="actionOui">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>oui</string>
+   </property>
+  </action>
+  <action name="actionNon">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>non</string>
    </property>
   </action>
  </widget>

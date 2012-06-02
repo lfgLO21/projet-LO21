@@ -6,30 +6,53 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->clearButton,SIGNAL(clicked()),ui->inputLine,SLOT(clear()));
 
-    connect(ui->num0Button,SIGNAL(clicked()),this,SLOT(num0Pressed()));
-    connect(ui->num1Button,SIGNAL(clicked()),this,SLOT(num1Pressed()));
-    connect(ui->num2Button,SIGNAL(clicked()),this,SLOT(num2Pressed()));
-    connect(ui->num3Button,SIGNAL(clicked()),this,SLOT(num3Pressed()));
-    connect(ui->num4Button,SIGNAL(clicked()),this,SLOT(num4Pressed()));
-    connect(ui->num5Button,SIGNAL(clicked()),this,SLOT(num5Pressed()));
-    connect(ui->num6Button,SIGNAL(clicked()),this,SLOT(num6Pressed()));
-    connect(ui->num7Button,SIGNAL(clicked()),this,SLOT(num7Pressed()));
-    connect(ui->num8Button,SIGNAL(clicked()),this,SLOT(num8Pressed()));
-    connect(ui->num9Button,SIGNAL(clicked()),this,SLOT(num9Pressed()));
+    //création des radio button du menu
+    QActionGroup* complexGroup = new QActionGroup(this);
+    QActionGroup* typeGroup = new QActionGroup(this);
+    QActionGroup* degreGroup = new QActionGroup(this);
+    QActionGroup* clavierGroup = new QActionGroup(this);
 
-    connect(ui->spaceButton,SIGNAL(clicked()),this,SLOT(spacePressed()));
-    connect(ui->pointButton,SIGNAL(clicked()),this,SLOT(pointPressed()));
-    connect(ui->plusButton,SIGNAL(clicked()),this,SLOT(plusPressed()));
-    connect(ui->lessButton,SIGNAL(clicked()),this,SLOT(lessPressed()));
-    connect(ui->mulButton,SIGNAL(clicked()),this,SLOT(mulPressed()));
-    connect(ui->divButton,SIGNAL(clicked()),this,SLOT(divPressed()));
-    connect(ui->supprButton,SIGNAL(clicked()),this,SLOT(supprPressed()));
+    ui->actionYes->setActionGroup(complexGroup);
+    ui->actionNo->setActionGroup(complexGroup);
 
-    connect(ui->enterButton,SIGNAL(clicked()),this,SLOT(enterPressed()));
+    ui->actionInteger->setActionGroup(typeGroup);
+    ui->actionFloat->setActionGroup(typeGroup);
+    ui->actionRational->setActionGroup(typeGroup);
 
-    connect(ui->actionQuit,SIGNAL(triggered()),this,SLOT(close()));
+    ui->actionDegr->setActionGroup(degreGroup);
+    ui->actionRadian->setActionGroup(degreGroup);
+
+    ui->actionOui->setActionGroup(clavierGroup);
+    ui->actionNon->setActionGroup(clavierGroup);
+
+
+    //paramétrage des boutons du clavier
+    connect(ui->clearButton,SIGNAL(clicked()),ui->inputLine,SLOT(clear())); //le bouton clear supprime toute la ligne que l'on a saisi
+
+    connect(ui->num0Button,SIGNAL(clicked()),this,SLOT(num0Pressed())); //0
+    connect(ui->num1Button,SIGNAL(clicked()),this,SLOT(num1Pressed())); //1
+    connect(ui->num2Button,SIGNAL(clicked()),this,SLOT(num2Pressed())); //2
+    connect(ui->num3Button,SIGNAL(clicked()),this,SLOT(num3Pressed())); //3
+    connect(ui->num4Button,SIGNAL(clicked()),this,SLOT(num4Pressed())); //4
+    connect(ui->num5Button,SIGNAL(clicked()),this,SLOT(num5Pressed())); //5
+    connect(ui->num6Button,SIGNAL(clicked()),this,SLOT(num6Pressed())); //6
+    connect(ui->num7Button,SIGNAL(clicked()),this,SLOT(num7Pressed())); //7
+    connect(ui->num8Button,SIGNAL(clicked()),this,SLOT(num8Pressed())); //8
+    connect(ui->num9Button,SIGNAL(clicked()),this,SLOT(num9Pressed())); //9
+
+    connect(ui->spaceButton,SIGNAL(clicked()),this,SLOT(spacePressed()));   //bouton espace
+    connect(ui->pointButton,SIGNAL(clicked()),this,SLOT(pointPressed()));   //.
+    connect(ui->plusButton,SIGNAL(clicked()),this,SLOT(plusPressed()));     //+
+    connect(ui->lessButton,SIGNAL(clicked()),this,SLOT(lessPressed()));     //-
+    connect(ui->mulButton,SIGNAL(clicked()),this,SLOT(mulPressed()));       //*
+    connect(ui->divButton,SIGNAL(clicked()),this,SLOT(divPressed()));       //bouton division
+    connect(ui->supprButton,SIGNAL(clicked()),this,SLOT(supprPressed()));   //le bouton del supprime le dernier caractère entré
+    connect(ui->quoteButton,SIGNAL(clicked()),this,SLOT(quotePressed()));   // '
+
+    connect(ui->enterButton,SIGNAL(clicked()),this,SLOT(enterPressed()));   // le bouton enter exécute ce que l'on vient d'entrer et nettoie la ligne
+
+    connect(ui->actionQuit,SIGNAL(triggered()),this,SLOT(close()));     //le choix Quit du menu permet de quitter le programme
 }
 
 MainWindow::~MainWindow()
@@ -122,6 +145,11 @@ void MainWindow::supprPressed()
 {
 
     ui->inputLine->setText(ui->inputLine->text().remove(ui->inputLine->text().size()-1,1));
+}
+
+void MainWindow::quotePressed()
+{
+    ui->inputLine->setText(ui->inputLine->text().append("'"));
 }
 
 void MainWindow::enterPressed()
