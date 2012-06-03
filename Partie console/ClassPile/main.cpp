@@ -39,9 +39,14 @@ int main()
     test.push(str5);
     test.push(str1);
     test.push(str6);
-
+    test.push(str4);
+    test.push(str7);
+    test.push(str5);
+    test.push(str1);
+    test.push(str6);
     test.affiche();
-    for(int i = 0;i<11;i++)
+
+    for(int i = 0;i<17;i++)
     {
         test.pop();
     }
