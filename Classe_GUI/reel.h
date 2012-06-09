@@ -29,6 +29,8 @@ public:
     Constante * operator-(const Constante & r) const;
     Constante * operator*(const Constante & r) const;
     Constante * operator/(const Constante & r) const;
+
+    Constante * SIGN() const;
 };
 
 #endif // REEL_H
