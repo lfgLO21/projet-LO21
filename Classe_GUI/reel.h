@@ -22,7 +22,7 @@ public:
     void setReel(float r);
 
     //affiche
-    void affiche(std::ostream & os = cout) const;
+    void affiche(std::ostream & os = std::cout) const;
 
     //operateur
     Constante * operator+(const Constante & r) const;
@@ -30,7 +30,7 @@ public:
     Constante * operator*(const Constante & r) const;
     Constante * operator/(const Constante & r) const;
 
-    Constante * SIGN() const;
+    Constante * operator-()const;
 };
 
 #endif // REEL_H
