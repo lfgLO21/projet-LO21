@@ -90,3 +90,15 @@ Constante * Entier::operator/(Constante const& c) const
         throw std::domain_error("Type non existant");
     }
 }
+
+Constante * Entier::SIGN() const
+{
+    if(this->_type == Constante::ENTIER)
+    {
+        return new Entier(-1*this->_entier);
+    }
+    else
+    {
+        return new Entier(1);
+    }
+}
