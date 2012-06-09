@@ -12,6 +12,13 @@ Reel::Reel(const Entier& e)
     this->_type = Constante::REEL;
 }
 
+Reel::Reel(const Rationnel &r):Constante(REEL)
+{
+    float n=(float)r.getNumerateur();
+    float d=(float)r.getDenominateur();
+    this->_reel=n/d;
+}
+
 Reel::Reel(const Reel& r)
 {
     this->_reel = r.getReel();
@@ -58,7 +65,7 @@ Constante * Reel::operator+(const Constante & r) const
         }
         case Constante::RATIONNEL:
         {
-            //return *this + Reel(static_cast<const Fraction&>(r));
+            return *this + Reel(static_cast<const Rationnel&>(r));
             break;
         }
         case Constante::REEL:
@@ -85,7 +92,7 @@ Constante * Reel::operator-(const Constante & r) const
         }
         case Constante::RATIONNEL:
         {
-            //return *this - Reel(static_cast<const Fraction&>(r));
+            return *this - Reel(static_cast<const Rationnel&>(r));
             break;
         }
         case Constante::REEL:
@@ -111,7 +118,7 @@ Constante * Reel::operator*(const Constante & r) const
         }
         case Constante::RATIONNEL:
         {
-            //return *this * Reel(static_cast<const Fraction&>(r));
+            return *this * Reel(static_cast<const Rationnel&>(r));
             break;
         }
         case Constante::REEL:
@@ -137,7 +144,7 @@ Constante * Reel::operator/(const Constante & r) const
         }
         case Constante::RATIONNEL:
         {
-            //return *this / Reel(static_cast<const Fraction&>(r));
+            return *this / Reel(static_cast<const Rationnel&>(r));
             break;
         }
         case Constante::REEL:
@@ -152,14 +159,6 @@ Constante * Reel::operator/(const Constante & r) const
     }
 }
 
-Constante * Reel::SIGN()const
-{
-    if(this->_type == Constante::REEL)
-    {
-        return new Reel(-1*this->_reel);
-    }
-    else
-    {
-        return new Reel(1);
-    }
+Constante* Reel::operator-()const{
+        return new Reel(-this->_reel);
 }
