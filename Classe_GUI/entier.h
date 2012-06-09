@@ -28,6 +28,8 @@ public:
     Constante * operator-(const Constante & c) const;
     Constante * operator*(const Constante & c) const;
     Constante * operator/(const Constante & c) const;
+    
+    Constante * SIGN() const;
 };
 
 #endif // Entier_H
