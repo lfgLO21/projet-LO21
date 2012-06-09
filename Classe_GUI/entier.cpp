@@ -39,6 +39,11 @@ void Entier::affiche(std::ostream & os)const
     os<<this->_entier;
 }
 
+std::string Entier::toString() const
+{
+
+}
+
 //////////////
 ///operator///
 //////////////

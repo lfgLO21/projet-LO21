@@ -22,7 +22,8 @@ public:
     void setEntier(int e);
 
     //affiche
-    void affiche(std::ostream & os = cout) const;
+    std::string toString() const;
+    void affiche(std::ostream & os)const;
 
     Constante * operator+(const Constante & c) const;
     Constante * operator-(const Constante & c) const;

@@ -37,12 +37,16 @@ void Reel::setReel(float r)
 }
 
 /////////////
-///Mthode///
+///Methode///
 /////////////
 
 void Reel::affiche(std::ostream & os) const
 {
     os<<this->_reel;
+}
+
+std::string Reel::toString() const
+{
 }
 
 Constante * Reel::operator+(const Constante & r) const
@@ -71,7 +75,6 @@ Constante * Reel::operator+(const Constante & r) const
             throw std::domain_error("Type non existant");
         }
     }
-
 }
 
 Constante * Reel::operator-(const Constante & r) const

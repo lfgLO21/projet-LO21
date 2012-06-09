@@ -1,41 +1,46 @@
 #include "expression.h"
 
-Expression::Expression(const string& str)
+Expression::Expression(const string & str)
 {
-    this->_type = EXPRESSION;
-    this->_exp = str;
-    this->_exp[0]= ' ';
-    this->_exp[this->_exp.size()-1]= ' ';
+
 }
 
-Constante* Expression::operator+(const Constante& c)const
+Expression::~Expression()
 {
-    return new Expression("'"+c.print()+this->_exp+"+'");
+
 }
 
-Constante* Expression::operator*(const Constante& c)const
+std::string Expression::toString() const
 {
-    return new Expression("'"+c.print()+this->_exp+"*'");
+
 }
 
-Constante* Expression::operator-(const Constante& c)const
+void Expression::affiche(std::ostream &os) const
 {
-    return new Expression("'"+c.print()+this->_exp+"-'");
+
 }
 
-Constante* Expression::operator/(const Constante& c)const
+Constante * Expression::operator+(const Constante & c) const
 {
-    return new Expression("'"+c.print()+this->_exp+"/'");
+
 }
 
-
-std::string getExp()const
+Constante * Expression::operator-(const Constante & c) const
 {
-    return this->_exp;
+
 }
 
-void affiche(std::ostream & os = cout) const
+Constante * Expression::operator*(const Constante & c) const
 {
-    os << this->getExp();
+
 }
 
+Constante * Expression::operator/(const Constante & c) const
+{
+
+}
+
+Constante * Expression::SIGN()const
+{
+
+}

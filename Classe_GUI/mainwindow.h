@@ -71,10 +71,7 @@ class MainWindow : public QMainWindow
         void dupPressed();
         void dropPressed();
 
-
         void updatePile();
-
-
 };
 
 #endif // MAINWINDOW_H

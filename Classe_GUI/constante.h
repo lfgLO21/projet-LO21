@@ -20,7 +20,8 @@ class Constante
 
         int getType(void) const;
 
-        virtual void affiche(std::ostream & os = cout) const = 0;
+        virtual std::string toString() const = 0;
+        virtual void affiche(std::ostream & os)const = 0;
 
         virtual Constante * operator+(const Constante & c) const = 0;
         virtual Constante * operator-(const Constante & c) const = 0;

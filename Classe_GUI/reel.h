@@ -23,6 +23,7 @@ public:
 
     //affiche
     void affiche(std::ostream & os = cout) const;
+    std::string toString() const;
 
     //operateur
     Constante * operator+(const Constante & r) const;

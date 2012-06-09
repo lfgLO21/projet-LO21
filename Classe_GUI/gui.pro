@@ -12,7 +12,9 @@ SOURCES += main.cpp \
     reel.cpp \
     parser.cpp \
     operation.cpp \
-    expression.cpp
+    expression.cpp \
+    complexe.cpp \
+    rationnel.cpp
 HEADERS += mainwindow.h \
     pile.h \
     constante.h \
@@ -21,5 +23,7 @@ HEADERS += mainwindow.h \
     reel.h \
     parser.h \
     operation.h \
-    expression.h
+    expression.h \
+    complexe.h \
+    rationnel.h
 FORMS += mainwindow.ui

@@ -9,18 +9,19 @@ using namespace std;
 class Expression : public Constante
 {
     private:
-        std::string _exp;
+        Expression(const string & str);
+        ~Expression();
 
     public:
-        Expression(const string&);
+        std::string toString() const;
+        void affiche(std::ostream &os) const;
 
-        Constante* operator+(const Constante&)const;
-        Constante* operator*(const Constante&)const;
-        Constante* operator-(const Constante&)const;
-        Constante* operator/(const Constante&)const;
+        Constante * operator+(const Constante & c) const;
+        Constante * operator-(const Constante & c) const;
+        Constante * operator*(const Constante & c) const;
+        Constante * operator/(const Constante & c) const;
 
-        void affiche(std::ostream & os = cout) const;
-        std::string getExp()const;
+        Constante * SIGN()const;
 };
 
 #endif // EXPRESSION_H

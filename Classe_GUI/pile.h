@@ -7,8 +7,10 @@
 
 #include "constante.h"
 #include "entier.h"
+//#include "rationnel.h"
 #include "reel.h"
-
+//#include "complexe.h"
+#include "expression.h"
 
 using namespace std;
 
