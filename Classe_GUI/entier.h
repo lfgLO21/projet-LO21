@@ -22,14 +22,17 @@ public:
     void setEntier(int e);
 
     //affiche
-    void affiche(std::ostream & os = cout) const;
+    void affiche(std::ostream & os = std::cout) const;
 
     Constante * operator+(const Constante & c) const;
     Constante * operator-(const Constante & c) const;
     Constante * operator*(const Constante & c) const;
     Constante * operator/(const Constante & c) const;
     
-    Constante * SIGN() const;
+    Constante * operator-() const;
+    
+    Constante * operator%(const Constante& c) const;
+    Constante * operator!()const;
 };
 
 #endif // Entier_H
