@@ -2,139 +2,68 @@
 
 using namespace std;
 
-Pile::Pile(unsigned int t)
-{
-    _max=t;
-    _it=0;
-    _pile=new int[t];
-}
+Pile::Pile()
+{}
 
 Pile::~Pile()
+{}
+
+void Pile::push(Constante * objet)
 {
-    delete[] _pile;
+    this->_pile.push_back(objet);
 }
 
-void Pile::push(int objet)
+const Constante * Pile::pop()
 {
-    if(!full())
-    {
-        _pile[_it]=objet;
-        _it++;          //on retire le  nombre de place libre restante
-    }
-    else
-    {
-        std::cout<<"ERREUR: pile pleine!"<<std::endl;
-    }
 
 }
 
-const int Pile::pop()
+void Pile::clear()
 {
-    if(!empty())
+    while(this->_pile.size() > 0)
     {
-        _it--;          //il y a une place de libre suppl�mentaire dans la pile
-        int tmp=_pile[_it];
-        _pile[_it]=NULL;
-        return tmp;      //on renvoie le string que l'on vient de retirer
-    }
-    else
-    {
-        std::cout<<"ERREUR: pile vide!"<<std::endl;
-        return 0;
-    }
-
-}
-
-const void Pile::affiche() const
-{
-    if (empty())
-    {
-        std::cout<<"Pile vide"<<endl;
-    }
-    else
-    {
-       for (unsigned int i=0;i <_it; i++)
-       {
-           std::cout<<getInfo(i)<<std::endl;
-       }
+        delete this->_pile.back();
+        this->_pile.pop_back();
     }
 }
 
-const bool Pile::full()const
+void Pile::swap(unsigned int x, unsigned int y)
 {
-    if(_it==_max)           //la pile est pleine, _it est de m�me valeur que _max
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    Constante * tmp = this->_pile.at(x);
+    _pile[x] = _pile[y];
+    _pile[y] = tmp;
 }
 
-const bool Pile::empty()const
+void Pile::dup()
 {
-    if(_it==0)              //la pile est vide, _it est �gale 0
+    Constante * tmp;
+    switch (this->_pile.back()->getType())
     {
-        return true;
+        case Constante::ENTIER :
+        {
+            tmp = new Entier(static_cast<Entier&>(*tmp));
+            break;
+        }
+        case Constante::RATIONNEL :
+        {
+            //tmp = new Rationnel(static_cast<Rationnel&>(*tmp));
+            break;
+        }
+        case Constante::REEL :
+        {
+            tmp = new Reel(static_cast<Reel&>(*tmp));
+            break;
+        }
+        case Constante::COMPLEXE :
+        {
+            //tmp = new Complexe(static_cast<Complexe&>(*tmp));
+            break;
+        }
     }
-    else
-    {
-        return false;
-    }
+    this->_pile.push_back(tmp);
 }
 
-void Pile::CLEAR()
+void Pile::drop()
 {
-    for(unsigned int i=0;i<_it;i++)
-    {
-        _pile[i]=NULL;
-    }
-}
-
-void Pile::SWAP(unsigned int x, unsigned int y)
-{
-    int tmp = getInfo(x);
-    _pile[x]=_pile[y];
-    _pile[y]=tmp;
-}
-
-void Pile::SUM(unsigned int x)
-{
-    int tmp=0;
-    for(unsigned int i=1; i<=x;i++)
-    {
-        tmp+=pop();
-    }
-    push(tmp);
-}
-
-void Pile::MEAN(unsigned int x)
-{
-    int tmp=0;
-    for(unsigned int i=1; i<=x;i++)
-    {
-        tmp+=pop();
-    }
-    tmp/=x;
-    push(tmp);
-}
-
-void Pile::DUP()
-{
-    int tmp=getInfo();
-    push(tmp);
-}
-
-void Pile::DROP()
-{
-    if(!empty())
-    {
-        _it--;
-        _pile[_it]=NULL;
-    }
-    else
-    {
-        std::cout<<"ERREUR: pile vide!"<<std::endl;
-    }
+    this->_pile.pop_back();
 }

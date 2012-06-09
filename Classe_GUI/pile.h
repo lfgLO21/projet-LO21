@@ -2,6 +2,7 @@
 #define PILE_H
 
 #include <iostream>
+#include <vector>
 #include <string>
 
 #include "constante.h"
@@ -13,49 +14,40 @@ using namespace std;
 
 class Pile
 {
-    unsigned int _max;
-    unsigned int _it;
-    int* _pile;
+    private:
+        vector <Constante*> _pile;
 
     //methode privee
-    int getInfo()const{int i=_it-1; return _pile[i];} //renvoie le haut de la pile
-    int getInfo(int i)const{return _pile[i];}        //renvoie la donn�e i de la pile
+        Constante* getSommet()const{return _pile.at(_pile.size());}       //renvoie le haut de la pile
+        Constante* getElementI(int i)const{return _pile.at(i);}            //renvoie la donnee i de la pile
 
-public:
-    Pile(unsigned int t);           //constructeur de pile
-    ~Pile();                        //destructeur de pile
+    public:
+        Pile();                         //constructeur de pile
+        ~Pile();                        //destructeur de pile
 
     //methodes get
-    int getMax()const{return _max;}
-    int* getPile()const{return _pile;}
-    int getIt()const{return _it;}
-
-    int size()const{return _it;}       //getIt et size sont les meme methodes, mais size est une methode qui sera vraisemblablement plus parlante que getIt
+        int getSize()const{return _pile.size();}
+        vector<Constante*> getPile()const{return _pile;}
 
     //methodes de la classe pile
-    void push(int objet);
-    const int pop();
-    const void affiche() const;
-    void CLEAR(); //raz
-
-    //verification de la pile
-    const bool full()const;
-    const bool empty()const;
+        void push(Constante * objet);
+        const Constante * pop();
+        void clear(); //raz
 
     //SWAP
-    void SWAP(unsigned int x,unsigned int y);
+        void swap(unsigned int x,unsigned int y);
 
-    //SUM
-    void SUM(unsigned int x);
+   //SUM
+        Constante * sum(unsigned int x);
 
     //MEAN
-    void MEAN(unsigned int x);
+        Constante * mean(unsigned int x);
 
     //DUP
-    void DUP();
+        void dup();
 
     //DROP
-    void DROP();
+        void drop();
 };
 
 #endif // PILE_H
