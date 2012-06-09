@@ -22,15 +22,22 @@ public:
     void setEntier(int e);
 
     //affiche
+<<<<<<< HEAD
     std::string toString() const;
     void affiche(std::ostream & os)const;
+=======
+    void affiche(std::ostream & os = std::cout) const;
+>>>>>>> 08b20c2ec3a1d0678a2b42af2692d11c0b27c436
 
     Constante * operator+(const Constante & c) const;
     Constante * operator-(const Constante & c) const;
     Constante * operator*(const Constante & c) const;
     Constante * operator/(const Constante & c) const;
     
-    Constante * SIGN() const;
+    Constante * operator-() const;
+    
+    Constante * operator%(const Constante& c) const;
+    Constante * operator!()const;
 };
 
 #endif // Entier_H

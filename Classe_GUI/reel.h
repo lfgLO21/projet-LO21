@@ -22,8 +22,12 @@ public:
     void setReel(float r);
 
     //affiche
+<<<<<<< HEAD
     void affiche(std::ostream & os = cout) const;
     std::string toString() const;
+=======
+    void affiche(std::ostream & os = std::cout) const;
+>>>>>>> 08b20c2ec3a1d0678a2b42af2692d11c0b27c436
 
     //operateur
     Constante * operator+(const Constante & r) const;
@@ -31,7 +35,7 @@ public:
     Constante * operator*(const Constante & r) const;
     Constante * operator/(const Constante & r) const;
 
-    Constante * SIGN() const;
+    Constante * operator-()const;
 };
 
 #endif // REEL_H
