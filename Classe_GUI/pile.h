@@ -5,6 +5,9 @@
 #include <string>
 
 #include "constante.h"
+#include "entier.h"
+#include "reel.h"
+
 
 using namespace std;
 
@@ -12,9 +15,9 @@ class Pile
 {
     unsigned int _max;
     unsigned int _it;
-    Constante* _pile;
+    int* _pile;
 
-    //m�thode priv�e
+    //methode privee
     int getInfo()const{int i=_it-1; return _pile[i];} //renvoie le haut de la pile
     int getInfo(int i)const{return _pile[i];}        //renvoie la donn�e i de la pile
 

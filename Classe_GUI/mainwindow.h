@@ -6,6 +6,8 @@
 #include <QStringListModel>
 #include <QActionGroup>
 
+#include "parser.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -22,6 +24,7 @@ class MainWindow : public QMainWindow
         ~MainWindow();
 
     public slots:
+
         void button0Pressed();
         void button1Pressed();
         void button2Pressed();
@@ -67,6 +70,10 @@ class MainWindow : public QMainWindow
         void meanPressed();
         void dupPressed();
         void dropPressed();
+
+
+        void updatePile();
+
 
 };
 

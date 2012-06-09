@@ -139,11 +139,18 @@ void MainWindow::button9Pressed()
 
 void MainWindow::enterPressed()
 {
+    QString str = ui->inputLine->text();
+    std::vector <std::string> entree = Parser::traitementString(str.toStdString());
+
     QStringList list;
-    QString st = ui->inputLine->text();
-    list = st.split(" ");
+    for (unsigned int i = 0; i < entree.size(); i++)
+    {
+        list.append(entree.at(i).c_str());
+    }
+
     modele=new QStringListModel(list);
     ui->listPile->setModel(modele);
+
     ui->inputLine->clear();
 }
 
