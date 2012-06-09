@@ -151,3 +151,15 @@ Constante * Reel::operator/(const Constante & r) const
         }
     }
 }
+
+Constante * Reel::SIGN()const
+{
+    if(this->_type == Constante::REEL)
+    {
+        return new Reel(-1*this->_reel);
+    }
+    else
+    {
+        return new Reel(1);
+    }
+}
