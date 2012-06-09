@@ -22,8 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionDegre->setActionGroup(degreGroup);
     ui->actionRadian->setActionGroup(degreGroup);
 
-    ui->actionOui->setActionGroup(clavierGroup);
-    ui->actionNon->setActionGroup(clavierGroup);
+    ui->actionClavierOn->setActionGroup(clavierGroup);
+    ui->actionClavierOff->setActionGroup(clavierGroup);
 
     connect(ui->buttonDel,SIGNAL(clicked()),ui->inputLine,SLOT(clear()));
 
