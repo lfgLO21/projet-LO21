@@ -12,7 +12,7 @@ class Constante
     protected:
         int _type;
     public:
-        enum Types {ENTIER = 0, RATIONNEL = 1 , REEL = 2, COMPLEXE = 3};
+        enum Types {ENTIER = 0, RATIONNEL = 1 , REEL = 2, COMPLEXE = 3, EXPRESSION = 4};
         Constante(int t = 0): _type(t){};
         virtual ~Constante();
 

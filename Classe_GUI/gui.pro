@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     entier.cpp \
     reel.cpp \
     parser.cpp \
-    operation.cpp
+    operation.cpp \
+    expression.cpp
 HEADERS += mainwindow.h \
     pile.h \
     constante.h \
@@ -19,5 +20,6 @@ HEADERS += mainwindow.h \
     entier.h \
     reel.h \
     parser.h \
-    operation.h
+    operation.h \
+    expression.h
 FORMS += mainwindow.ui

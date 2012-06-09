@@ -15,11 +15,7 @@ void Pile::push(Constante * objet)
 
 void Pile::clear()
 {
-    while(this->_pile.size() > 0)
-    {
-        delete this->_pile.back();
-        this->_pile.pop_back();
-    }
+    this->_pile.clear();
 }
 
 void Pile::swap(unsigned int x, unsigned int y)
@@ -27,6 +23,27 @@ void Pile::swap(unsigned int x, unsigned int y)
     Constante * tmp = this->_pile.at(x);
     _pile[x] = _pile[y];
     _pile[y] = tmp;
+}
+
+void sum(unsigned int x)
+{
+    //Constante * temp = new Entier(0);
+    for(unsigned int i = 0; i< x;i++)
+    {
+    //    temp = *temp + *this->_pile.at(i);
+    }
+    //this->_pile.push_back(temp);
+}
+
+void mean(unsigned int x)
+{
+    //Constante * temp = new Entier(0);
+    for(unsigned int i = 0; i < x; i++)
+    {
+    //    temp = *temp + *this->_pile.at(i);
+    }
+    //temp = *temp / x;
+    //this->_pile.push_back(temp);
 }
 
 void Pile::dup()

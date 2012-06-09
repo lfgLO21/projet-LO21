@@ -32,16 +32,17 @@ class Pile
     //methodes de la classe pile
         void push(Constante * objet);
         const Constante * pop();
+        std::string print(unsigned int n) const;
         void clear(); //raz
 
     //SWAP
         void swap(unsigned int x,unsigned int y);
 
    //SUM
-        Constante * sum(unsigned int x);
+        void sum(unsigned int x);
 
     //MEAN
-        Constante * mean(unsigned int x);
+        void mean(unsigned int x);
 
     //DUP
         void dup();
