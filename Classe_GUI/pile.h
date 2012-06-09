@@ -1,7 +1,10 @@
 #ifndef PILE_H
 #define PILE_H
+
 #include <iostream>
 #include <string>
+
+#include "constante.h"
 
 using namespace std;
 
@@ -9,11 +12,11 @@ class Pile
 {
     unsigned int _max;
     unsigned int _it;
-    int* _pile;
+    Constante* _pile;
 
-    //méthode privée
+    //mï¿½thode privï¿½e
     int getInfo()const{int i=_it-1; return _pile[i];} //renvoie le haut de la pile
-    int getInfo(int i)const{return _pile[i];}        //renvoie la donnée i de la pile
+    int getInfo(int i)const{return _pile[i];}        //renvoie la donnï¿½e i de la pile
 
 public:
     Pile(unsigned int t);           //constructeur de pile

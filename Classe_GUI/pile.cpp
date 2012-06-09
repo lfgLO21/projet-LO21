@@ -19,26 +19,11 @@ void Pile::push(int objet)
     if(!full())
     {
         _pile[_it]=objet;
-        _it++;                                  //on retire le  nombre de place libre restante
+        _it++;          //on retire le  nombre de place libre restante
     }
-    else                                        //il faut augmenter la taille de la pile
+    else
     {
-        int* tmp=new int[_max];                 //on fait une copie de la pile actuelle, et l'on récupère les données de celle ci
-        for(unsigned int i=0;i<_max;i++)
-        {
-            tmp[i]=_pile[i];
-        }
-        _max+=10;                               //on augmente la taille max de 10
-        delete[] _pile;                         //on supprime la pile actuelle
-        _pile=new int[_max];                    //et on en créer une nouvelle avec la bonne taille
-        for(unsigned int j=0;j<_max-10;j++)     //on récupère les données sauvegardé dans la pile temporaire
-        {
-            _pile[j]=tmp[j];
-        }
-        delete[] tmp;                           //on supprime la pile temporaire
-        _pile[_it]=objet;
-        _it++;                                  //on retire le  nombre de place libre restante
-
+        std::cout<<"ERREUR: pile pleine!"<<std::endl;
     }
 
 }
@@ -47,7 +32,7 @@ const int Pile::pop()
 {
     if(!empty())
     {
-        _it--;          //il y a une place de libre supplémentaire dans la pile
+        _it--;          //il y a une place de libre supplï¿½mentaire dans la pile
         int tmp=_pile[_it];
         _pile[_it]=NULL;
         return tmp;      //on renvoie le string que l'on vient de retirer
@@ -89,7 +74,7 @@ const bool Pile::full()const
 
 const bool Pile::empty()const
 {
-    if(_it==0)              //la pile est vide, _it est égale 0
+    if(_it==0)              //la pile est vide, _it est ï¿½gale 0
     {
         return true;
     }
