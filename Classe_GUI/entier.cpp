@@ -91,14 +91,20 @@ Constante * Entier::operator/(Constante const& c) const
     }
 }
 
-Constante * Entier::SIGN() const
-{
-    if(this->_type == Constante::ENTIER)
-    {
-        return new Entier(-1*this->_entier);
-    }
-    else
-    {
-        return new Entier(1);
-    }
+CConstante* Entier::operator%(const Constante& c)const{
+   switch(c.getType()){
+       case Constante::ENTIER:
+        return new Entier(_entier % static_cast<const Entier&>(c)._entier);
+   }
+}
+Constante* Entier::operator!()const{
+    int tmp=1;
+    for(int i=0;i<_entier-1;i++)
+        tmp*=_entier-i;
+    return new Entier(tmp);
+}
+
+Constante* Entier::operator-()const{
+        return new Entier(-this->_entier);
+}
 }
