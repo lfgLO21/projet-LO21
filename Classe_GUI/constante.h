@@ -2,10 +2,9 @@
 #define CONSTANTE_H
 
 #include <iostream>
+#include <string>
 #include <exception>
 #include <stdexcept>
-
-using namespace std;
 
 class Constante
 {
@@ -20,14 +19,14 @@ class Constante
 
         int getType(void) const;
 
-        virtual void affiche(std::ostream & os = cout) const = 0;
+        virtual void affiche(std::ostream & os = std::cout) const = 0;
 
         virtual Constante * operator+(const Constante & c) const = 0;
         virtual Constante * operator-(const Constante & c) const = 0;
         virtual Constante * operator*(const Constante & c) const = 0;
         virtual Constante * operator/(const Constante & c) const = 0;
         
-        virtual Constante * SIGN()const = 0;
+        virtual Constante * operator-()const = 0;
 };
-
+std::ostream & operator<<(std::ostream & os, const Constante & c);
 #endif // CONSTANTE_H
