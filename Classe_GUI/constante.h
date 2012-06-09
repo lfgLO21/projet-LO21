@@ -26,6 +26,8 @@ class Constante
         virtual Constante * operator-(const Constante & c) const = 0;
         virtual Constante * operator*(const Constante & c) const = 0;
         virtual Constante * operator/(const Constante & c) const = 0;
+        
+        virtual Constante * SIGN()const = 0;
 };
 
 #endif // CONSTANTE_H
