@@ -47,7 +47,7 @@ Constante * ConstanteFactory::toConstante(const std::string & str)
                     }
                     else
                     {
-                        //return new Rationnel(atof(temp.at(0).c_str),atof(temp.at(1).c_str));
+                        return new Rationnel(atoi((temp.at(0)).c_str()),atoi(temp.at(1).c_str()));
                     }
                 }
                 else
