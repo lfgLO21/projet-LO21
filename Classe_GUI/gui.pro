@@ -10,12 +10,14 @@ SOURCES += main.cpp \
     constantefactory.cpp \
     entier.cpp \
     reel.cpp \
-    parser.cpp
+    parser.cpp \
+    operation.cpp
 HEADERS += mainwindow.h \
     pile.h \
     constante.h \
     constantefactory.h \
     entier.h \
     reel.h \
-    parser.h
+    parser.h \
+    operation.h
 FORMS += mainwindow.ui

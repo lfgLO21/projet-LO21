@@ -13,11 +13,6 @@ void Pile::push(Constante * objet)
     this->_pile.push_back(objet);
 }
 
-const Constante * Pile::pop()
-{
-
-}
-
 void Pile::clear()
 {
     while(this->_pile.size() > 0)
