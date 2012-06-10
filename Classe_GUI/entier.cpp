@@ -113,3 +113,37 @@ Constante* Entier::operator-()const{
         return new Entier(-this->_entier);
 }
 }
+
+bool Entier::operator==(const Constante & c) const
+{
+    switch(c.getType()){
+        case Constante::ENTIER:
+        {
+            if(this->_entier == static_cast<const Entier&>(c)._entier)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}
+
+bool Entier::operator<(const Constante & c) const
+{
+    switch(c.getType()){
+        case Constante::ENTIER:
+        {
+            if(this->_entier < static_cast<const Entier&>(c)._entier)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+}
