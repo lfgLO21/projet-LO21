@@ -178,3 +178,83 @@ Constante* Reel::operator-()const{
         return new Reel(-this->_reel);
 >>>>>>> 08b20c2ec3a1d0678a2b42af2692d11c0b27c436
 }
+
+bool Reel::operator==(const Constante & c) const
+{
+    switch(c.getType()){
+    case Constante::ENTIER:
+    {
+        if(this->_reel == static_cast<const Entier&>(c).getEntier())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    case Constante::RATIONNEL:
+    {
+        float tmp = (float)static_cast<const Rationnel&>(c).getNumerateur()/(float)static_cast<const Rationnel&>(c).getDenominateur();
+        if(this->_reel == tmp)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    case Constante::REEL:
+    {
+        if(this->_reel == static_cast<const Reel&>(c)._reel)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    }
+}
+
+bool Reel::operator<(const Constante & c) const
+{
+    switch(c.getType()){
+    case Constante::ENTIER:
+    {
+        if(this->_reel < static_cast<const Entier&>(c).getEntier())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    case Constante::RATIONNEL:
+    {
+        float tmp = (float)static_cast<const Rationnel&>(c).getNumerateur()/(float)static_cast<const Rationnel&>(c).getDenominateur();
+        if(this->_reel < tmp)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    case Constante::REEL:
+    {
+        if(this->_reel < static_cast<const Reel&>(c)._reel)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    }
+}
