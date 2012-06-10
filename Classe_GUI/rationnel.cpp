@@ -157,3 +157,63 @@ Constante * Rationnel::operator/(Constante const & c) const
 Constante* Rationnel::operator-()const{
         return new Rationnel(-this->_numerateur,this->_denominateur);
 }
+
+bool Rationnel::operator==(const Constante & c) const
+{
+    float tmp = (float)this->_numerateur/(float)this->_denominateur;
+    switch(c.getType()){
+    case Constante::ENTIER:
+    {
+        if(tmp == static_cast<const Entier&>(c).getEntier())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    case Constante::RATIONNEL:
+    {
+        float tmp2 = (float)static_cast<const Rationnel&>(c)._numerateur/(float)static_cast<const Rationnel&>(c)._denominateur;
+        if(tmp == tmp2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    }
+}
+
+bool Rationnel::operator<(const Constante & c) const
+{
+    float tmp = (float)this->_numerateur/(float)this->_denominateur;
+    switch(c.getType()){
+    case Constante::ENTIER:
+    {
+        if(tmp < static_cast<const Entier&>(c).getEntier())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    case Constante::RATIONNEL:
+    {
+        float tmp2 = (float)static_cast<const Rationnel&>(c)._numerateur/(float)static_cast<const Rationnel&>(c)._denominateur;
+        if(tmp < tmp2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    }
+}
