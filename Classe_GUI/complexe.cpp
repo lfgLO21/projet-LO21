@@ -144,12 +144,44 @@ void Complexe::setI(const Constante& i)
 
 void Complexe::affiche(std::ostream & os) const
 {
-        if (this->_i < 0)
-            os<<*(this->_r)<<" "<<*(this->_i)<<"i";
-        else if (this->_i == 0)
+    Entier zero(0);
+    switch (this->_i->getType())
+    {
+        case Constante::ENTIER:
+    {
+        Entier tmp(static_cast<const Entier*>(this->_i)->getEntier());
+        if (tmp < zero)
+            os<<*(this->_r)<<" - "<< *(-tmp) <<"i";
+        else if (tmp == zero)
             os<<*(this->_r);
         else
-            os<<*(this->_r)<<" + "<<*(this->_i)<<"i";
+            os<<*(this->_r)<<" + "<< tmp <<"i";
+        break;
+    }
+    case Constante::RATIONNEL:
+    {
+        Rationnel tmp(static_cast<const Rationnel*>(this->_i)->getNumerateur(),
+                      static_cast<const Rationnel*>(this->_i)->getDenominateur());
+        if (tmp < zero)
+            os<<*(this->_r)<<" - "<< *(-tmp) <<"i";
+        else if (tmp == zero)
+            os<<*(this->_r);
+        else
+            os<<*(this->_r)<<" + "<< tmp <<"i";
+        break;
+    }
+    case Constante::REEL:
+    {
+        Reel tmp(static_cast<const Reel*>(this->_i)->getReel());
+        if (tmp < zero)
+            os<<*(this->_r)<<" - "<< *(-tmp) <<"i";
+        else if (tmp == zero)
+            os<<*(this->_r);
+        else
+            os<<*(this->_r)<<" + "<< tmp <<"i";
+        break;
+    }
+    }
 }
 
 std::ostream & operator<<(std::ostream & os, const Complexe & c)
@@ -300,6 +332,61 @@ Constante* Complexe::operator/(const Constante & c) const
 
 Constante* Complexe::operator-()const{
         return new Complexe((const Constante*)-(*this->_r),(const Constante*)-(*this->_i));
+}
+
+bool Complexe::operator==(const Constante& c) const
+{
+    switch (c.getType())
+    {
+        case Constante::ENTIER:
+    return *this==Complexe(static_cast<const Entier&>(c));
+            break;
+        case Constante::RATIONNEL:
+    return *this==Complexe(static_cast<const Rationnel&>(c));
+            break;
+        case Constante::REEL:
+    return *this==Complexe(static_cast<const Reel&>(c));
+            break;
+        case Constante::COMPLEXE:
+    {
+        if(Egal::application(*this->_r,*static_cast<const Complexe&>(c)._r) && Egal::application(*this->_i,*static_cast<const Complexe&>(c)._i))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    }
+}
+
+bool Complexe::operator <(const Constante& c)const
+{
+    switch (c.getType())
+    {
+        case Constante::ENTIER:
+    return *this==Complexe(static_cast<const Entier&>(c));
+            break;
+        case Constante::RATIONNEL:
+    return *this==Complexe(static_cast<const Rationnel&>(c));
+            break;
+        case Constante::REEL:
+    return *this==Complexe(static_cast<const Reel&>(c));
+            break;
+        case Constante::COMPLEXE:
+    {
+        if(Inferieur::application(*this->_r,*static_cast<const Complexe&>(c)._r) && Inferieur::application(*this->_i,*static_cast<const Complexe&>(c)._i))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+            break;
+    }
+    }
 }
 
 ComplexeException::ComplexeException(int n, std::string const & info) throw()
