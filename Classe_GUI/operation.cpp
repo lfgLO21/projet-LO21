@@ -59,6 +59,30 @@ Constante* Division::application(const Constante& c1, const Constante& c2){
 
 }
 
+bool Egal::application(const Constante& c1, const Constante& c2){
+
+    bool result;
+    if(c1.getType() > c2.getType()){
+            result = c1==c2;
+    }
+    else{
+            result = c2==c1;
+    }
+    return result;
+}
+
+bool Inferieur::application(const Constante& c1, const Constante& c2){
+
+    bool result;
+    if(c1.getType() > c2.getType()){
+            result = c1<c2;
+    }
+    else{
+            result = c2<c1;
+    }
+    return result;
+}
+
 Constante* POW::application(const Constante& c1, const Constante& c2){
 
        Constante* result = new Entier(1);
