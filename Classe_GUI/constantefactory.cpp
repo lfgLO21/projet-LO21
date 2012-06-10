@@ -19,7 +19,10 @@ Constante * ConstanteFactory::toConstante(const std::string & str)
             }
             else
             {
-                //return new Complexe(atof(temp.at(0).c_str),atof(temp.at(1).c_str));
+                ConstanteFactory TMP;
+                Constante* tmp1 = TMP.toConstante(temp.at(0));
+                Constante* tmp2 = TMP.toConstante(temp.at(1));
+                return new Complexe(tmp1,tmp2);
             }
         }
         else
