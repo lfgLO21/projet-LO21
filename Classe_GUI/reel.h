@@ -34,8 +34,11 @@ public:
     Constante * operator-(const Constante & r) const;
     Constante * operator*(const Constante & r) const;
     Constante * operator/(const Constante & r) const;
-
     Constante * operator-()const;
+    
+    bool operator==(const Constante & c) const;
+    bool operator<(const Constante & c) const;
+    
 };
 
 #endif // REEL_H
