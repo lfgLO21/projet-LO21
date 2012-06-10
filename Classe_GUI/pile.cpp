@@ -25,25 +25,27 @@ void Pile::swap(unsigned int x, unsigned int y)
     _pile[y] = tmp;
 }
 
-void sum(unsigned int x)
+void Pile::sum(unsigned int x)
 {
-    //Constante * temp = new Entier(0);
+    Constante* temp = new Entier(0);
+    int s = this->getSize();
     for(unsigned int i = 0; i< x;i++)
     {
-    //    temp = *temp + *this->_pile.at(i);
+        temp = Addition::application(*temp, *_pile[s-i]);
     }
-    //this->_pile.push_back(temp);
+    this->_pile.push_back(temp);
 }
 
-void mean(unsigned int x)
+void Pile::mean(unsigned int x)
 {
-    //Constante * temp = new Entier(0);
-    for(unsigned int i = 0; i < x; i++)
+    Constante * temp = new Entier(0);
+    int s = this->getSize();
+    for(unsigned int i = 0; i< x;i++)
     {
-    //    temp = *temp + *this->_pile.at(i);
+        temp = Addition::application(*temp, *_pile[s-i]);
     }
-    //temp = *temp / x;
-    //this->_pile.push_back(temp);
+    temp = Division::application(*temp,Entier(x));
+    this->_pile.push_back(temp);
 }
 
 void Pile::dup()
