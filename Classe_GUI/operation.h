@@ -37,6 +37,14 @@ struct Division : public Operation{
   static Constante* application(const Constante&, const Constante&);
 };
 
+struct Egal : public Operation{
+  static bool application(const Constante&, const Constante&);
+};
+
+struct Inferieur : public Operation{
+    static bool application(const Constante&, const Constante&);
+};
+
 struct POW : public Operation{
   static Constante* application(const Constante&, const Constante&);
 };
