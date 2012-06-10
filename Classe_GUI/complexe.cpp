@@ -145,11 +145,11 @@ void Complexe::setI(const Constante& i)
 void Complexe::affiche(std::ostream & os) const
 {
         if (this->_i < 0)
-            os<<this->_r<<" "<<this->_i<<"i";
+            os<<*(this->_r)<<" "<<*(this->_i)<<"i";
         else if (this->_i == 0)
-            os<<this->_r;
+            os<<*(this->_r);
         else
-            os<<this->_r<<" + "<<this->_i<<"i";
+            os<<*(this->_r)<<" + "<<*(this->_i)<<"i";
 }
 
 std::ostream & operator<<(std::ostream & os, const Complexe & c)
