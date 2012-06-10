@@ -33,8 +33,10 @@ public:
     Constante * operator-(const Constante & c) const;
     Constante * operator*(const Constante & c) const;
     Constante * operator/(const Constante & c) const;
-    
     Constante * operator-() const;
+    
+    bool operator==(const Constante & c) const;
+    bool operator<(const Constante & c) const;
     
     Constante * operator%(const Constante& c) const;
     Constante * operator!()const;
