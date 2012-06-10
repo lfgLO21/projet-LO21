@@ -30,8 +30,10 @@ class Constante
         virtual Constante * operator-(const Constante & c) const = 0;
         virtual Constante * operator*(const Constante & c) const = 0;
         virtual Constante * operator/(const Constante & c) const = 0;
-        
         virtual Constante * operator-()const = 0;
+        
+        virtual bool operator==(const Constante & c) const = 0;
+        virtual bool operator<(const Constante & c) const = 0;      
 };
 std::ostream & operator<<(std::ostream & os, const Constante & c);
 #endif // CONSTANTE_H
