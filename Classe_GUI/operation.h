@@ -1,19 +1,11 @@
-#ifndef OPERATION_H
-#define OPERATION_H
+#ifndef Operation_H
+#define Operation_H
 
 #include "constante.h"
-<<<<<<< HEAD
-#include "entier.h"
-//#include "rationnel.h"
-#include "reel.h"
-//#include "complexe.h"
-#include "expression.h"
-=======
 #include "reel.h"
 #include "entier.h"
 #include "rationnel.h"
 #include <cmath>
->>>>>>> 08b20c2ec3a1d0678a2b42af2692d11c0b27c436
 
 class Operation
 {
@@ -101,5 +93,4 @@ struct LN : public Operation{
   static Constante* application(const Constante&);
 };
 
-
-#endif // OPERATION_H
+#endif // Operation_H

@@ -9,11 +9,8 @@
 #include "rationnel.h"
 #include "reel.h"
 #include "complexe.h"
-#include "expression.h"
 
 #include "parser.h"
-
-using namespace std;
 
 class ConstanteFactory
 {

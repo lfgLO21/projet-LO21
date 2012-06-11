@@ -1,3 +1,10 @@
+/**
+ * \brief Classe Complexe
+ * Permet les op�rations simples sur les complexes.
+ * \author moi
+ * \date 21.V.12
+ * \version 1.0
+ */
 #ifndef COMPLEXE_H
 #define COMPLEXE_H
 
@@ -5,7 +12,7 @@
 #include <exception>
 #include <iostream>
 #include "constante.h"
-#include "operateur.h"
+#include "operation.h"
 #include "reel.h"
 #include "rationnel.h"
 #include "entier.h"
@@ -36,7 +43,7 @@ class Complexe : public Constante
         Constante * operator*(const Constante & c) const;
         Constante * operator/(const Constante & c) const;
         Constante * operator-()const;
-        
+
         bool operator==(const Constante & c) const;
         bool operator<(const Constante & c) const;
 
@@ -55,6 +62,5 @@ class ComplexeException
 
         virtual const char* what() const throw();
 };
-
 
 #endif // COMPLEXE_H

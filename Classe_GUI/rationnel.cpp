@@ -70,6 +70,12 @@ void Rationnel::affiche(std::ostream & os)const
     os<<this->_numerateur<<"/"<<_denominateur;
 }
 
+std::ostream & operator<<(std::ostream & os, const Rationnel & c)
+{
+    c.affiche(os);
+    return(os);
+}
+
 void Rationnel::simplification()
 {
     if (_denominateur < 0)

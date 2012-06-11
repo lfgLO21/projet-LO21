@@ -12,8 +12,8 @@ class Parser
     private:
 
     public:
-        Parser(){};
-        ~Parser(){};
+        Parser(){}
+        ~Parser(){}
 
         static std::vector <std::string> traitementString(std::string str);
         static std::vector <std::string> parse(std::string,char c = ' ');

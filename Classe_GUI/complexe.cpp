@@ -155,7 +155,7 @@ void Complexe::affiche(std::ostream & os) const
         else if (tmp == zero)
             os<<*(this->_r);
         else
-            os<<*(this->_r)<<" + "<< tmp <<"i";
+            os<<*(this->_r)<<" + "<< *(this->_i) <<"i";
         break;
     }
     case Constante::RATIONNEL:

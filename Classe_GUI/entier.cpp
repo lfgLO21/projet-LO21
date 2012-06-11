@@ -1,15 +1,15 @@
 #include "entier.h"
 
-Entier::Entier(int d)
+Entier::Entier(int d):Constante(ENTIER)
 {
     this->_entier = d;
-    this->_type = Constante::ENTIER;
+    this->_type = ENTIER;
 }
 
-Entier::Entier(const Entier& e)
+Entier::Entier(const Entier& e):Constante(ENTIER)
 {
     this->_entier=e.getEntier();
-    this->_type = Constante::ENTIER;
+    this->_type = ENTIER;
 }
 
 /////////
@@ -39,9 +39,10 @@ void Entier::affiche(std::ostream & os)const
     os<<this->_entier;
 }
 
-std::string Entier::toString() const
+std::ostream & operator<<(std::ostream & os, const Entier & c)
 {
-
+    c.affiche(os);
+    return(os);
 }
 
 //////////////
@@ -50,53 +51,42 @@ std::string Entier::toString() const
 
 Constante * Entier::operator+(Constante const & c) const
 {
-    if(c.getType() == Constante::ENTIER)
-    {
-        return new Entier(this->_entier + (static_cast<const Entier&>(c)._entier));
-    }
-    else
-    {
-        throw std::domain_error("Type non existant");
+    switch(c.getType()){
+            case Constante::ENTIER:
+    return new Entier(this->_entier + static_cast<const Entier&>(c)._entier);
+            break;
     }
 }
 
 Constante * Entier::operator-(Constante const & c) const
 {
-    if(c.getType() == Constante::ENTIER)
-    {
-        return new Entier(this->_entier - (static_cast<const Entier&>(c)._entier));
-    }
-    else
-    {
-        throw std::domain_error("Type non existant");
+    switch(c.getType()){
+            case Constante::ENTIER:
+    return new Entier(this->_entier - static_cast<const Entier&>(c)._entier);
+            break;
     }
 }
 
 Constante * Entier::operator*(Constante const & c) const
 {
-    if(c.getType() == Constante::ENTIER)
-    {
-        return new Entier(this->_entier * (static_cast<const Entier&>(c)._entier));
-    }
-    else
-    {
-        throw std::domain_error("Type non existant");
+    switch(c.getType()){
+            case Constante::ENTIER:
+    return new Entier(this->_entier * static_cast<const Entier&>(c)._entier);
+            break;
     }
 }
 
 Constante * Entier::operator/(Constante const& c) const
 {
-    if(c.getType() == Constante::ENTIER)
-    {
-        return new Entier(this->_entier / (static_cast<const Entier&>(c)._entier));
-    }
-    else
-    {
-        throw std::domain_error("Type non existant");
+    switch(c.getType()){
+            case Constante::ENTIER:
+        return new Entier(this->_entier / static_cast<const Entier&>(c)._entier);
+            break;
     }
 }
 
-CConstante* Entier::operator%(const Constante& c)const{
+
+Constante* Entier::operator%(const Constante& c)const{
    switch(c.getType()){
        case Constante::ENTIER:
         return new Entier(_entier % static_cast<const Entier&>(c)._entier);
@@ -111,7 +101,6 @@ Constante* Entier::operator!()const{
 
 Constante* Entier::operator-()const{
         return new Entier(-this->_entier);
-}
 }
 
 bool Entier::operator==(const Constante & c) const

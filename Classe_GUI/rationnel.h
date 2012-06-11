@@ -1,7 +1,6 @@
 #ifndef RATIONNEL_H
 #define RATIONNEL_H
 
-
 #include "constante.h"
 #include "entier.h"
 #include "reel.h"
@@ -23,7 +22,7 @@ class Rationnel:public Constante
     int _numerateur;
     int _denominateur;
 
-    //mÃ©thode privÃ©e
+    //méthode privée
     void simplification();
 
 public:
@@ -49,9 +48,12 @@ public:
     Constante * operator*(const Constante & c) const;
     Constante * operator/(const Constante & c) const;
     Constante * operator-()const;
-    
+
     bool operator==(const Constante & c) const;
     bool operator<(const Constante & c) const;
-    
+
 };
+
+std::ostream & operator<<(std::ostream & os, const Rationnel & c);
+
 #endif // RATIONNEL_H

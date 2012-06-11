@@ -1,15 +1,13 @@
 #include "reel.h"
 
-Reel::Reel(float r)
+Reel::Reel(float r):Constante(REEL)
 {
     this->_reel = r;
-    this->_type = Constante::REEL;
 }
 
-Reel::Reel(const Entier& e)
+Reel::Reel(const Entier& e):Constante(REEL)
 {
     this->_reel = e.getEntier();
-    this->_type = Constante::REEL;
 }
 
 Reel::Reel(const Rationnel &r):Constante(REEL)
@@ -19,10 +17,9 @@ Reel::Reel(const Rationnel &r):Constante(REEL)
     this->_reel=n/d;
 }
 
-Reel::Reel(const Reel& r)
+Reel::Reel(const Reel& r):Constante(REEL)
 {
     this->_reel = r.getReel();
-    this->_type = Constante::REEL;
 }
 
 /////////
@@ -52,8 +49,10 @@ void Reel::affiche(std::ostream & os) const
     os<<this->_reel;
 }
 
-std::string Reel::toString() const
+std::ostream & operator<<(std::ostream & os, const Reel & c)
 {
+    c.affiche(os);
+    return(os);
 }
 
 Constante * Reel::operator+(const Constante & r) const
@@ -64,12 +63,12 @@ Constante * Reel::operator+(const Constante & r) const
     {
         case Constante::ENTIER:
         {
-            return *this + Reel(static_cast<const Entier&>(r));
+            return *this+Reel(static_cast<const Entier&>(r));
             break;
         }
         case Constante::RATIONNEL:
         {
-            return *this + Reel(static_cast<const Rationnel&>(r));
+            return *this+Reel(static_cast<const Rationnel&>(r));
             break;
         }
         case Constante::REEL:
@@ -82,6 +81,7 @@ Constante * Reel::operator+(const Constante & r) const
             throw std::domain_error("Type non existant");
         }
     }
+
 }
 
 Constante * Reel::operator-(const Constante & r) const
@@ -90,12 +90,12 @@ Constante * Reel::operator-(const Constante & r) const
     {
         case Constante::ENTIER:
         {
-            return *this - Reel(static_cast<const Entier&>(r));
+            return *this-Reel(static_cast<const Entier&>(r));
             break;
         }
         case Constante::RATIONNEL:
         {
-            return *this - Reel(static_cast<const Rationnel&>(r));
+            return *this-Reel(static_cast<const Rationnel&>(r));
             break;
         }
         case Constante::REEL:
@@ -116,12 +116,12 @@ Constante * Reel::operator*(const Constante & r) const
     {
         case Constante::ENTIER:
         {
-            return *this * Reel(static_cast<const Entier&>(r));
+            return *this*Reel(static_cast<const Entier&>(r));
             break;
         }
         case Constante::RATIONNEL:
         {
-            return *this * Reel(static_cast<const Rationnel&>(r));
+            return *this*Reel(static_cast<const Rationnel&>(r));
             break;
         }
         case Constante::REEL:
@@ -142,12 +142,12 @@ Constante * Reel::operator/(const Constante & r) const
     {
         case Constante::ENTIER:
         {
-            return *this / Reel(static_cast<const Entier&>(r));
+            return *this/Reel(static_cast<const Entier&>(r));
             break;
         }
         case Constante::RATIONNEL:
         {
-            return *this / Reel(static_cast<const Rationnel&>(r));
+            return *this/Reel(static_cast<const Rationnel&>(r));
             break;
         }
         case Constante::REEL:
@@ -162,21 +162,8 @@ Constante * Reel::operator/(const Constante & r) const
     }
 }
 
-<<<<<<< HEAD
-Constante * Reel::SIGN()const
-{
-    if(this->_type == Constante::REEL)
-    {
-        return new Reel(-1*this->_reel);
-    }
-    else
-    {
-        return new Reel(1);
-    }
-=======
 Constante* Reel::operator-()const{
         return new Reel(-this->_reel);
->>>>>>> 08b20c2ec3a1d0678a2b42af2692d11c0b27c436
 }
 
 bool Reel::operator==(const Constante & c) const
