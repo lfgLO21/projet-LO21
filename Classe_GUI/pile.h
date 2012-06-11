@@ -12,6 +12,7 @@
 #include "reel.h"
 #include "complexe.h"
 #include "expression.h"
+#include "operation.h"
 
 using namespace std;
 
