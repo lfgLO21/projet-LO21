@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>398</height>
+    <width>541</width>
+    <height>389</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,13 +19,13 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1119</width>
-      <height>321</height>
+      <width>521</width>
+      <height>331</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="layoutPrincipal">
      <item>
-      <layout class="QGridLayout" name="layoutCalc" rowstretch="0,0,0,0,0,0">
+      <layout class="QGridLayout" name="layoutCalc" rowstretch="0,0,0">
        <property name="sizeConstraint">
         <enum>QLayout::SetMinimumSize</enum>
        </property>
@@ -38,14 +38,14 @@
        <property name="topMargin">
         <number>0</number>
        </property>
-       <item row="1" column="0" colspan="4">
+       <item row="0" column="0" colspan="4">
         <widget class="QLineEdit" name="inputLine">
          <property name="readOnly">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="2" column="2">
+       <item row="1" column="2">
         <spacer name="verticalSpacerBasLineEdit">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -58,55 +58,7 @@
          </property>
         </spacer>
        </item>
-       <item row="0" column="2">
-        <spacer name="verticalSpacerHautLineEdit">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="4" column="2">
-        <layout class="QHBoxLayout" name="layoutMode">
-         <property name="sizeConstraint">
-          <enum>QLayout::SetFixedSize</enum>
-         </property>
-         <item>
-          <widget class="QRadioButton" name="radioButtonEntier">
-           <property name="text">
-            <string>Entier</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButtonRationnel">
-           <property name="text">
-            <string>Rationnel</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButtonReel">
-           <property name="text">
-            <string>Reel</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="3" column="2">
-        <widget class="QCheckBox" name="checkBoxComplexe">
-         <property name="text">
-          <string>Complexe</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2">
+       <item row="2" column="2">
         <layout class="QGridLayout" name="layoutCalculesBasiques">
          <property name="sizeConstraint">
           <enum>QLayout::SetMinimumSize</enum>
@@ -326,162 +278,142 @@
            </property>
           </widget>
          </item>
+         <item row="7" column="0" colspan="4">
+          <layout class="QGridLayout" name="layoutCalculesScientifiques">
+           <property name="sizeConstraint">
+            <enum>QLayout::SetMinimumSize</enum>
+           </property>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="buttonInv">
+             <property name="text">
+              <string>INV</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="buttonSign">
+             <property name="text">
+              <string>SIGN</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="buttonModulo">
+             <property name="text">
+              <string>MOD</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QPushButton" name="buttonComplexe">
+             <property name="text">
+              <string>$</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="buttonCos">
+             <property name="text">
+              <string>COS</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="buttonSin">
+             <property name="text">
+              <string>SIN</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QPushButton" name="buttonTan">
+             <property name="text">
+              <string>TAN</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QCheckBox" name="checkBoxHyperbolique">
+             <property name="font">
+              <font>
+               <pointsize>8</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>H</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QPushButton" name="buttonSqr">
+             <property name="text">
+              <string>SQR</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QPushButton" name="buttonCube">
+             <property name="text">
+              <string>CUBE</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QPushButton" name="buttonPow">
+             <property name="text">
+              <string>^</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QPushButton" name="buttonSqrt">
+             <property name="text">
+              <string>SQRT</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QPushButton" name="buttonLn">
+             <property name="text">
+              <string>LN</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QPushButton" name="buttonLog">
+             <property name="text">
+              <string>LOG</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="3" rowspan="2">
+            <widget class="QPushButton" name="buttonEval">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>EVAL</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="6" column="0">
+          <widget class="Line" name="line">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
       </layout>
      </item>
      <item>
       <widget class="Line" name="line_3">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QGridLayout" name="layoutCalculesScientifiques">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetMinimumSize</enum>
-       </property>
-       <item row="1" column="0">
-        <widget class="QPushButton" name="buttonInv">
-         <property name="text">
-          <string>INV</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="buttonSign">
-         <property name="text">
-          <string>SIGN</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QPushButton" name="buttonModulo">
-         <property name="text">
-          <string>MOD</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="3">
-        <widget class="QPushButton" name="buttonComplexe">
-         <property name="text">
-          <string>$</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QPushButton" name="buttonCos">
-         <property name="text">
-          <string>COS</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="buttonSin">
-         <property name="text">
-          <string>SIN</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2">
-        <widget class="QPushButton" name="buttonTan">
-         <property name="text">
-          <string>TAN</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="3">
-        <widget class="QCheckBox" name="checkBoxHyperbolique">
-         <property name="font">
-          <font>
-           <pointsize>8</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>H</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QPushButton" name="buttonSqr">
-         <property name="text">
-          <string>SQR</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="buttonCube">
-         <property name="text">
-          <string>CUBE</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QPushButton" name="buttonPow">
-         <property name="text">
-          <string>^</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QPushButton" name="buttonSqrt">
-         <property name="text">
-          <string>SQRT</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QPushButton" name="buttonLn">
-         <property name="text">
-          <string>LN</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2">
-        <widget class="QPushButton" name="buttonLog">
-         <property name="text">
-          <string>LOG</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="3">
-        <widget class="QPushButton" name="buttonEval">
-         <property name="text">
-          <string>EVAL</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="0" column="2">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="Line" name="line_4">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -506,7 +438,14 @@
         </spacer>
        </item>
        <item row="1" column="1">
-        <widget class="QListView" name="listPile"/>
+        <widget class="QListView" name="listPile">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item row="2" column="1">
         <spacer name="verticalSpacerBasPile">
@@ -576,17 +515,22 @@
        </item>
       </layout>
      </item>
+     <item>
+      <widget class="Line" name="line_4">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
-   <zorder>layoutWidget</zorder>
-   <zorder>gridLayoutWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>717</width>
+     <width>541</width>
      <height>21</height>
     </rect>
    </property>
