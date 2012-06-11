@@ -4,7 +4,18 @@
 #include "constante.h"
 #include <string>
 
-using namespace std;
+class Expression_exception
+{
+    std::string _infos;
+
+public:
+    Expression_exception(const std::string& i):_infos(i){}
+
+    const std::string& getInfos()const{return _infos;}
+
+
+};
+
 
 class Expression : public Constante
 {
@@ -20,8 +31,10 @@ class Expression : public Constante
         Constante * operator-(const Constante & c) const;
         Constante * operator*(const Constante & c) const;
         Constante * operator/(const Constante & c) const;
+        Constante * operator-()const{throw Expression_exception("fonction inexistante");}
 
-        Constante * SIGN()const;
+        bool operator==(const Constante & c) const{throw Expression_exception("fonction inexistante");}
+        bool operator<(const Constante & c) const{throw Expression_exception("fonction inexistante");}
 };
 
 #endif // EXPRESSION_H
