@@ -36,7 +36,7 @@ class Complexe : public Constante
         void setR(const Constante& r);
         void setI(const Constante& i);
 
-        std::string& toString()const{
+        std::string toString()const{
             std::stringstream ss;
             ss<<_r->toString()<<"$"<<_i->toString();
             return ss.str();

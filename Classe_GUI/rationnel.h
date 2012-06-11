@@ -40,7 +40,7 @@ public:
     void setNumerateur(int n);
     void setDenominateur(int d);
 
-    std::string& toString()const{
+    std::string toString()const{
         std::stringstream ss;
         ss<<_numerateur<<"/"<<_denominateur;
         return ss.str();

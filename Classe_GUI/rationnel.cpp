@@ -109,7 +109,7 @@ Constante * Rationnel::operator+(Constante const & c) const
                              this->_denominateur*static_cast<const Rationnel&>(c)._denominateur);
         break;
     case Constante::EXPRESSION:
-        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"+'");
+        return new Expression("'"+static_cast<const Expression&>(c).getString()+this->toString()+"+'");
         break;
     }
 }
@@ -129,7 +129,7 @@ Constante * Rationnel::operator-(Constante const & c) const
                              static_cast<const Rationnel&>(c)._denominateur);
         break;
     case Constante::EXPRESSION:
-        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"-'");
+        return new Expression("'"+static_cast<const Expression&>(c).getString()+this->toString()+"-'");
         break;
     }
 }
@@ -147,7 +147,7 @@ Constante * Rationnel::operator*(Constante const & c) const
                              static_cast<const Rationnel&>(c)._denominateur);
         break;
     case Constante::EXPRESSION:
-        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"*'");
+        return new Expression("'"+static_cast<const Expression&>(c).getString()+this->toString()+"*'");
         break;
     }
 }
@@ -165,7 +165,7 @@ Constante * Rationnel::operator/(Constante const & c) const
                              static_cast<const Rationnel&>(c)._numerateur);
         break;
     case Constante::EXPRESSION:
-        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"/'");
+        return new Expression("'"+static_cast<const Expression&>(c).getString()+this->toString()+"/'");
         break;
 
     }

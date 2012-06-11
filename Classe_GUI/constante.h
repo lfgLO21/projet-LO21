@@ -19,7 +19,7 @@ class Constante
 
         int getType(void) const;
 
-        virtual std::string& toString()const = 0;
+        virtual std::string toString()const = 0;
 
         virtual void affiche(std::ostream & os = std::cout) const = 0;
 

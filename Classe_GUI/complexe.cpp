@@ -207,6 +207,9 @@ Constante* Complexe::operator+(const Constante& c) const
     return new Complexe(static_cast<Constante*>(Addition::application(*this->_r,*static_cast<const Complexe&>(c)._r)),
                             static_cast<Constante*>(Addition::application(*this->_i,*static_cast<const Complexe&>(c)._i)));
             break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c).getString()+this->toString()+"+'");
+        break;
     }
 }
 
@@ -214,33 +217,38 @@ Constante* Complexe::operator-(const Constante & c) const
 {
     switch (c.getType())
     {
-        case Constante::ENTIER:
-        {
-            return *this-Complexe(static_cast<const Entier&>(c));
-            break;
-        }
-        case Constante::RATIONNEL:
-        {
-            return *this-Complexe(static_cast<const Rationnel&>(c));
-            break;
-        }
-        case Constante::REEL:
-        {
-            return *this-Complexe(static_cast<const Reel&>(c));
-            break;
-        }
-        case Constante::COMPLEXE:
-        {
-            return new Complexe(static_cast<Constante*>(
-                                    Soustraction::application(
-                                        *this->_r,
-                                        *static_cast<const Complexe&>(c)._r)),
-                                static_cast<Constante*>(
-                                    Soustraction::application(
-                                        *this->_i,
-                                        *static_cast<const Complexe&>(c)._i)));
-            break;
-        }
+    case Constante::ENTIER:
+    {
+        return *this-Complexe(static_cast<const Entier&>(c));
+        break;
+    }
+    case Constante::RATIONNEL:
+    {
+        return *this-Complexe(static_cast<const Rationnel&>(c));
+        break;
+    }
+    case Constante::REEL:
+    {
+        return *this-Complexe(static_cast<const Reel&>(c));
+        break;
+    }
+    case Constante::COMPLEXE:
+    {
+        return new Complexe(static_cast<Constante*>(
+                                Soustraction::application(
+                                    *this->_r,
+                                    *static_cast<const Complexe&>(c)._r)),
+                            static_cast<Constante*>(
+                                Soustraction::application(
+                                    *this->_i,
+                                    *static_cast<const Complexe&>(c)._i)));
+        break;
+    }
+    case Constante::EXPRESSION:
+    {
+        return new Expression("'"+static_cast<const Expression&>(c).getString()+this->toString()+"-'");
+        break;
+    }
     }
 }
 
@@ -248,39 +256,44 @@ Constante* Complexe::operator*(const Constante & c) const
 {
     switch (c.getType())
     {
-        case Constante::ENTIER:
-        {
-        return new Complexe(static_cast<Constante*>(Multiplication::application(*this->_r,static_cast<const Entier&>(c))),
-                            static_cast<Constante*>(Multiplication::application(*this->_i,static_cast<const Entier&>(c))));
-            break;
-        }
-        case Constante::RATIONNEL:
-        {
-        return new Complexe(static_cast<Constante*>(Multiplication::application(*this->_r,static_cast<const Rationnel&>(c))),
-                           static_cast<Constante*>(Multiplication::application(*this->_i,static_cast<const Rationnel&>(c))));
-            break;
-        }
-        case Constante::REEL:
-        {
-        return new Complexe(static_cast<Constante*>(Multiplication::application(*this->_r,static_cast<const Reel&>(c))),
-                           static_cast<Constante*>(Multiplication::application(*this->_i,static_cast<const Reel&>(c))));
-            break;
-        }
-        case Constante::COMPLEXE:
-        {
-            return new Complexe(static_cast<Constante*>(
-                                    Soustraction::application(
-                                        *Multiplication::application(*this->_r,*static_cast<const Complexe&>(c)._r),
-                                        *Multiplication::application(*this->_i,*static_cast<const Complexe&>(c)._i)
-                                        )
-                                    ),
-                                static_cast<Constante*>(
-                                    Addition::application(
-                                        *Multiplication::application(*this->_r,*static_cast<const Complexe&>(c)._i),
-                                        *Multiplication::application(*this->_i,*static_cast<const Complexe&>(c)._r)))
-                                                                                     );
-            break;
-        }
+    case Constante::ENTIER:
+    {
+    return new Complexe(static_cast<Constante*>(Multiplication::application(*this->_r,static_cast<const Entier&>(c))),
+                        static_cast<Constante*>(Multiplication::application(*this->_i,static_cast<const Entier&>(c))));
+        break;
+    }
+    case Constante::RATIONNEL:
+    {
+    return new Complexe(static_cast<Constante*>(Multiplication::application(*this->_r,static_cast<const Rationnel&>(c))),
+                       static_cast<Constante*>(Multiplication::application(*this->_i,static_cast<const Rationnel&>(c))));
+        break;
+    }
+    case Constante::REEL:
+    {
+    return new Complexe(static_cast<Constante*>(Multiplication::application(*this->_r,static_cast<const Reel&>(c))),
+                       static_cast<Constante*>(Multiplication::application(*this->_i,static_cast<const Reel&>(c))));
+        break;
+    }
+    case Constante::COMPLEXE:
+    {
+        return new Complexe(static_cast<Constante*>(
+                                Soustraction::application(
+                                    *Multiplication::application(*this->_r,*static_cast<const Complexe&>(c)._r),
+                                    *Multiplication::application(*this->_i,*static_cast<const Complexe&>(c)._i)
+                                    )
+                                ),
+                            static_cast<Constante*>(
+                                Addition::application(
+                                    *Multiplication::application(*this->_r,*static_cast<const Complexe&>(c)._i),
+                                    *Multiplication::application(*this->_i,*static_cast<const Complexe&>(c)._r)))
+                                                                                 );
+        break;
+    }
+    case Constante::EXPRESSION:
+    {
+        return new Expression("'"+static_cast<const Expression&>(c).getString()+this->toString()+"*'");
+        break;
+    }
     }
 }
 
@@ -288,45 +301,50 @@ Constante* Complexe::operator/(const Constante & c) const
 {
     switch (c.getType())
     {
-        case Constante::ENTIER:
-        {
-            return *this/Complexe(static_cast<const Entier&>(c));
-            break;
-        }
-        case Constante::RATIONNEL:
-        {
-            return *this/Complexe(static_cast<const Rationnel&>(c));
-            break;
-        }
-        case Constante::REEL:
-        {
-            return *this/Complexe(static_cast<const Reel&>(c));
-            break;
-        }
-        case Constante::COMPLEXE:
-        {
-        return new Complexe(static_cast<Constante*>(
-                                 Division::application(
-                                         *Addition::application(
-                                              *Multiplication::application(*this->_r,*static_cast<const Complexe&>(c)._r),
-                                              *Multiplication::application(*this->_i,*static_cast<const Complexe&>(c)._i)
-                                        ),
-                                         *Addition::application(
-                                                 *Multiplication::application(*static_cast<const Complexe&>(c)._r,*static_cast<const Complexe&>(c)._r),
-                                                 *Multiplication::application(*static_cast<const Complexe&>(c)._i,*static_cast<const Complexe&>(c)._i)))
-                                ),
-                            static_cast<Constante*>(
-                                Division::application(
-                                    *Soustraction::application(
-                                        *Multiplication::application(*this->_i,*static_cast<const Complexe&>(c)._r),
-                                        *Multiplication::application(*this->_r,*static_cast<const Complexe&>(c)._i)
-                                        ),
-                                    *Addition::application(
-                                            *Multiplication::application(*static_cast<const Complexe&>(c)._r,*static_cast<const Complexe&>(c)._r),
-                                            *Multiplication::application(*static_cast<const Complexe&>(c)._i,*static_cast<const Complexe&>(c)._i)))
-                                ));
-            break;
-        }
+    case Constante::ENTIER:
+    {
+        return *this/Complexe(static_cast<const Entier&>(c));
+        break;
+    }
+    case Constante::RATIONNEL:
+    {
+        return *this/Complexe(static_cast<const Rationnel&>(c));
+        break;
+    }
+    case Constante::REEL:
+    {
+        return *this/Complexe(static_cast<const Reel&>(c));
+        break;
+    }
+    case Constante::COMPLEXE:
+    {
+    return new Complexe(static_cast<Constante*>(
+                             Division::application(
+                                     *Addition::application(
+                                          *Multiplication::application(*this->_r,*static_cast<const Complexe&>(c)._r),
+                                          *Multiplication::application(*this->_i,*static_cast<const Complexe&>(c)._i)
+                                    ),
+                                     *Addition::application(
+                                             *Multiplication::application(*static_cast<const Complexe&>(c)._r,*static_cast<const Complexe&>(c)._r),
+                                             *Multiplication::application(*static_cast<const Complexe&>(c)._i,*static_cast<const Complexe&>(c)._i)))
+                            ),
+                        static_cast<Constante*>(
+                            Division::application(
+                                *Soustraction::application(
+                                    *Multiplication::application(*this->_i,*static_cast<const Complexe&>(c)._r),
+                                    *Multiplication::application(*this->_r,*static_cast<const Complexe&>(c)._i)
+                                    ),
+                                *Addition::application(
+                                        *Multiplication::application(*static_cast<const Complexe&>(c)._r,*static_cast<const Complexe&>(c)._r),
+                                        *Multiplication::application(*static_cast<const Complexe&>(c)._i,*static_cast<const Complexe&>(c)._i)))
+                            ));
+        break;
+    }
+    case Constante::EXPRESSION:
+    {
+        return new Expression("'"+static_cast<const Expression&>(c).getString()+this->toString()+"/'");
+        break;
+    }
     }
 }
 

@@ -1,6 +1,6 @@
 #include "expression.h"
 
-Expression::Expression(const string & str)
+Expression::Expression(const std::string & str)
 {
     this->_expression=str;
     this->_expression[0]=' ';

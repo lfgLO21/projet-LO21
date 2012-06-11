@@ -25,6 +25,9 @@ class Expression : public Constante
 public:
     Expression(const std::string & str="");
     ~Expression();
+
+    std::string getString()const{return _expression;}
+
     std::string toString() const;
     void affiche(std::ostream &os=std::cout) const;
 
