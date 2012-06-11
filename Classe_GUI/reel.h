@@ -21,6 +21,12 @@ public:
     //set
     void setReel(float r);
 
+    std::string& toString()const{
+        std::stringstream ss;
+        ss << _reel;
+        return ss.str();
+    }
+
     //affiche
     void affiche(std::ostream & os = std::cout) const;
 

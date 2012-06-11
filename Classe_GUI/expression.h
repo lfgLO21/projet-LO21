@@ -26,7 +26,7 @@ public:
     Expression(const std::string & str="");
     ~Expression();
     std::string toString() const;
-    void affiche(std::ostream &os) const;
+    void affiche(std::ostream &os=std::cout) const;
 
     Constante * operator+(const Constante & c) const;
     Constante * operator-(const Constante & c) const;

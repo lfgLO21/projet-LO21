@@ -21,6 +21,12 @@ public:
     //set
     void setEntier(int e);
 
+    std::string& toString()const{
+        std::stringstream ss;
+        ss <<_entier;
+        return ss.str();
+    }
+
     //affiche
     void affiche(std::ostream & os = std::cout) const;
 
