@@ -2,7 +2,8 @@
 
 Expression::Expression(const string & str)
 {
-
+    this->_expression=str;
+    this->_type = Constante::EXPRESSION;
 }
 
 Expression::~Expression()

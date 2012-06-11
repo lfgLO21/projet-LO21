@@ -19,22 +19,23 @@ public:
 
 class Expression : public Constante
 {
-    private:
-        Expression(const string & str);
-        ~Expression();
 
-    public:
-        std::string toString() const;
-        void affiche(std::ostream &os) const;
+    std::string _expression;
 
-        Constante * operator+(const Constante & c) const;
-        Constante * operator-(const Constante & c) const;
-        Constante * operator*(const Constante & c) const;
-        Constante * operator/(const Constante & c) const;
-        Constante * operator-()const{throw Expression_exception("fonction inexistante");}
+public:
+    Expression(const std::string & str="");
+    ~Expression();
+    std::string toString() const;
+    void affiche(std::ostream &os) const;
 
-        bool operator==(const Constante & c) const{throw Expression_exception("fonction inexistante");}
-        bool operator<(const Constante & c) const{throw Expression_exception("fonction inexistante");}
+    Constante * operator+(const Constante & c) const;
+    Constante * operator-(const Constante & c) const;
+    Constante * operator*(const Constante & c) const;
+    Constante * operator/(const Constante & c) const;
+    Constante * operator-()const{throw Expression_exception("fonction inexistante");}
+
+    bool operator==(const Constante & c) const{throw Expression_exception("fonction inexistante");}
+    bool operator<(const Constante & c) const{throw Expression_exception("fonction inexistante");}
 };
 
 #endif // EXPRESSION_H
