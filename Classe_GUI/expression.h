@@ -32,7 +32,7 @@ public:
     Constante * operator-(const Constante & c) const;
     Constante * operator*(const Constante & c) const;
     Constante * operator/(const Constante & c) const;
-    Constante * operator-()const{throw Expression_exception("fonction inexistante");}
+    Constante * operator-()const;
 
     bool operator==(const Constante & c) const{throw Expression_exception("fonction inexistante");}
     bool operator<(const Constante & c) const{throw Expression_exception("fonction inexistante");}
