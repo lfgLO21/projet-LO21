@@ -31,7 +31,7 @@ void Pile::sum(unsigned int x)
     int s = this->getSize();
     for(unsigned int i = 0; i< x;i++)
     {
-        //temp = Addition::application(*temp, *_pile[s-i]);
+        temp = Addition::application(*temp, *_pile[s-i]);
     }
     this->_pile.push_back(temp);
 }
@@ -42,9 +42,9 @@ void Pile::mean(unsigned int x)
     int s = this->getSize();
     for(unsigned int i = 0; i< x;i++)
     {
-        //temp = Addition::application(*temp, *_pile[s-i]);
+        temp = Addition::application(*temp, *_pile[s-i]);
     }
-    //temp = Division::application(*temp,Entier(x));
+    temp = Division::application(*temp,Entier(x));
     this->_pile.push_back(temp);
 }
 

@@ -6,10 +6,11 @@
 #include <string>
 
 #include "constante.h"
+#include "operation.h"
 #include "entier.h"
-//#include "rationnel.h"
+#include "rationnel.h"
 #include "reel.h"
-//#include "complexe.h"
+#include "complexe.h"
 #include "expression.h"
 
 using namespace std;
