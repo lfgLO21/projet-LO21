@@ -2,6 +2,7 @@
 #define Entier_H
 
 #include "constante.h"
+#include "expression.h"
 #include <string>
 #include <sstream>
 

@@ -52,9 +52,12 @@ std::ostream & operator<<(std::ostream & os, const Entier & c)
 Constante * Entier::operator+(Constante const & c) const
 {
     switch(c.getType()){
-            case Constante::ENTIER:
-    return new Entier(this->_entier + static_cast<const Entier&>(c)._entier);
-            break;
+    case Constante::ENTIER:
+        return new Entier(this->_entier + static_cast<const Entier&>(c)._entier);
+        break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"+'");
+        break;
     }
 }
 
@@ -64,6 +67,9 @@ Constante * Entier::operator-(Constante const & c) const
             case Constante::ENTIER:
     return new Entier(this->_entier - static_cast<const Entier&>(c)._entier);
             break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"-'");
+        break;
     }
 }
 
@@ -73,15 +79,21 @@ Constante * Entier::operator*(Constante const & c) const
             case Constante::ENTIER:
     return new Entier(this->_entier * static_cast<const Entier&>(c)._entier);
             break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"*'");
+        break;
     }
 }
 
 Constante * Entier::operator/(Constante const& c) const
 {
     switch(c.getType()){
-            case Constante::ENTIER:
+    case Constante::ENTIER:
         return new Entier(this->_entier / static_cast<const Entier&>(c)._entier);
-            break;
+        break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"/'");
+        break;
     }
 }
 

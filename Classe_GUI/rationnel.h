@@ -2,6 +2,7 @@
 #define RATIONNEL_H
 
 #include "constante.h"
+#include "expression.h"
 #include "entier.h"
 #include "reel.h"
 

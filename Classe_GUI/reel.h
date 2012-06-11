@@ -3,6 +3,7 @@
 
 #include <exception>
 #include "constante.h"
+#include "expression.h"
 #include "rationnel.h"
 
 class Reel : public Constante

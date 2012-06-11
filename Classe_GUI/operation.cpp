@@ -7,55 +7,70 @@ Operation::Operation()
 Constante* Addition::application(const Constante& c1, const Constante& c2){
 
         Constante* result;
-        if(c1.getType() > c2.getType()){
+
+        if(c1.getType()==4 || c2.getType()==4)
+        {
+            result = c1+c2;
+            return result;
+        }
+        else if(c1.getType() > c2.getType()){
                 result = c1+c2;
         }
         else{
                 result = c2+c1;
         }
         return result;
-
 }
 
 Constante* Soustraction::application(const Constante& c1, const Constante& c2){
 
        Constante* result;
-        if(c1.getType() > c2.getType()){
-                result = c1-c2;
-        }
-        else{
-                result = c2-c1;
-        }
-        return result;
-
+       if(c1.getType()==4 || c2.getType()==4)
+       {
+           result = c1-c2;
+           return result;
+       }
+       else if(c1.getType() > c2.getType()){
+           result = c1-c2;
+       }
+       else{
+           result = c2-c1;
+       }
+       return result;
 }
 
 Constante* Multiplication::application(const Constante& c1, const Constante& c2){
 
        Constante* result;
-        if(c1.getType() > c2.getType()){
-                result = c1*c2;
-        }
-        else{
-                result = c2*c1;
-        }
-        return result;
-
+       if(c1.getType()==4 || c2.getType()==4)
+       {
+           result = c1*c2;
+           return result;
+       }
+       else if(c1.getType() > c2.getType()){
+           result = c1*c2;
+       }
+       else{
+           result = c2*c1;
+       }
+       return result;
 }
 
 Constante* Division::application(const Constante& c1, const Constante& c2){
 
        Constante* result;
-        if(c1.getType() == Constante::ENTIER && c2.getType() == Constante::ENTIER){
-                result = new Rationnel(static_cast<const Entier&>(c2),static_cast<const Entier&>(c1));
-        }
-        else if(c1.getType() >= c2.getType()){
-                result = c1/c2;
-        }
-        else{
-                result = c2/c1;
-        }
-        return result;
+       if(c1.getType()==4 || c2.getType()==4)
+       {
+           result = c1/c2;
+           return result;
+       }
+       else if(c1.getType() >= c2.getType()){
+           result = c1/c2;
+       }
+       else{
+           result = c2/c1;
+       }
+       return result;
 
 }
 

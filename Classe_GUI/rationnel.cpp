@@ -101,60 +101,72 @@ void Rationnel::simplification()
 Constante * Rationnel::operator+(Constante const & c) const
 {
     switch(c.getType()){
-            case Constante::ENTIER:
-    return *this+Rationnel(static_cast<const Entier& >(c));
-            break;
-            case Constante::RATIONNEL:
-    return new Rationnel(this->_numerateur*static_cast<const Rationnel&>(c)._denominateur+static_cast<const Rationnel&>(c)._numerateur*this->_denominateur,
-                    this->_denominateur*static_cast<const Rationnel&>(c)._denominateur);
-            break;
+    case Constante::ENTIER:
+        return *this+Rationnel(static_cast<const Entier& >(c));
+        break;
+    case Constante::RATIONNEL:
+        return new Rationnel(this->_numerateur*static_cast<const Rationnel&>(c)._denominateur+static_cast<const Rationnel&>(c)._numerateur*this->_denominateur,
+                             this->_denominateur*static_cast<const Rationnel&>(c)._denominateur);
+        break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"+'");
+        break;
     }
 }
 
 Constante * Rationnel::operator-(Constante const & c) const
 {
     switch(c.getType()){
-            case Constante::ENTIER:
-    return *this-Rationnel(static_cast<const Entier& >(c));
-            break;
-            case Constante::RATIONNEL:
-    return new Rationnel(this->_numerateur*
-                         static_cast<const Rationnel&>(c)._denominateur-
-                         static_cast<const Rationnel&>(c)._numerateur*
-                         this->_denominateur,
-                    this->_denominateur*
-                         static_cast<const Rationnel&>(c)._denominateur);
-            break;
+    case Constante::ENTIER:
+        return *this-Rationnel(static_cast<const Entier& >(c));
+        break;
+    case Constante::RATIONNEL:
+        return new Rationnel(this->_numerateur*
+                             static_cast<const Rationnel&>(c)._denominateur-
+                             static_cast<const Rationnel&>(c)._numerateur*
+                             this->_denominateur,
+                             this->_denominateur*
+                             static_cast<const Rationnel&>(c)._denominateur);
+        break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"-'");
+        break;
     }
 }
 
 Constante * Rationnel::operator*(Constante const & c) const
 {
     switch(c.getType()){
-            case Constante::ENTIER:
-    return *this*Rationnel(static_cast<const Entier& >(c));
-            break;
-            case Constante::RATIONNEL:
-    return new Rationnel(this->_numerateur*
-                         static_cast<const Rationnel&>(c)._numerateur,
-                    this->_denominateur*
-                         static_cast<const Rationnel&>(c)._denominateur);
-            break;
+    case Constante::ENTIER:
+        return *this*Rationnel(static_cast<const Entier& >(c));
+        break;
+    case Constante::RATIONNEL:
+        return new Rationnel(this->_numerateur*
+                             static_cast<const Rationnel&>(c)._numerateur,
+                             this->_denominateur*
+                             static_cast<const Rationnel&>(c)._denominateur);
+        break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"*'");
+        break;
     }
 }
 
 Constante * Rationnel::operator/(Constante const & c) const
 {
     switch(c.getType()){
-            case Constante::ENTIER:
-    return *this/Rationnel(static_cast<const Entier& >(c));
-            break;
-            case Constante::RATIONNEL:
-    return new Rationnel(this->_numerateur*
-                         static_cast<const Rationnel&>(c)._denominateur,
-                    this->_denominateur*
-                         static_cast<const Rationnel&>(c)._numerateur);
-            break;
+    case Constante::ENTIER:
+        return *this/Rationnel(static_cast<const Entier& >(c));
+        break;
+    case Constante::RATIONNEL:
+        return new Rationnel(this->_numerateur*
+                             static_cast<const Rationnel&>(c)._denominateur,
+                             this->_denominateur*
+                             static_cast<const Rationnel&>(c)._numerateur);
+        break;
+    case Constante::EXPRESSION:
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"/'");
+        break;
 
     }
 }

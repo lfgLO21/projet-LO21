@@ -61,25 +61,30 @@ Constante * Reel::operator+(const Constante & r) const
     //reel est additionne.
     switch (r.getType())
     {
-        case Constante::ENTIER:
-        {
-            return *this+Reel(static_cast<const Entier&>(r));
-            break;
-        }
-        case Constante::RATIONNEL:
-        {
-            return *this+Reel(static_cast<const Rationnel&>(r));
-            break;
-        }
-        case Constante::REEL:
-        {
-            return new Reel(this->_reel + static_cast<const Reel&>(r)._reel);
-            break;
-        }
-        default:
-        {
-            throw std::domain_error("Type non existant");
-        }
+    case Constante::ENTIER:
+    {
+        return *this+Reel(static_cast<const Entier&>(r));
+        break;
+    }
+    case Constante::RATIONNEL:
+    {
+        return *this+Reel(static_cast<const Rationnel&>(r));
+        break;
+    }
+    case Constante::REEL:
+    {
+        return new Reel(this->_reel + static_cast<const Reel&>(r)._reel);
+        break;
+    }
+    case Constante::EXPRESSION:
+    {
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"+'");
+        break;
+    }
+    default:
+    {
+        throw std::domain_error("Type non existant");
+    }
     }
 
 }
@@ -88,25 +93,30 @@ Constante * Reel::operator-(const Constante & r) const
 {
     switch (r.getType())
     {
-        case Constante::ENTIER:
-        {
-            return *this-Reel(static_cast<const Entier&>(r));
-            break;
-        }
-        case Constante::RATIONNEL:
-        {
-            return *this-Reel(static_cast<const Rationnel&>(r));
-            break;
-        }
-        case Constante::REEL:
-        {
-            return new Reel(this->_reel - static_cast<const Reel&>(r)._reel);
-            break;
-        }
-        default:
-        {
-            throw std::domain_error("Type non existant");
-        }
+    case Constante::ENTIER:
+    {
+        return *this-Reel(static_cast<const Entier&>(r));
+        break;
+    }
+    case Constante::RATIONNEL:
+    {
+        return *this-Reel(static_cast<const Rationnel&>(r));
+        break;
+    }
+    case Constante::REEL:
+    {
+        return new Reel(this->_reel - static_cast<const Reel&>(r)._reel);
+        break;
+    }
+    case Constante::EXPRESSION:
+    {
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"-'");
+        break;
+    }
+    default:
+    {
+        throw std::domain_error("Type non existant");
+    }
     }
 }
 
@@ -114,25 +124,30 @@ Constante * Reel::operator*(const Constante & r) const
 {
     switch (r.getType())
     {
-        case Constante::ENTIER:
-        {
-            return *this*Reel(static_cast<const Entier&>(r));
-            break;
-        }
-        case Constante::RATIONNEL:
-        {
-            return *this*Reel(static_cast<const Rationnel&>(r));
-            break;
-        }
-        case Constante::REEL:
-        {
-            return new Reel(this->_reel * static_cast<const Reel&>(r)._reel);
-            break;
-        }
-        default:
-        {
-            throw std::domain_error("Type non existant");
-        }
+    case Constante::ENTIER:
+    {
+        return *this*Reel(static_cast<const Entier&>(r));
+        break;
+    }
+    case Constante::RATIONNEL:
+    {
+        return *this*Reel(static_cast<const Rationnel&>(r));
+        break;
+    }
+    case Constante::REEL:
+    {
+        return new Reel(this->_reel * static_cast<const Reel&>(r)._reel);
+        break;
+    }
+    case Constante::EXPRESSION:
+    {
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"*'");
+        break;
+    }
+    default:
+    {
+        throw std::domain_error("Type non existant");
+    }
     }
 }
 
@@ -140,25 +155,30 @@ Constante * Reel::operator/(const Constante & r) const
 {
     switch (r.getType())
     {
-        case Constante::ENTIER:
-        {
-            return *this/Reel(static_cast<const Entier&>(r));
-            break;
-        }
-        case Constante::RATIONNEL:
-        {
-            return *this/Reel(static_cast<const Rationnel&>(r));
-            break;
-        }
-        case Constante::REEL:
-        {
-            return new Reel(this->_reel / static_cast<const Reel&>(r)._reel);
-            break;
-        }
-        default:
-        {
-            throw std::domain_error("Type non existant");
-        }
+    case Constante::ENTIER:
+    {
+        return *this/Reel(static_cast<const Entier&>(r));
+        break;
+    }
+    case Constante::RATIONNEL:
+    {
+        return *this/Reel(static_cast<const Rationnel&>(r));
+        break;
+    }
+    case Constante::REEL:
+    {
+        return new Reel(this->_reel / static_cast<const Reel&>(r)._reel);
+        break;
+    }
+    case Constante::EXPRESSION:
+    {
+        return new Expression("'"+static_cast<const Expression&>(c)._expression+this->toString()+"/'");
+        break;
+    }
+    default:
+    {
+        throw std::domain_error("Type non existant");
+    }
     }
 }
 
