@@ -159,7 +159,10 @@ void MainWindow::spacePressed()
 
 void MainWindow::dotPressed()
 {
-    ui->inputLine->setText(ui->inputLine->text().append("."));
+    if(ui->actionFloat->isChecked())
+    {
+        ui->inputLine->setText(ui->inputLine->text().append("."));
+    }
 }
 
 void MainWindow::plusPressed()
@@ -217,7 +220,10 @@ void MainWindow::moduloPressed()
 
 void MainWindow::complexePressed()
 {
-    ui->inputLine->setText(ui->inputLine->text().append("$"));
+    if(ui->actionYes->isChecked())
+    {
+        ui->inputLine->setText(ui->inputLine->text().append("$"));
+    }
 }
 
 void MainWindow::cosPressed()
@@ -309,7 +315,7 @@ void MainWindow::swapPressed()
 
 void MainWindow::clearPilePressed()
 {
-    for(int i=0; i<=pile.getSize();i++)
+    while(pile.getSize()!=0)
     {
         pile.pop();
     }
@@ -320,7 +326,7 @@ void MainWindow::sumPressed()
 {
     Constante *x;
     x=pile.pop();
-    pile.sum(static_cast<Entier*>(x)->getEntier()-1);
+    pile.sum(static_cast<Entier*>(x));
     affichePressed();
 }
 
@@ -328,7 +334,7 @@ void MainWindow::meanPressed()
 {
     Constante *x;
     x=pile.pop();
-    pile.mean(static_cast<Entier*>(x)->getEntier()-1);
+    pile.mean(static_cast<Entier*>(x));
     affichePressed();
 }
 

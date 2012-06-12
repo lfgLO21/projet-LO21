@@ -43,10 +43,10 @@ class Pile
         void swap(unsigned int x,unsigned int y);
 
    //SUM
-        void sum(unsigned int x);
+        void sum(Entier* x);
 
     //MEAN
-        void mean(unsigned int x);
+        void mean(Entier* x);
 
     //DUP
         void dup();
