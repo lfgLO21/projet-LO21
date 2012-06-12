@@ -12,8 +12,6 @@ public:
     Expression_exception(const std::string& i):_infos(i){}
 
     const std::string& getInfos()const{return _infos;}
-
-
 };
 
 
@@ -26,7 +24,8 @@ public:
     Expression(const std::string & str="");
     ~Expression();
 
-    std::string getString()const{return _expression;}
+    std::string getExpression()const;
+    void setExpression(const std::string & str = "");
 
     std::string toString() const;
     void affiche(std::ostream &os=std::cout) const;

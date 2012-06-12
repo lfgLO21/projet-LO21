@@ -141,7 +141,7 @@ Constante * ConstanteFactory::toConstante1(const std::string & str)
             temp = Parser::parse(str,'$');
             if(temp.size() > 2)
             {
-                throw std::invalid_argument("Trop de '$' séparant le Complexe");
+                throw std::invalid_argument("Trop de '$' separant le Complexe");
             }
             else
             {
@@ -158,7 +158,7 @@ Constante * ConstanteFactory::toConstante1(const std::string & str)
                 temp = Parser::parse(str,'.');
                 if(temp.size() > 2)
                 {
-                    throw std::invalid_argument("Trop de '.' séparant le Reel");
+                    throw std::invalid_argument("Trop de '.' separant le Reel");
                 }
                 else
                 {
@@ -172,7 +172,7 @@ Constante * ConstanteFactory::toConstante1(const std::string & str)
                     temp = Parser::parse(str,'/');
                     if(temp.size() > 2)
                     {
-                        throw std::invalid_argument("Trop de '/' séparant la Fraction");
+                        throw std::invalid_argument("Trop de '/' separant la Fraction");
                     }
                     else
                     {

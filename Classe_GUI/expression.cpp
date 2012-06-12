@@ -9,8 +9,16 @@ Expression::Expression(const std::string & str)
 }
 
 Expression::~Expression()
-{
+{}
 
+std::string Expression::getExpression() const
+{
+    return this->_expression;
+}
+
+void Expression::setExpression(const std::string & str)
+{
+    this->_expression = str;
 }
 
 std::string Expression::toString() const
@@ -25,25 +33,25 @@ void Expression::affiche(std::ostream &os) const
 
 Constante * Expression::operator+(const Constante & c) const
 {
-    return new Expression("'"+c.toString()+_expression+"+'");
+    return new Expression("'"+c.toString()+" "+_expression+"+'");
 }
 
 Constante * Expression::operator-(const Constante & c) const
 {
-    return new Expression("'"+c.toString()+_expression+"-'");
+    return new Expression("'"+c.toString()+" "+_expression+"-'");
 }
 
 Constante * Expression::operator*(const Constante & c) const
 {
-    return new Expression("'"+c.toString()+_expression+"*'");
+    return new Expression("'"+c.toString()+" "+_expression+"*'");
 }
 
 Constante * Expression::operator/(const Constante & c) const
 {
-    return new Expression("'"+c.toString()+_expression+"/'");
+    return new Expression("'"+c.toString()+" "+_expression+"/'");
 }
 
 Constante * Expression::operator-()const
 {
-    return new Expression("'"+_expression+"SIGN'");
+    return new Expression("'"+_expression+" "+"SIGN'");
 }

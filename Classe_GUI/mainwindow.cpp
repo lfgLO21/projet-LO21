@@ -290,7 +290,7 @@ void MainWindow::affichePressed()
 
 void MainWindow::swapPressed()
 {
-
+   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 void MainWindow::clearPilePressed()
@@ -300,7 +300,7 @@ void MainWindow::clearPilePressed()
 
 void MainWindow::sumPressed()
 {
-
+   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 void MainWindow::meanPressed()
