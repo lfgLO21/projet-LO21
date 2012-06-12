@@ -145,7 +145,16 @@ void MainWindow::enterPressed()
     QStringList list;
     for (unsigned int i = 0; i < entree.size(); i++)
     {
-        list.append(entree.at(i).c_str());
+        //list.append(entree.at(i).c_str());
+        CF.toConstante2(entree[i],pile);
+    }
+
+    for (unsigned int j = 0; j < pile.getSize(); j++)
+    {
+        //list.append(entree.at(i).c_str());
+        Constante* c = pile.getConst(j);
+        const std::string tmp = c->toString();
+        list.append(tmp.c_str());
     }
 
     modele=new QStringListModel(list);
@@ -290,7 +299,11 @@ void MainWindow::affichePressed()
 
 void MainWindow::swapPressed()
 {
-   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Constante *x, *y;
+    x=pile.pop();
+    y=pile.pop();
+    pile.swap(static_cast<Entier*>(x)->getEntier()-1,static_cast<Entier*>(y)->getEntier()-1);
+
 }
 
 void MainWindow::clearPilePressed()
@@ -300,17 +313,24 @@ void MainWindow::clearPilePressed()
 
 void MainWindow::sumPressed()
 {
-   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Constante *x;
+    x=pile.pop();
+    pile.sum(static_cast<Entier*>(x)->getEntier()-1);
 }
 
 void MainWindow::meanPressed()
 {
-   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Constante *x;
+    x=pile.pop();
+    pile.mean(static_cast<Entier*>(x)->getEntier()-1);
 }
 
 void MainWindow::dupPressed()
 {
-   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Constante *x;
+    x=pile.pop();
+    pile.push(x);
+    pile.push(x);
 }
 
 void MainWindow::dropPressed()

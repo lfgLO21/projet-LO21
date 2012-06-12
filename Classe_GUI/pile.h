@@ -30,6 +30,7 @@ class Pile
 
     //methodes get
         int getSize()const{return _pile.size();}
+        Constante* getConst(int i)const{return _pile[i];}
         vector<Constante*> getPile()const{return _pile;}
 
     //methodes de la classe pile

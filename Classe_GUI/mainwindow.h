@@ -7,6 +7,7 @@
 #include <QActionGroup>
 #include "pile.h"
 #include "parser.h"
+#include "constantefactory.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +19,8 @@ class MainWindow : public QMainWindow
     private:
         QStringListModel *modele;
         Ui::MainWindow *ui;
+        Pile pile;
+        ConstanteFactory CF;
 
     public:
         explicit MainWindow(QWidget *parent = 0);
