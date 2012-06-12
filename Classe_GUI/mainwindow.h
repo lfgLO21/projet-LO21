@@ -5,7 +5,7 @@
 #include <QListView>
 #include <QStringListModel>
 #include <QActionGroup>
-
+#include "pile.h"
 #include "parser.h"
 
 namespace Ui {

@@ -1,12 +1,138 @@
 #include "constantefactory.h"
 
-Constante * ConstanteFactory::toConstante(const std::string & str)
+void ConstanteFactory::toConstante2(const std::string & str, Pile& P)
+{
+    ConstanteFactory TMP;
+    Constante *C1, *C2;
+    if(str == "+")
+    {
+        C1=P.pop();
+        C2=P.pop();
+        if(C1==0||C2==0)
+        {
+                throw std::invalid_argument("deux arguments sont necessaire");
+        }
+        P.push(Addition::application(*C1,*C2));
+    }
+    else if(str == "-")
+    {
+        C1=P.pop();
+        C2=P.pop();
+        if(C1==0||C2==0)
+        {
+                throw std::invalid_argument("deux arguments sont necessaire");
+        }
+        P.push(Soustraction::application(*C1,*C2));
+    }
+    else if(str == "*")
+    {
+        C1=P.pop();
+        C2=P.pop();
+        if(C1==0||C2==0)
+        {
+                throw std::invalid_argument("deux arguments sont necessaire");
+        }
+        P.push(Multiplication::application(*C1,*C2));
+    }
+    else if(str == "/")
+    {
+        C1=P.pop();
+        C2=P.pop();
+        if(C1==0||C2==0)
+        {
+                throw std::invalid_argument("deux arguments sont necessaire");
+        }
+        P.push(Division::application(*C1,*C2));
+    }
+    else if(str == "POW")
+    {
+        C1=P.pop();
+        C2=P.pop();
+        if(C1==0||C2==0)
+        {
+                throw std::invalid_argument("deux arguments sont necessaire");
+        }
+        P.push(POW::application(*C1,*C2));
+    }
+    else if(str == "MOD")
+    {
+        C1=P.pop();
+        C2=P.pop();
+        if(C1==0||C2==0)
+        {
+                throw std::invalid_argument("deux arguments sont necessaire");
+        }
+        P.push(static_cast<Entier*>(C2)->operator %(*static_cast<Entier*>(C1)));
+    }
+    else if(str == "!"){
+            C1=P.pop();
+            P.push(static_cast<Entier*>(C1)->operator !());
+    }
+    else if(str == "SIGN"){
+            C1 = P.pop();
+            P.push(-(*C1));
+    }
+    else if(str == "SQR"){
+            C1 = P.pop();
+            P.push(SQUARE::application(*C1));
+    }
+    else if(str == "CUBE"){
+        C1 = P.pop();
+        P.push(CUBE::application(*C1));
+    }
+    else if(str == "INV"){
+        C1 = P.pop();
+        P.push(INV::application(*C1));
+    }
+    else if(str == "SQRT"){
+        C1 = P.pop();
+        P.push(SQRT::application(*C1));
+    }
+    else if(str == "SIN"){
+        C1 = P.pop();
+        P.push(SIN::application(*C1));
+    }
+    else if(str == "COS"){
+        C1 = P.pop();
+        P.push(COS::application(*C1));
+    }
+    else if(str == "TAN"){
+        C1 = P.pop();
+        P.push(TAN::application(*C1));
+    }
+    else if(str == "SINH"){
+        C1 = P.pop();
+        P.push(SINH::application(*C1));
+    }
+    else if(str == "COSH"){
+        C1 = P.pop();
+        P.push(COSH::application(*C1));
+    }
+    else if(str == "TANH"){
+        C1 = P.pop();
+        P.push(TANH::application(*C1));
+    }
+    else if(str == "LOG"){
+        C1 = P.pop();
+        P.push(LOG::application(*C1));
+    }
+    else if(str == "LN"){
+        C1 = P.pop();
+        P.push(LN::application(*C1));
+    }
+    else
+    {
+        P.push(TMP.toConstante1(str));
+    }
+}
+
+Constante * ConstanteFactory::toConstante1(const std::string & str)
 {
     std::vector <std::string> temp;
 
     if (str[0] == '\'')
     {
-        // new Expression(str);
+        return new Expression(str);
     }
     else
     {
@@ -15,13 +141,13 @@ Constante * ConstanteFactory::toConstante(const std::string & str)
             temp = Parser::parse(str,'$');
             if(temp.size() > 2)
             {
-                throw std::invalid_argument("Trop de '$' sÃ©parant le Complexe");
+                throw std::invalid_argument("Trop de '$' séparant le Complexe");
             }
             else
             {
                 ConstanteFactory TMP;
-                Constante* tmp1 = TMP.toConstante(temp.at(0));
-                Constante* tmp2 = TMP.toConstante(temp.at(1));
+                Constante* tmp1 = TMP.toConstante1(temp.at(0));
+                Constante* tmp2 = TMP.toConstante1(temp.at(1));
                 return new Complexe(tmp1,tmp2);
             }
         }
@@ -32,7 +158,7 @@ Constante * ConstanteFactory::toConstante(const std::string & str)
                 temp = Parser::parse(str,'.');
                 if(temp.size() > 2)
                 {
-                    throw std::invalid_argument("Trop de '.' sÃ©parant le Reel");
+                    throw std::invalid_argument("Trop de '.' séparant le Reel");
                 }
                 else
                 {
@@ -46,7 +172,7 @@ Constante * ConstanteFactory::toConstante(const std::string & str)
                     temp = Parser::parse(str,'/');
                     if(temp.size() > 2)
                     {
-                        throw std::invalid_argument("Trop de '/' sÃ©parant la Fraction");
+                        throw std::invalid_argument("Trop de '/' séparant la Fraction");
                     }
                     else
                     {

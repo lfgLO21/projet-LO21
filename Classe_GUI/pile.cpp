@@ -13,6 +13,15 @@ void Pile::push(Constante * objet)
     this->_pile.push_back(objet);
 }
 
+Constante* Pile::pop()
+{
+    if(_pile.size()==0)
+        return 0;
+    Constante* tmp = _pile.back();
+    _pile.pop_back();
+    return tmp;
+}
+
 void Pile::clear()
 {
     this->_pile.clear();
@@ -60,7 +69,7 @@ void Pile::dup()
         }
         case Constante::RATIONNEL :
         {
-            //tmp = new Rationnel(static_cast<Rationnel&>(*tmp));
+            tmp = new Rationnel(static_cast<Rationnel&>(*tmp));
             break;
         }
         case Constante::REEL :
@@ -70,7 +79,7 @@ void Pile::dup()
         }
         case Constante::COMPLEXE :
         {
-            //tmp = new Complexe(static_cast<Complexe&>(*tmp));
+            tmp = new Complexe(static_cast<Complexe&>(*tmp));
             break;
         }
     }

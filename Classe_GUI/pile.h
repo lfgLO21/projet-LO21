@@ -5,14 +5,13 @@
 #include <vector>
 #include <string>
 
-#include "constante.h"
-#include "operation.h"
-#include "entier.h"
-#include "rationnel.h"
-#include "reel.h"
 #include "complexe.h"
+#include "constante.h"
+#include "entier.h"
 #include "expression.h"
 #include "operation.h"
+#include "rationnel.h"
+#include "reel.h"
 
 using namespace std;
 
@@ -35,7 +34,7 @@ class Pile
 
     //methodes de la classe pile
         void push(Constante * objet);
-        const Constante * pop();
+        Constante * pop();
         std::string print(unsigned int n) const;
         void clear(); //raz
 
