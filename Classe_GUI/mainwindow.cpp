@@ -184,7 +184,10 @@ void MainWindow::divPressed()
 
 void MainWindow::supprPressed()
 {
-    ui->inputLine->setText(ui->inputLine->text().remove(ui->inputLine->text().size()-1,1));
+    QRegExp RWL("^(.* )?(?:[\\S]+[ ]?)$");
+    RWL.exactMatch(ui->inputLine->text());
+    ui->inputLine->setText(RWL.cap(1));
+    //ui->inputLine->setText(ui->inputLine->text().remove(ui->inputLine->text().size()-1,1));
 }
 
 void MainWindow::delPressed()
