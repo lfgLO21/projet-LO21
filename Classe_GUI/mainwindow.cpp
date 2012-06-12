@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->button5,SIGNAL(clicked()),this,SLOT(button5Pressed()));
     connect(ui->button6,SIGNAL(clicked()),this,SLOT(button6Pressed()));
     connect(ui->button7,SIGNAL(clicked()),this,SLOT(button7Pressed()));
-    connect(ui->button9,SIGNAL(clicked()),this,SLOT(button8Pressed()));
+    connect(ui->button8,SIGNAL(clicked()),this,SLOT(button8Pressed()));
     connect(ui->button9,SIGNAL(clicked()),this,SLOT(button9Pressed()));
 
     connect(ui->buttonEnter,SIGNAL(clicked()),this,SLOT(enterPressed()));
@@ -142,24 +142,13 @@ void MainWindow::enterPressed()
     QString str = ui->inputLine->text();
     std::vector <std::string> entree = Parser::traitementString(str.toStdString());
 
-    QStringList list;
     for (unsigned int i = 0; i < entree.size(); i++)
     {
         //list.append(entree.at(i).c_str());
         CF.toConstante2(entree[i],pile);
     }
 
-    for (unsigned int j = 0; j < pile.getSize(); j++)
-    {
-        //list.append(entree.at(i).c_str());
-        Constante* c = pile.getConst(j);
-        const std::string tmp = c->toString();
-        list.append(tmp.c_str());
-    }
-
-    modele=new QStringListModel(list);
-    ui->listPile->setModel(modele);
-
+    affichePressed();
     ui->inputLine->clear();
 }
 
@@ -294,7 +283,16 @@ void MainWindow::evalPressed()
 
 void MainWindow::affichePressed()
 {
-   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    QStringList list;
+    for (unsigned int j = 0; j < pile.getSize(); j++)
+    {
+        //list.append(entree.at(i).c_str());
+        Constante* c = pile.getConst(j);
+        const std::string tmp = c->toString();
+        list.append(tmp.c_str());
+    }
+    modele=new QStringListModel(list);
+    ui->listPile->setModel(modele);
 }
 
 void MainWindow::swapPressed()
@@ -303,12 +301,16 @@ void MainWindow::swapPressed()
     x=pile.pop();
     y=pile.pop();
     pile.swap(static_cast<Entier*>(x)->getEntier()-1,static_cast<Entier*>(y)->getEntier()-1);
-
+    affichePressed();
 }
 
 void MainWindow::clearPilePressed()
 {
-   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    for(int i=0; i<=pile.getSize();i++)
+    {
+        pile.pop();
+    }
+    affichePressed();
 }
 
 void MainWindow::sumPressed()
@@ -316,6 +318,7 @@ void MainWindow::sumPressed()
     Constante *x;
     x=pile.pop();
     pile.sum(static_cast<Entier*>(x)->getEntier()-1);
+    affichePressed();
 }
 
 void MainWindow::meanPressed()
@@ -323,6 +326,7 @@ void MainWindow::meanPressed()
     Constante *x;
     x=pile.pop();
     pile.mean(static_cast<Entier*>(x)->getEntier()-1);
+    affichePressed();
 }
 
 void MainWindow::dupPressed()
@@ -331,9 +335,11 @@ void MainWindow::dupPressed()
     x=pile.pop();
     pile.push(x);
     pile.push(x);
+    affichePressed();
 }
 
 void MainWindow::dropPressed()
 {
-   // a faire !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    pile.pop();
+    affichePressed();;
 }
