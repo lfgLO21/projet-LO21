@@ -355,7 +355,7 @@ void MainWindow::update()
     for (unsigned int j = 0; ((j < pile.getSize()) && (j < this->pileAffiche)); j++)
     {
         //list.append(entree.at(i).c_str());
-        Constante* c = pile.getConst(j);
+        Constante* c = pile.getConst(pile.getSize() -j-1);
         const std::string tmp = c->toString();
         list.append(tmp.c_str());
     }
