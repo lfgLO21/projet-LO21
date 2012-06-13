@@ -297,7 +297,6 @@ void MainWindow::affichePressed()
     Constante *n;
     n = pile.pop();
     this->setPileAffiche(std::floor(static_cast<Entier*>(n)->getEntier()));
-    std::cout << this->pileAffiche <<endl;
     update();
 }
 
