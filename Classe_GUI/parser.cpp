@@ -24,6 +24,8 @@ std::vector <std::string> Parser::traitementString(std::string str)
     }
     tokens = temp;
 
+    Parser::printVector(tokens);
+
     return tokens;
 }
 
@@ -74,7 +76,7 @@ std::vector <std::string> Parser::parse2(std::string str, char c)
 
     while (i >= 0)
     {
-        if ((str.size() == 0)&&(!accumulator.empty()))
+        if (str.size() == 0)
         {
             if(!accumulator.empty())
             {
@@ -90,6 +92,9 @@ std::vector <std::string> Parser::parse2(std::string str, char c)
                 {
                     tokens.push_back(accumulator);
                     accumulator.clear();
+                }
+                else
+                {
                     accumulator += str.substr(0,1);
                     str.erase(0,1);
                     i--;

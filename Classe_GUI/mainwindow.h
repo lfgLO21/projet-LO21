@@ -20,11 +20,15 @@ class MainWindow : public QMainWindow
         QStringListModel *modele;
         Ui::MainWindow *ui;
         Pile pile;
+        unsigned int pileAffiche;
         ConstanteFactory CF;
+
 
     public:
         explicit MainWindow(QWidget *parent = 0);
         ~MainWindow();
+
+        void setPileAffiche(unsigned int i);
 
     public slots:
 
@@ -74,7 +78,7 @@ class MainWindow : public QMainWindow
         void dupPressed();
         void dropPressed();
 
-        void updatePile();
+        void update();
 };
 
 #endif // MAINWINDOW_H

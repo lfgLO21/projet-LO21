@@ -22,6 +22,20 @@ Constante* Pile::pop()
     return tmp;
 }
 
+std::string Pile::print(unsigned int n) const
+{
+    std::string str = "";
+
+    int size = this->_pile.size();
+
+    for (unsigned int i = 0; i < size && i < n; i++)
+    {
+        str += this->_pile[size - 1 - i]->toString() + "\n";
+    }
+
+    return str;
+}
+
 void Pile::clear()
 {
     this->_pile.clear();
