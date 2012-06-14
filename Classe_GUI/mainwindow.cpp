@@ -356,7 +356,15 @@ void MainWindow::update()
     {
         //list.append(entree.at(i).c_str());
         Constante* c = pile.getConst(pile.getSize() -j-1);
-        const std::string tmp = c->toString();
+        std::string tmp;
+        if(c->getType()==Constante::EXPRESSION)
+        {
+            tmp = static_cast<const Expression*>(c)->getExpression();
+        }
+        else
+        {
+            tmp = c->toString();
+        }
         list.append(tmp.c_str());
     }
     modele=new QStringListModel(list);
