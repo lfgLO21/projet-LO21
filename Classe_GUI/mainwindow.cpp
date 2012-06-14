@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    this->pileAffiche = 10;
+
     QActionGroup* complexGroup = new QActionGroup(this);
     QActionGroup* typeGroup = new QActionGroup(this);
     QActionGroup* degreGroup = new QActionGroup(this);
@@ -82,9 +84,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::updatePile()
+void MainWindow::setPileAffiche(unsigned int i)
 {
-
+    this->pileAffiche = i;
 }
 
 void MainWindow::button0Pressed()
@@ -148,7 +150,7 @@ void MainWindow::enterPressed()
         CF.toConstante2(entree[i],pile);
     }
 
-    affichePressed();
+    update();
     ui->inputLine->clear();
 }
 
@@ -236,7 +238,7 @@ void MainWindow::cosPressed()
 }
 
 void MainWindow::sinPressed()
-{    
+{
     if (ui->checkBoxHyperbolique->isChecked())
     {
         ui->inputLine->setText(ui->inputLine->text().append("SINH"));
@@ -292,16 +294,10 @@ void MainWindow::evalPressed()
 
 void MainWindow::affichePressed()
 {
-    QStringList list;
-    for (unsigned int j = 0; j < pile.getSize(); j++)
-    {
-        //list.append(entree.at(i).c_str());
-        Constante* c = pile.getConst(j);
-        const std::string tmp = c->toString();
-        list.append(tmp.c_str());
-    }
-    modele=new QStringListModel(list);
-    ui->listPile->setModel(modele);
+    Constante *n;
+    n = pile.pop();
+    this->setPileAffiche(std::floor(static_cast<Entier*>(n)->getEntier()));
+    update();
 }
 
 void MainWindow::swapPressed()
@@ -310,7 +306,7 @@ void MainWindow::swapPressed()
     x=pile.pop();
     y=pile.pop();
     pile.swap(static_cast<Entier*>(x)->getEntier()-1,static_cast<Entier*>(y)->getEntier()-1);
-    affichePressed();
+    update();
 }
 
 void MainWindow::clearPilePressed()
@@ -319,7 +315,7 @@ void MainWindow::clearPilePressed()
     {
         pile.pop();
     }
-    affichePressed();
+    update();
 }
 
 void MainWindow::sumPressed()
@@ -327,7 +323,7 @@ void MainWindow::sumPressed()
     Constante *x;
     x=pile.pop();
     pile.sum(static_cast<Entier*>(x));
-    affichePressed();
+    update();
 }
 
 void MainWindow::meanPressed()
@@ -335,7 +331,7 @@ void MainWindow::meanPressed()
     Constante *x;
     x=pile.pop();
     pile.mean(static_cast<Entier*>(x));
-    affichePressed();
+    update();
 }
 
 void MainWindow::dupPressed()
@@ -344,11 +340,25 @@ void MainWindow::dupPressed()
     x=pile.pop();
     pile.push(x);
     pile.push(x);
-    affichePressed();
+    update();
 }
 
 void MainWindow::dropPressed()
 {
     pile.pop();
-    affichePressed();;
+    update();
+}
+
+void MainWindow::update()
+{
+    QStringList list;
+    for (unsigned int j = 0; ((j < pile.getSize()) && (j < this->pileAffiche)); j++)
+    {
+        //list.append(entree.at(i).c_str());
+        Constante* c = pile.getConst(pile.getSize() -j-1);
+        const std::string tmp = c->toString();
+        list.append(tmp.c_str());
+    }
+    modele=new QStringListModel(list);
+    ui->listPile->setModel(modele);
 }
