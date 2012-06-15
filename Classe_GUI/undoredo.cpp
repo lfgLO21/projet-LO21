@@ -1,8 +1,8 @@
 #include "undoredo.h"
 
-std::string UndoRedo::getUndoRedo(int t)const   //renvoie le string contenue dans la file à la position t
+std::string UndoRedo::getUndoRedo(int t)const  //renvoie le string contenue dans la file à la position t
 {
-    return _FileUndoRedo.at(t);
+    return _FileUndoRedo[t];
 }
 
 void UndoRedo::addSave(std::string UR)
@@ -21,18 +21,18 @@ void UndoRedo::addSave(std::string UR)
 
 std::string UndoRedo::Undo()
 {
-    if(_point>0)    //si on a encore des données dans la file, on décrémente le pointeur
+    if(_point>1)    //si on a encore des données dans la file, on décrémente le pointeur
     {
         _point--;
     }
-    return getUndoRedo(_point);
+    return getUndoRedo(_point-1);
 }
 
 std::string UndoRedo::Redo()
 {
-    if(_point<_taille)  //si le pointeur est inférieur à la taille max, on l'incrémente.
+    if(_point<_FileUndoRedo.size())  //si le pointeur est inférieur à la taille max, on l'incrémente.
     {
         _point++;
     }
-    return getUndoRedo(_point);
+    return getUndoRedo(_point-1);
 }
