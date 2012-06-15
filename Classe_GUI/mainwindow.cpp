@@ -84,6 +84,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionRational,SIGNAL(triggered()),this,SLOT(actionType()));
     connect(ui->actionFloat,SIGNAL(triggered()),this,SLOT(actionType()));
 
+    connect(ui->action_Undo,SIGNAL(triggered()),this,SLOT(UndoPressed()));
+    connect(ui->action_Redo,SIGNAL(triggered()),this,SLOT(RedoPressed()));
+
     connect(ui->actionQuit,SIGNAL(triggered()),this,SLOT(close()));
 }
 
@@ -151,16 +154,12 @@ void MainWindow::button9Pressed()
 void MainWindow::enterPressed()
 {
     QString str = ui->inputLine->text();
-    std::string ustr="";
+    std::string ustr;
     for(unsigned int j=0;j<pile.getSize();j++)
     {
-        ustr+=pile.getConst(j)->toString();
-        if(j<pile.getSize()-1)
-        {
-            ustr+="#";
-        }
+        ustr+=pile.getConst(j)->toString()+'#';
     }
-    ustr+="@";
+    ustr[ustr.size()-1]='@';
     ustr+=str.toStdString();
     savepile.addSave(ustr);
     std::vector <std::string> entree = Parser::traitementString(str.toStdString());
@@ -401,15 +400,29 @@ void MainWindow::update()
 
 void MainWindow::UndoPressed()
 {
-    /*if(ui->action_Undo->triggered())
+    std::vector<std::string> CalculUndo=Parser::parse(savepile.Undo(),'@');
+    std::vector<std::string> PileUndo=Parser::parse(CalculUndo[0],'#');
+    pile.clear();
+    for(int i=0;i<PileUndo.size();i++)
     {
+        CF.toConstante2(PileUndo[i],pile);
+    }
+    ui->inputLine->setText(CalculUndo[1].c_str());
+    update();
 
-    }*/
 }
 
 void MainWindow::RedoPressed()
 {
-
+    std::vector<std::string> CalculUndo=Parser::parse(savepile.Redo(),'@');
+    std::vector<std::string> PileUndo=Parser::parse(CalculUndo[0],'#');
+    pile.clear();
+    for(int i=0;i<PileUndo.size();i++)
+    {
+        CF.toConstante2(PileUndo[i],pile);
+    }
+    ui->inputLine->setText(CalculUndo[1].c_str());
+    update();
 }
 
 void MainWindow::actionComplexe()
@@ -428,10 +441,10 @@ void MainWindow::actionType()
 {
     if(ui->actionInteger->isChecked()||ui->actionRational->isChecked())
     {
-        ui->buttonQuote->setEnabled(true);
+        ui->buttonQuote->setEnabled(false);
     }
     else if(ui->actionFloat->isChecked())
     {
-        ui->buttonQuote->setEnabled(false);
+        ui->buttonQuote->setEnabled(true);
     }
 }

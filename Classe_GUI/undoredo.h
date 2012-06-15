@@ -14,6 +14,7 @@ public:
     UndoRedo(int t=10):_taille(t),_point(0){}
 
     const int getTaille()const{return _taille;}
+    void setTaille(int t){_taille=t;}
 
     std::string getUndoRedo(int t)const;
 
