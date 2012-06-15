@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     this->pileAffiche = 10;
 
     QActionGroup* complexGroup = new QActionGroup(this);
@@ -26,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->actionClavierOn->setActionGroup(clavierGroup);
     ui->actionClavierOff->setActionGroup(clavierGroup);
+
+    ui->buttonComplexe->setEnabled(false);
+    ui->buttonQuote->setEnabled(false);
 
     connect(ui->buttonDel,SIGNAL(clicked()),ui->inputLine,SLOT(clear()));
 
@@ -74,6 +76,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->buttonMean,SIGNAL(clicked()),this,SLOT(meanPressed()));
     connect(ui->buttonDup,SIGNAL(clicked()),this,SLOT(dupPressed()));
     connect(ui->buttonDrop,SIGNAL(clicked()),this,SLOT(dropPressed()));
+
+    connect(ui->actionYes,SIGNAL(triggered()),this,SLOT(actionComplexe()));
+    connect(ui->actionNo,SIGNAL(triggered()),this,SLOT(actionComplexe()));
+
+    connect(ui->actionInteger,SIGNAL(triggered()),this,SLOT(actionType()));
+    connect(ui->actionRational,SIGNAL(triggered()),this,SLOT(actionType()));
+    connect(ui->actionFloat,SIGNAL(triggered()),this,SLOT(actionType()));
 
     connect(ui->actionQuit,SIGNAL(triggered()),this,SLOT(close()));
 }
@@ -142,6 +151,18 @@ void MainWindow::button9Pressed()
 void MainWindow::enterPressed()
 {
     QString str = ui->inputLine->text();
+    std::string ustr="";
+    for(unsigned int j=0;j<pile.getSize();j++)
+    {
+        ustr+=pile.getConst(j)->toString();
+        if(j<pile.getSize()-1)
+        {
+            ustr+="#";
+        }
+    }
+    ustr+="@";
+    ustr+=str.toStdString();
+    savepile.addSave(ustr);
     std::vector <std::string> entree = Parser::traitementString(str.toStdString());
 
     for (unsigned int i = 0; i < entree.size(); i++)
@@ -184,7 +205,14 @@ void MainWindow::mulPressed()
 
 void MainWindow::divPressed()
 {
-    ui->inputLine->setText(ui->inputLine->text().append("/"));
+    if(ui->actionInteger->isChecked())
+    {
+        ui->inputLine->setText(ui->inputLine->text().append(" / "));
+    }
+    else
+    {
+        ui->inputLine->setText(ui->inputLine->text().append("/"));
+    }
 }
 
 void MainWindow::supprPressed()
@@ -369,4 +397,41 @@ void MainWindow::update()
     }
     modele=new QStringListModel(list);
     ui->listPile->setModel(modele);
+}
+
+void MainWindow::UndoPressed()
+{
+    /*if(ui->action_Undo->triggered())
+    {
+
+    }*/
+}
+
+void MainWindow::RedoPressed()
+{
+
+}
+
+void MainWindow::actionComplexe()
+{
+    if(ui->actionYes->isChecked())
+    {
+        ui->buttonComplexe->setEnabled(true);
+    }
+    else if(ui->actionNo->isChecked())
+    {
+        ui->buttonComplexe->setEnabled(false);
+    }
+}
+
+void MainWindow::actionType()
+{
+    if(ui->actionInteger->isChecked()||ui->actionRational->isChecked())
+    {
+        ui->buttonQuote->setEnabled(true);
+    }
+    else if(ui->actionFloat->isChecked())
+    {
+        ui->buttonQuote->setEnabled(false);
+    }
 }

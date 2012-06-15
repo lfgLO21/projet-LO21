@@ -8,6 +8,7 @@
 #include "pile.h"
 #include "parser.h"
 #include "constantefactory.h"
+#include "undoredo.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +21,7 @@ class MainWindow : public QMainWindow
         QStringListModel *modele;
         Ui::MainWindow *ui;
         Pile pile;
+        UndoRedo savepile;
         unsigned int pileAffiche;
         ConstanteFactory CF;
 
@@ -77,6 +79,12 @@ class MainWindow : public QMainWindow
         void meanPressed();
         void dupPressed();
         void dropPressed();
+
+        void UndoPressed();
+        void RedoPressed();
+
+        void actionComplexe();
+        void actionType();
 
         void update();
 };
