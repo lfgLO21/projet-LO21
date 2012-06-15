@@ -32,27 +32,67 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->buttonDel,SIGNAL(clicked()),ui->inputLine,SLOT(clear()));
 
     connect(ui->button0,SIGNAL(clicked()),this,SLOT(button0Pressed()));
+    QShortcut * clavier0 = new QShortcut(QKeySequence(Qt::Key_0), this->ui->inputLine);
+    connect(clavier0, SIGNAL(activated()), this, SLOT(button0Pressed()));
     connect(ui->button1,SIGNAL(clicked()),this,SLOT(button1Pressed()));
+    QShortcut * clavier1 = new QShortcut(QKeySequence(Qt::Key_1), this->ui->inputLine);
+    connect(clavier1, SIGNAL(activated()), this, SLOT(button1Pressed()));
     connect(ui->button2,SIGNAL(clicked()),this,SLOT(button2Pressed()));
+    QShortcut * clavier2 = new QShortcut(QKeySequence(Qt::Key_2), this->ui->inputLine);
+    connect(clavier2, SIGNAL(activated()), this, SLOT(button2Pressed()));
     connect(ui->button3,SIGNAL(clicked()),this,SLOT(button3Pressed()));
+    QShortcut * clavier3 = new QShortcut(QKeySequence(Qt::Key_3), this->ui->inputLine);
+    connect(clavier3, SIGNAL(activated()), this, SLOT(button3Pressed()));
     connect(ui->button4,SIGNAL(clicked()),this,SLOT(button4Pressed()));
+    QShortcut * clavier4 = new QShortcut(QKeySequence(Qt::Key_4), this->ui->inputLine);
+    connect(clavier4, SIGNAL(activated()), this, SLOT(button4Pressed()));
     connect(ui->button5,SIGNAL(clicked()),this,SLOT(button5Pressed()));
+    QShortcut * clavier5 = new QShortcut(QKeySequence(Qt::Key_5), this->ui->inputLine);
+    connect(clavier5, SIGNAL(activated()), this, SLOT(button5Pressed()));
     connect(ui->button6,SIGNAL(clicked()),this,SLOT(button6Pressed()));
+    QShortcut * clavier6 = new QShortcut(QKeySequence(Qt::Key_6), this->ui->inputLine);
+    connect(clavier6, SIGNAL(activated()), this, SLOT(button6Pressed()));
     connect(ui->button7,SIGNAL(clicked()),this,SLOT(button7Pressed()));
+    QShortcut * clavier7 = new QShortcut(QKeySequence(Qt::Key_7), this->ui->inputLine);
+    connect(clavier7, SIGNAL(activated()), this, SLOT(button7Pressed()));
     connect(ui->button8,SIGNAL(clicked()),this,SLOT(button8Pressed()));
+    QShortcut * clavier8 = new QShortcut(QKeySequence(Qt::Key_8), this->ui->inputLine);
+    connect(clavier8, SIGNAL(activated()), this, SLOT(button8Pressed()));
     connect(ui->button9,SIGNAL(clicked()),this,SLOT(button9Pressed()));
+    QShortcut * clavier9 = new QShortcut(QKeySequence(Qt::Key_9), this->ui->inputLine);
+    connect(clavier9, SIGNAL(activated()), this, SLOT(button9Pressed()));
 
     connect(ui->buttonEnter,SIGNAL(clicked()),this,SLOT(enterPressed()));
+    QShortcut * clavierEnter = new QShortcut(QKeySequence(Qt::Key_Execute), this->ui->inputLine);
+    connect(clavierEnter, SIGNAL(activated()), this, SLOT(enterPressed()));
 
     connect(ui->buttonSpace,SIGNAL(clicked()),this,SLOT(spacePressed()));
+    QShortcut * clavierSpace = new QShortcut(QKeySequence(Qt::Key_Space), this->ui->inputLine);
+    connect(clavierSpace, SIGNAL(activated()), this, SLOT(spacePressed()));
     connect(ui->buttonDot,SIGNAL(clicked()),this,SLOT(dotPressed()));
+    QShortcut * clavierDot = new QShortcut(QKeySequence(Qt::Key_Enter), this);
+    connect(clavierDot, SIGNAL(activated()), this, SLOT(dotPressed()));
+    QShortcut * clavierPlus = new QShortcut(QKeySequence(Qt::Key_Plus), this->ui->inputLine);
+    connect(clavierPlus, SIGNAL(activated()), this, SLOT(plusPressed()));
     connect(ui->buttonPlus,SIGNAL(clicked()),this,SLOT(plusPressed()));
+    QShortcut * clavierMoins = new QShortcut(QKeySequence(Qt::Key_Minus), this->ui->inputLine);
+    connect(clavierMoins, SIGNAL(activated()), this, SLOT(moinsPressed()));
     connect(ui->buttonMoins,SIGNAL(clicked()),this,SLOT(moinsPressed()));
     connect(ui->buttonMul,SIGNAL(clicked()),this,SLOT(mulPressed()));
+    QShortcut * clavierMul = new QShortcut(QKeySequence(Qt::Key_Asterisk), this->ui->inputLine);
+    connect(clavierMul, SIGNAL(activated()), this, SLOT(mulPressed()));
     connect(ui->buttonDiv,SIGNAL(clicked()),this,SLOT(divPressed()));
+    QShortcut * clavierDiv = new QShortcut(QKeySequence(Qt::Key_Slash), this->ui->inputLine);
+    connect(clavierDiv, SIGNAL(activated()), this, SLOT(divPressed()));
     connect(ui->buttonSuppr,SIGNAL(clicked()),this,SLOT(supprPressed()));
+    QShortcut * clavierSuppr = new QShortcut(QKeySequence(Qt::Key_Delete), this->ui->inputLine);
+    connect(clavierSuppr, SIGNAL(activated()), this, SLOT(supprPressed()));
     connect(ui->buttonDel,SIGNAL(clicked()),this,SLOT(delPressed()));
+    QShortcut * clavierDel = new QShortcut(QKeySequence(Qt::Key_Backspace), this->ui->inputLine);
+    connect(clavierDel, SIGNAL(activated()), this, SLOT(delPressed()));
     connect(ui->buttonQuote,SIGNAL(clicked()),this,SLOT(quotePressed()));
+    QShortcut * clavierQuote = new QShortcut(QKeySequence(Qt::Key_Apostrophe), this->ui->inputLine);
+    connect(clavierQuote, SIGNAL(activated()), this, SLOT(quotePressed()));
 
     connect(ui->buttonInv,SIGNAL(clicked()),this,SLOT(invPressed()));
     connect(ui->buttonSign,SIGNAL(clicked()),this,SLOT(signPressed()));
@@ -85,6 +125,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionFloat,SIGNAL(triggered()),this,SLOT(actionType()));
 
     connect(ui->actionQuit,SIGNAL(triggered()),this,SLOT(close()));
+
+    connect(ui->actionClavierOn, SIGNAL(triggered()), this, SLOT(actionClavierOn()));
+    connect(ui->actionClavierOff, SIGNAL(triggered()), this, SLOT(actionClavierOff()));
 }
 
 MainWindow::~MainWindow()
@@ -434,4 +477,77 @@ void MainWindow::actionType()
     {
         ui->buttonQuote->setEnabled(false);
     }
+}
+
+void MainWindow::actionClavierOn()
+{
+    if (ui->actionClavierOn->isChecked())
+    {
+        cacherClavier(false);
+    }
+}
+
+void MainWindow::actionClavierOff()
+{
+    if (ui->actionClavierOff->isChecked())
+    {
+        cacherClavier(true);
+    }
+}
+
+void MainWindow::cacherClavier(const bool a)
+{
+    this->ui->button0->setHidden(a);
+    this->ui->button1->setHidden(a);
+    this->ui->button2->setHidden(a);
+    this->ui->button3->setHidden(a);
+    this->ui->button4->setHidden(a);
+    this->ui->button5->setHidden(a);
+    this->ui->button6->setHidden(a);
+    this->ui->button7->setHidden(a);
+    this->ui->button8->setHidden(a);
+    this->ui->button9->setHidden(a);
+
+    this->ui->buttonEnter->setHidden(a);
+
+    this->ui->buttonSpace->setHidden(a);
+    this->ui->buttonDot->setHidden(a);
+    this->ui->buttonPlus->setHidden(a);
+    this->ui->buttonMoins->setHidden(a);
+    this->ui->buttonMul->setHidden(a);
+    this->ui->buttonDiv->setHidden(a);
+    this->ui->buttonSuppr->setHidden(a);
+    this->ui->buttonDel->setHidden(a);
+    this->ui->buttonQuote->setHidden(a);
+
+    this->ui->buttonInv->setDisabled(a);
+    this->ui->buttonInv->setHidden(a);
+    this->ui->buttonSign->setDisabled(a);
+    this->ui->buttonSign->setHidden(a);
+    this->ui->buttonModulo->setDisabled(a);
+    this->ui->buttonModulo->setHidden(a);
+    this->ui->buttonComplexe->setHidden(a);
+    this->ui->buttonCos->setDisabled(a);
+    this->ui->buttonCos->setHidden(a);
+    this->ui->buttonSin->setDisabled(a);
+    this->ui->buttonSin->setHidden(a);
+    this->ui->buttonTan->setDisabled(a);
+    this->ui->buttonTan->setHidden(a);
+    this->ui->buttonSqr->setDisabled(a);
+    this->ui->buttonSqr->setHidden(a);
+    this->ui->buttonCube->setDisabled(a);
+    this->ui->buttonCube->setHidden(a);
+    this->ui->buttonPow->setDisabled(a);
+    this->ui->buttonPow->setHidden(a);
+    this->ui->buttonSqrt->setDisabled(a);
+    this->ui->buttonSqrt->setHidden(a);
+    this->ui->buttonLn->setDisabled(a);
+    this->ui->buttonLn->setHidden(a);
+    this->ui->buttonLog->setDisabled(a);
+    this->ui->buttonLog->setHidden(a);
+    this->ui->buttonEval->setDisabled(a);
+    this->ui->buttonEval->setHidden(a);
+
+    this->ui->checkBoxHyperbolique->setDisabled(a);;
+    this->ui->checkBoxHyperbolique->setHidden(a);
 }
