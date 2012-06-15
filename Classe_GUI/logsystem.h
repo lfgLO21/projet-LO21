@@ -7,24 +7,18 @@
 #include <QFile>
 #include <QTextStream>
 #include <iostream>
+#include <QDateTime>
 
 using namespace std;
 
 class LogMessage
 {
-    QString log;
-    unsigned int degree;
+    QString _log;
+    unsigned int _degree;
+    QDateTime _time;
 public:
     LogMessage(const std::string&,unsigned int);
-    QString getLog()const{
-
-        std::stringstream ss;
-        ss<<"[";
-        ss<<degree;
-        ss<<"]";
-        return QString(ss.str().c_str()+log);
-
-        }
+    QString getLog()const;
 };
 
 class LogSystem
