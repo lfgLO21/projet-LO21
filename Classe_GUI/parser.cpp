@@ -24,8 +24,6 @@ std::vector <std::string> Parser::traitementString(std::string str)
     }
     tokens = temp;
 
-    Parser::printVector(tokens);
-
     return tokens;
 }
 
