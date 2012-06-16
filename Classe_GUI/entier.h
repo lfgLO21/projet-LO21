@@ -16,6 +16,8 @@ public:
     Entier(int d=0);
     Entier(const Entier& e);
 
+    ~Entier(){}
+
     //get
     int getEntier()const;
 

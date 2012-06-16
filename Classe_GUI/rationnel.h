@@ -32,6 +32,8 @@ public:
     Rationnel(const Entier& n, const Entier& d);
     Rationnel(const Rationnel& r);
 
+    ~Rationnel(){}
+
     //get
     int getNumerateur()const;
     int getDenominateur()const;

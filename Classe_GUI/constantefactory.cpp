@@ -141,6 +141,16 @@ void ConstanteFactory::toConstante2(const std::string & str, Pile& P)
         C1 = P.pop();
         P.push(LN::application(*C1));
     }
+    else if(str == "EVAL")
+    {
+        C1 = P.pop();
+        std::string str = C1->toString();
+        std::vector<std::string> entree = Parser::traitementString(str);
+        for(unsigned int i = 0;i<entree.size();i++)
+        {
+            TMP.toConstante2(entree[i],P);
+        }
+    }
     else
     {
         P.push(TMP.toConstante1(str));

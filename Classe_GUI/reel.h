@@ -16,6 +16,8 @@ public:
     Reel(const Rationnel& r);
     Reel(const Reel& e);
 
+    ~Reel(){}
+
     //get
     float getReel() const;
 

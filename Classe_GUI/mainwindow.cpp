@@ -6,13 +6,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->pileAffiche = 10;
+    this->pileAffiche = 15;
     savepile.addSave(" @ ");
 
     QActionGroup* complexGroup = new QActionGroup(this);
     QActionGroup* typeGroup = new QActionGroup(this);
     QActionGroup* degreGroup = new QActionGroup(this);
     QActionGroup* clavierGroup = new QActionGroup(this);
+    QActionGroup* parametreGroup = new QActionGroup(this);
 
     ui->actionYes->setActionGroup(complexGroup);
     ui->actionNo->setActionGroup(complexGroup);
@@ -27,8 +28,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionClavierOn->setActionGroup(clavierGroup);
     ui->actionClavierOff->setActionGroup(clavierGroup);
 
+    ui->action5->setActionGroup(parametreGroup);
+    ui->action10->setActionGroup(parametreGroup);
+    ui->action15->setActionGroup(parametreGroup);
+    ui->action20->setActionGroup(parametreGroup);
+
     ui->buttonComplexe->setEnabled(false);
-    ui->buttonQuote->setEnabled(false);
+    ui->buttonDot->setEnabled(false);
 
     connect(ui->buttonDel,SIGNAL(clicked()),ui->inputLine,SLOT(clear()));
 
@@ -132,6 +138,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionClavierOn, SIGNAL(triggered()), this, SLOT(actionClavierOn()));
     connect(ui->actionClavierOff, SIGNAL(triggered()), this, SLOT(actionClavierOff()));
+
+    connect(ui->action5,SIGNAL(triggered()),this,SLOT(actionParametre()));
+    connect(ui->action10,SIGNAL(triggered()),this,SLOT(actionParametre()));
+    connect(ui->action15,SIGNAL(triggered()),this,SLOT(actionParametre()));
+    connect(ui->action20,SIGNAL(triggered()),this,SLOT(actionParametre()));
 }
 
 MainWindow::~MainWindow()
@@ -509,11 +520,11 @@ void MainWindow::actionType()
 {
     if(ui->actionInteger->isChecked()||ui->actionRational->isChecked())
     {
-        ui->buttonQuote->setEnabled(false);
+        ui->buttonDot->setEnabled(false);
     }
     else if(ui->actionFloat->isChecked())
     {
-        ui->buttonQuote->setEnabled(true);
+        ui->buttonDot->setEnabled(true);
     }
 }
 
@@ -530,6 +541,26 @@ void MainWindow::actionClavierOff()
     if (ui->actionClavierOff->isChecked())
     {
         cacherClavier(true);
+    }
+}
+
+void MainWindow::actionParametre()
+{
+    if(ui->action5->isChecked())
+    {
+        savepile.setTaille(5);
+    }
+    else if(ui->action10->isChecked())
+    {
+        savepile.setTaille(10);
+    }
+    else if(ui->action15->isChecked())
+    {
+        savepile.setTaille(15);
+    }
+    else if(ui->action20->isChecked())
+    {
+        savepile.setTaille(20);
     }
 }
 

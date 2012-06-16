@@ -90,6 +90,7 @@ class MainWindow : public QMainWindow
         void actionClavierOn();
         void actionClavierOff();
         void cacherClavier(const bool a);
+        void actionParametre();
 
         void update();
 };
