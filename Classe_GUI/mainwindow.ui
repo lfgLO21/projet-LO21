@@ -37,8 +37,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>525</width>
-      <height>339</height>
+      <width>521</width>
+      <height>331</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="layoutPrincipal">
@@ -219,6 +219,9 @@
            </property>
            <property name="text">
             <string>Enter</string>
+           </property>
+           <property name="shortcut">
+            <string>Return</string>
            </property>
           </widget>
          </item>

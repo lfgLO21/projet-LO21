@@ -304,7 +304,16 @@ void MainWindow::cosPressed()
     if (ui->checkBoxHyperbolique->isChecked())
         ui->inputLine->setText(ui->inputLine->text().append("COSH"));
     else
-        ui->inputLine->setText(ui->inputLine->text().append("COS"));
+    {
+        if(ui->actionRadian->isChecked())
+        {
+            ui->inputLine->setText(ui->inputLine->text().append("COS"));
+        }
+        else if(ui->actionDegre->isChecked())
+        {
+            ui->inputLine->setText(ui->inputLine->text().append("Cos"));
+        }
+    }
 
 }
 
@@ -316,7 +325,15 @@ void MainWindow::sinPressed()
     }
     else
     {
-        ui->inputLine->setText(ui->inputLine->text().append("SIN"));
+        if(ui->actionRadian->isChecked())
+        {
+            ui->inputLine->setText(ui->inputLine->text().append("SIN"));
+        }
+        else if(ui->actionDegre->isChecked())
+        {
+            ui->inputLine->setText(ui->inputLine->text().append("Sin"));
+        }
+
     }
 }
 
@@ -325,7 +342,14 @@ void MainWindow::tanPressed()
     if (ui->checkBoxHyperbolique->isChecked())
         ui->inputLine->setText(ui->inputLine->text().append("TANH"));
     else
-        ui->inputLine->setText(ui->inputLine->text().append("TAN"));
+        if(ui->actionRadian->isChecked())
+        {
+            ui->inputLine->setText(ui->inputLine->text().append("TAN"));
+        }
+        else if(ui->actionDegre->isChecked())
+        {
+            ui->inputLine->setText(ui->inputLine->text().append("Tan"));
+        }
 }
 
 void MainWindow::sqrPressed()

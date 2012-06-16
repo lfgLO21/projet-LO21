@@ -92,13 +92,34 @@ void ConstanteFactory::toConstante2(const std::string & str, Pile& P)
         C1 = P.pop();
         P.push(SIN::application(*C1));
     }
+    else if(str == "Sin"){
+        C1 = P.pop();
+        float c = (M_PI/180);
+        Reel tmp(c);
+        Constante* tmp2(&tmp);
+        P.push(SIN::application(*(Multiplication::application(*C1,*tmp2))));
+    }
     else if(str == "COS"){
         C1 = P.pop();
         P.push(COS::application(*C1));
     }
+    else if(str == "Cos"){
+        C1 = P.pop();
+        float c = (M_PI/180);
+        Reel tmp(c);
+        Constante* tmp2(&tmp);
+        P.push(COS::application(*(Multiplication::application(*C1,*tmp2))));
+    }
     else if(str == "TAN"){
         C1 = P.pop();
         P.push(TAN::application(*C1));
+    }
+    else if(str == "Tan"){
+        C1 = P.pop();
+        float c = (M_PI/180);
+        Reel tmp(c);
+        Constante* tmp2(&tmp);
+        P.push(TAN::application(*(Multiplication::application(*C1,*tmp2))));
     }
     else if(str == "SINH"){
         C1 = P.pop();
