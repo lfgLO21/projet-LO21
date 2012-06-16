@@ -7,10 +7,12 @@
 
 /*!
  * \fn std::string getUndoRedo(int t)const
- * \brief Méthode d'obtention d'information d'une file
+ * \brief getUndoRedo
+ * permet d'avoir les informations contenues dans la file à l'emplacement t
  *
  * \param t : entier pour connaitre l'emplacement de l'information
- * \return l'information de la file _FileUndoRedo situé à l'emplacement t
+ * \return _FileUndoRedo[t]
+ * " " sinon
  */
 std::string UndoRedo::getUndoRedo(int t)const
 {
@@ -23,7 +25,8 @@ std::string UndoRedo::getUndoRedo(int t)const
 
 /*!
  * \fn void addSave(std::string UR)
- * \brief Méthode d'ajout d'information dans la file
+ * \brief ajout d'un contexte
+ *  permet d'ajouter l'etat UR dans la file
  *
  * modifie la file en lui ajoutant la chaine UR
  * si la taille de la file est supérieur à _taille, on enlève les premiers éléments de la file
@@ -54,7 +57,7 @@ void UndoRedo::addSave(std::string UR)
  *
  *  Modifie la valeur de _point si celui ci ne pointe pas encore le début de la file et renvoie la valeur de la file situé à l'emplacement _point
  *
- * \return l'information de la file _FileUndoRedo situé à l'emplacement _point
+ * \return getUndoRedo(_point-1)
  */
 std::string UndoRedo::Undo()
 {
@@ -71,7 +74,7 @@ std::string UndoRedo::Undo()
  *
  *  Modifie la valeur de _point si celui ci ne pointe pas la fin de la file et renvoie la valeur de la file situé à l'emplacement _point
  *
- * \return l'information de la file _FileUndoRedo situé à l'emplacement _point
+ * \return getUndoRedo(_point-1)
  */
 std::string UndoRedo::Redo()
 {
