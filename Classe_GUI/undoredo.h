@@ -1,7 +1,7 @@
 #ifndef UNDOREDO_H
 #define UNDOREDO_H
 
-#include <Qqueue>
+#include <QQueue>
 #include <string>
 
 class UndoRedo

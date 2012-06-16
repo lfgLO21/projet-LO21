@@ -1,8 +1,20 @@
 #include "logsystem.h"
 
 LogMessage::LogMessage(const std::string& s,unsigned int i){
-    this->log = QString(s.c_str());
-    this->degree = i;
+    this->_log = QString(s.c_str());
+    this->_degree = i;
+    this->_time = QDateTime::currentDateTime();
+}
+
+QString LogMessage::getLog()const
+{
+
+    std::stringstream ss;
+    ss<<" : [";
+    ss<<this->_degree;
+    ss<<"]";
+    return QString(this->_time.toString("dd/MM/yyyy - hh:mm:ss")+ss.str().c_str()+this->_log);
+
 }
 
 void LogSystem::printLog(const LogMessage& l){

@@ -5,6 +5,7 @@
 #include <QListView>
 #include <QStringListModel>
 #include <QActionGroup>
+#include <QShortcut>
 #include "pile.h"
 #include "parser.h"
 #include "constantefactory.h"
@@ -85,6 +86,10 @@ class MainWindow : public QMainWindow
 
         void actionComplexe();
         void actionType();
+
+        void actionClavierOn();
+        void actionClavierOff();
+        void cacherClavier(const bool a);
 
         void update();
 };
