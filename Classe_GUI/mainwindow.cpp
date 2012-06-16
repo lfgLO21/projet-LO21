@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     this->pileAffiche = 10;
+    savepile.addSave(" @ ");
 
     QActionGroup* complexGroup = new QActionGroup(this);
     QActionGroup* typeGroup = new QActionGroup(this);
