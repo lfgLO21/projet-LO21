@@ -1,33 +1,78 @@
+/**
+ * \file undoredo.cpp
+ * \brief Methode de la class UndoRedo
+ */
+
 #include "undoredo.h"
 
-std::string UndoRedo::getUndoRedo(int t)const  //renvoie le string contenue dans la file à la position t
+/*!
+ * \fn std::string getUndoRedo(int t)const
+ * \brief Méthode d'obtention d'information d'une file
+ *
+ * \param t : entier pour connaitre l'emplacement de l'information
+ * \return l'information de la file _FileUndoRedo situé à l'emplacement t
+ */
+std::string UndoRedo::getUndoRedo(int t)const
 {
+    if(_FileUndoRedo.empty())
+    {
+        return " ";
+    }
     return _FileUndoRedo[t];
 }
 
+/*!
+ * \fn void addSave(std::string UR)
+ * \brief Méthode d'ajout d'information dans la file
+ *
+ * modifie la file en lui ajoutant la chaine UR
+ * si la taille de la file est supérieur à _taille, on enlève les premiers éléments de la file
+ * si en revanche le pointeur _point n'est pas à la fin de la file, c'est que l'on souhaite modifier les informations situé au delà de _point dans la file
+ * donc on retire les élémentes de la file situé avant _point
+ * puis enfin on rajoute la chaine UR dans la file
+ * et on modifie _point pour que celui ci se situe à la fin de la file
+ *
+ * \param UR : chaine de caractère contenant des informations de contexte
+ */
 void UndoRedo::addSave(std::string UR)
 {
-    while(_FileUndoRedo.size()>_taille)     //si la file dépasse la taille maximal voulue, on enlève les premiers éléments de la file
+    while(_FileUndoRedo.size()>_taille)
     {
         _FileUndoRedo.pop_front();
     }
-    while(_FileUndoRedo.size()!=_point)     //si en revanche le pointeur _point n'est pas à la fin de la file, celà signifie qu'un undo a été fait, et qu'il faut supprimer les données situées au delà du pointeur
+    while(_FileUndoRedo.size()!=_point)
     {
         _FileUndoRedo.pop_back();
     }
-    _FileUndoRedo.push_back(UR);        //sinon on ajoute le nouveau string en bout de liste
-    _point=_FileUndoRedo.size();        //et on place le pointeur à la fin de la file
+    _FileUndoRedo.push_back(UR);
+    _point=_FileUndoRedo.size();
 }
 
+/*!
+ * \fn std::string Undo()
+ * \brief obtention des informations situé précédement dans la file
+ *
+ *  Modifie la valeur de _point si celui ci ne pointe pas encore le début de la file et renvoie la valeur de la file situé à l'emplacement _point
+ *
+ * \return l'information de la file _FileUndoRedo situé à l'emplacement _point
+ */
 std::string UndoRedo::Undo()
 {
-    if(_point>1)    //si on a encore des données dans la file, on décrémente le pointeur
+    if(_point>1)
     {
         _point--;
     }
     return getUndoRedo(_point-1);
 }
 
+/*!
+ * \fn std::string Redo()
+ * \brief obtention des informations situé après dans la file
+ *
+ *  Modifie la valeur de _point si celui ci ne pointe pas la fin de la file et renvoie la valeur de la file situé à l'emplacement _point
+ *
+ * \return l'information de la file _FileUndoRedo situé à l'emplacement _point
+ */
 std::string UndoRedo::Redo()
 {
     if(_point<_FileUndoRedo.size())  //si le pointeur est inférieur à la taille max, on l'incrémente.
