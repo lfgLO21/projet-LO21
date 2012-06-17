@@ -25,7 +25,7 @@ using namespace std;
 class Pile
 {
     private:
-        vector <Constante*> _pile; /*! vectore de pointeur de constante */
+        vector<Constante*> _pile; /*! vector de pointeur de constante */
 
     //methode privee
         /*!

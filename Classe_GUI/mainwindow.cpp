@@ -2,11 +2,10 @@
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
+    QMainWindow(parent),pileAffiche(20),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->pileAffiche = 15;
     savepile.addSave(" @ ");
 
     QActionGroup* complexGroup = new QActionGroup(this);

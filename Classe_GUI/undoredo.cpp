@@ -39,9 +39,10 @@ std::string UndoRedo::getUndoRedo(int t)const
  */
 void UndoRedo::addSave(std::string UR)
 {
-    while(_FileUndoRedo.size()>_taille)
+    if(_FileUndoRedo.size()>_taille)
     {
         _FileUndoRedo.pop_front();
+        _point--;
     }
     while(_FileUndoRedo.size()!=_point)
     {
