@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),pileAffiche(20),
+    QMainWindow(parent),pileAffiche(5),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -69,33 +69,39 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(clavier9, SIGNAL(activated()), this, SLOT(button9Pressed()));
 
     connect(ui->buttonEnter,SIGNAL(clicked()),this,SLOT(enterPressed()));
-    QShortcut * clavierEnter = new QShortcut(QKeySequence(Qt::Key_Execute), this->ui->inputLine);
+    QShortcut * clavierEnter = new QShortcut(QKeySequence(Qt::Key_Enter), this->ui->inputLine);
     connect(clavierEnter, SIGNAL(activated()), this, SLOT(enterPressed()));
 
     connect(ui->buttonSpace,SIGNAL(clicked()),this,SLOT(spacePressed()));
     QShortcut * clavierSpace = new QShortcut(QKeySequence(Qt::Key_Space), this->ui->inputLine);
     connect(clavierSpace, SIGNAL(activated()), this, SLOT(spacePressed()));
+
     connect(ui->buttonDot,SIGNAL(clicked()),this,SLOT(dotPressed()));
-    QShortcut * clavierDot = new QShortcut(QKeySequence(Qt::Key_Enter), this);
-    connect(clavierDot, SIGNAL(activated()), this, SLOT(dotPressed()));
+
     QShortcut * clavierPlus = new QShortcut(QKeySequence(Qt::Key_Plus), this->ui->inputLine);
     connect(clavierPlus, SIGNAL(activated()), this, SLOT(plusPressed()));
     connect(ui->buttonPlus,SIGNAL(clicked()),this,SLOT(plusPressed()));
+
     QShortcut * clavierMoins = new QShortcut(QKeySequence(Qt::Key_Minus), this->ui->inputLine);
     connect(clavierMoins, SIGNAL(activated()), this, SLOT(moinsPressed()));
     connect(ui->buttonMoins,SIGNAL(clicked()),this,SLOT(moinsPressed()));
+
     connect(ui->buttonMul,SIGNAL(clicked()),this,SLOT(mulPressed()));
     QShortcut * clavierMul = new QShortcut(QKeySequence(Qt::Key_Asterisk), this->ui->inputLine);
     connect(clavierMul, SIGNAL(activated()), this, SLOT(mulPressed()));
+
     connect(ui->buttonDiv,SIGNAL(clicked()),this,SLOT(divPressed()));
     QShortcut * clavierDiv = new QShortcut(QKeySequence(Qt::Key_Slash), this->ui->inputLine);
     connect(clavierDiv, SIGNAL(activated()), this, SLOT(divPressed()));
+
     connect(ui->buttonSuppr,SIGNAL(clicked()),this,SLOT(supprPressed()));
     QShortcut * clavierSuppr = new QShortcut(QKeySequence(Qt::Key_Delete), this->ui->inputLine);
     connect(clavierSuppr, SIGNAL(activated()), this, SLOT(supprPressed()));
+
     connect(ui->buttonDel,SIGNAL(clicked()),this,SLOT(delPressed()));
     QShortcut * clavierDel = new QShortcut(QKeySequence(Qt::Key_Backspace), this->ui->inputLine);
     connect(clavierDel, SIGNAL(activated()), this, SLOT(delPressed()));
+
     connect(ui->buttonQuote,SIGNAL(clicked()),this,SLOT(quotePressed()));
     QShortcut * clavierQuote = new QShortcut(QKeySequence(Qt::Key_Apostrophe), this->ui->inputLine);
     connect(clavierQuote, SIGNAL(activated()), this, SLOT(quotePressed()));
@@ -104,15 +110,45 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->buttonSign,SIGNAL(clicked()),this,SLOT(signPressed()));
     connect(ui->buttonModulo,SIGNAL(clicked()),this,SLOT(moduloPressed()));
     connect(ui->buttonComplexe,SIGNAL(clicked()),this,SLOT(complexePressed()));
+
+    QShortcut * clavierCOS = new QShortcut(QKeySequence(Qt::Key_C + Qt::Key_S), this->ui->inputLine);
+    connect(clavierCOS, SIGNAL(activated()), this, SLOT(cosPressed()));
     connect(ui->buttonCos,SIGNAL(clicked()),this,SLOT(cosPressed()));
+
+    QShortcut * clavierSIN = new QShortcut(QKeySequence(Qt::Key_S + Qt::Key_N), this->ui->inputLine);
+    connect(clavierSIN, SIGNAL(activated()), this, SLOT(sinPressed()));
     connect(ui->buttonSin,SIGNAL(clicked()),this,SLOT(sinPressed()));
+
+    QShortcut * clavierTAN = new QShortcut(QKeySequence(Qt::Key_T + Qt::Key_N), this->ui->inputLine);
+    connect(clavierTAN, SIGNAL(activated()), this, SLOT(tanPressed()));
     connect(ui->buttonTan,SIGNAL(clicked()),this,SLOT(tanPressed()));
+
+    QShortcut * clavierSQR = new QShortcut(QKeySequence(Qt::Key_S + Qt::Key_R), this->ui->inputLine);
+    connect(clavierSQR, SIGNAL(activated()), this, SLOT(sqrPressed()));
     connect(ui->buttonSqr,SIGNAL(clicked()),this,SLOT(sqrPressed()));
+
+    QShortcut * clavierCUBE = new QShortcut(QKeySequence(Qt::Key_C + Qt::Key_B), this->ui->inputLine);
+    connect(clavierCUBE, SIGNAL(activated()), this, SLOT(cubePressed()));
     connect(ui->buttonCube,SIGNAL(clicked()),this,SLOT(cubePressed()));
+
+    QShortcut * clavierPOW = new QShortcut(QKeySequence(Qt::Key_P + Qt::Key_O), this->ui->inputLine);
+    connect(clavierPOW, SIGNAL(activated()), this, SLOT(powPressed()));
     connect(ui->buttonPow,SIGNAL(clicked()),this,SLOT(powPressed()));
+
+    QShortcut * clavierSQRT = new QShortcut(QKeySequence(Qt::Key_S + Qt::Key_T), this->ui->inputLine);
+    connect(clavierSQRT, SIGNAL(activated()), this, SLOT(sqrtPressed()));
     connect(ui->buttonSqrt,SIGNAL(clicked()),this,SLOT(sqrtPressed()));
+
+    QShortcut * clavierLN = new QShortcut(QKeySequence(Qt::Key_L+Qt::Key_N), this->ui->inputLine);
+    connect(clavierLN, SIGNAL(activated()), this, SLOT(lnPressed()));
     connect(ui->buttonLn,SIGNAL(clicked()),this,SLOT(lnPressed()));
+
+    QShortcut * clavierLOG = new QShortcut(QKeySequence(Qt::Key_L+Qt::Key_O), this->ui->inputLine);
+    connect(clavierLOG, SIGNAL(activated()), this, SLOT(logPressed()));
     connect(ui->buttonLog,SIGNAL(clicked()),this,SLOT(logPressed()));
+
+    QShortcut * clavierEVAL = new QShortcut(QKeySequence(Qt::Key_E+Qt::Key_V), this->ui->inputLine);
+    connect(clavierEVAL, SIGNAL(activated()), this, SLOT(evalPressed()));
     connect(ui->buttonEval,SIGNAL(clicked()),this,SLOT(evalPressed()));
 
     connect(ui->buttonAffiche,SIGNAL(clicked()),this,SLOT(affichePressed()));
