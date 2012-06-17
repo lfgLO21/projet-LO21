@@ -1,11 +1,11 @@
 #include "expression.h"
 
-Expression::Expression(const std::string & str)
+Expression::Expression(const std::string & str):Constante(EXPRESSION)
 {
+    this->_type = Constante::EXPRESSION;
     this->_expression=str;
     this->_expression[0]=' ';
     this->_expression[this->_expression.size()-1]=' ';
-    this->_type = Constante::EXPRESSION;
 }
 
 Expression::~Expression()

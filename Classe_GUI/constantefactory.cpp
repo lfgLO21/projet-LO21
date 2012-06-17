@@ -130,7 +130,7 @@ Constante * ConstanteFactory::toConstante1(const std::string & str)
 {
     std::vector <std::string> temp;
 
-    if (str[0] == '\'')
+    if (str.find('\'') != std::string::npos)
     {
         return new Expression(str);
     }
