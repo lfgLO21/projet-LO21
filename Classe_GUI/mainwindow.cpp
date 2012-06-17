@@ -109,6 +109,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->buttonInv,SIGNAL(clicked()),this,SLOT(invPressed()));
     connect(ui->buttonSign,SIGNAL(clicked()),this,SLOT(signPressed()));
     connect(ui->buttonModulo,SIGNAL(clicked()),this,SLOT(moduloPressed()));
+    connect(ui->buttonFactoriel,SIGNAL(clicked()),this,SLOT(factPressed()));
     connect(ui->buttonComplexe,SIGNAL(clicked()),this,SLOT(complexePressed()));
 
     QShortcut * clavierCOS = new QShortcut(QKeySequence(Qt::Key_C + Qt::Key_S), this->ui->inputLine);
@@ -337,6 +338,11 @@ void MainWindow::moduloPressed()
     ui->inputLine->setText(ui->inputLine->text().append("%"));
 }
 
+void MainWindow::factPressed()
+{
+    ui->inputLine->setText(ui->inputLine->text().append("!"));
+}
+
 void MainWindow::complexePressed()
 {
     if(ui->actionYes->isChecked())
@@ -553,13 +559,25 @@ void MainWindow::actionComplexe()
 
 void MainWindow::actionType()
 {
-    if(ui->actionInteger->isChecked()||ui->actionRational->isChecked())
+    if(ui->actionInteger->isChecked())
     {
         ui->buttonDot->setEnabled(false);
+        ui->buttonFactoriel->setEnabled(true);
+        ui->buttonModulo->setEnabled(true);
+
+    }
+    else if(ui->actionRational->isChecked())
+    {
+        ui->buttonDot->setEnabled(false);
+        ui->buttonFactoriel->setEnabled(false);
+        ui->buttonModulo->setEnabled(false);
+
     }
     else if(ui->actionFloat->isChecked())
     {
         ui->buttonDot->setEnabled(true);
+        ui->buttonFactoriel->setEnabled(false);
+        ui->buttonModulo->setEnabled(false);
     }
 }
 
@@ -630,6 +648,7 @@ void MainWindow::cacherClavier(const bool a)
     this->ui->buttonSign->setHidden(a);
     this->ui->buttonModulo->setDisabled(a);
     this->ui->buttonModulo->setHidden(a);
+    this->ui->buttonFactoriel->setHidden(a);
     this->ui->buttonComplexe->setHidden(a);
     this->ui->buttonCos->setDisabled(a);
     this->ui->buttonCos->setHidden(a);

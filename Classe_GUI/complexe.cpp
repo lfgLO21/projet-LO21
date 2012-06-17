@@ -1,11 +1,22 @@
 #include "complexe.h"
 
+/*!
+ * \fn Complexe()
+ * \brief Constructeur
+ * Constructeur de la classe Complexe
+ */
 Complexe::Complexe() : Constante(COMPLEXE)
 {
         this->_r = new Entier(0);
         this->_i = new Entier(1);
 }
 
+/*!
+  * \fn Complexe()
+  * \brief Constructeur de copie
+  * Constructeur de la classe Complexe à partir d'un complexe déja existant
+  * \param c : référence sur un complexe existant
+  */
 Complexe::Complexe(const Complexe& c):Constante(COMPLEXE)
 {
     switch(c._r->getType()){
@@ -33,6 +44,12 @@ Complexe::Complexe(const Complexe& c):Constante(COMPLEXE)
      }
 }
 
+/*!
+ * \fn Complexe()
+ * \brief Constructeur
+ * Constructeur de la classe Complexe
+ * \param c : référence sur une constante
+ */
 Complexe::Complexe(const Constante& c):Constante(COMPLEXE)
 {
     switch(c.getType()){
@@ -51,6 +68,13 @@ Complexe::Complexe(const Constante& c):Constante(COMPLEXE)
 
 }
 
+/*!
+ * \fn Complexe()
+ * \brief Constructeur
+ * Constructeur de la classe Complexe
+ * \param r : pointeur sur une constante qui sera la partie réel
+ * \param i : pointeur sur une constante qui sera la partie imaginaire
+ */
 Complexe::Complexe(const Constante* r, const Constante* i) : Constante(COMPLEXE)
 {
     switch(r->getType()){
@@ -78,22 +102,45 @@ Complexe::Complexe(const Constante* r, const Constante* i) : Constante(COMPLEXE)
      }
 }
 
+/*!
+  * \fn ~Destructeur
+  * \brief Destructeur
+  * Destructeur de la classe Complexe
+  */
 Complexe::~Complexe()
 {
     delete this->_r;
     delete this->_i;
 }
 
+/*!
+  * \fn Constante* getR()
+  * \brief getR
+  * Méthode renvoyant la valeur de l'attribut _r de la classe
+  * \return _r
+  */
 Constante* Complexe::getR() const
 {
     return this->_r;
 }
 
+/*!
+  * \fn Constante* getI()
+  * \brief getI
+  * Méthode renvoyant la valeur de l'attribut _i de la classe
+  * \return _i
+  */
 Constante* Complexe::getI() const
 {
     return this->_i;
 }
 
+/*!
+  * \fn void setR(const Constante& r)
+  * \brief setR
+  * Méthode modifiant la valeur de l'attribut _r de la classe
+  * \param  r : nouvel valeur de _r
+  */
 void Complexe::setR(const Constante& r)
 {
     switch(r.getType()){
@@ -118,6 +165,12 @@ void Complexe::setR(const Constante& r)
      }
 }
 
+/*!
+  * \fn void setI(const Constante& i)
+  * \brief setI
+  * Méthode modifiant la valeur de l'attribut _i de la classe
+  * \param  i : nouvel valeur de _i
+  */
 void Complexe::setI(const Constante& i)
 {
     switch(i.getType()){
@@ -142,6 +195,13 @@ void Complexe::setI(const Constante& i)
      }
 }
 
+
+/*!
+  * \fn void affiche(std::ostream& os) const
+  * \brief affiche
+  * Methode permettant un affichage du complexe manipulé
+  * \param os
+  */
 void Complexe::affiche(std::ostream & os) const
 {
     Entier zero(0);
@@ -184,12 +244,29 @@ void Complexe::affiche(std::ostream & os) const
     }
 }
 
+/*!
+  * \fn std::ostream& operator<<(std::ostream & os, const Complexe & c)
+  * \brief operator<<
+  * surcharge de l'operator<<
+  * \param os : ostream
+  * \param c : Complexe
+  */
 std::ostream & operator<<(std::ostream & os, const Complexe & c)
 {
     c.affiche(os);
     return(os);
 }
 
+/*!
+  * \fn Constante* operator+(const Constante& c) const
+  * \brief operator+
+  * Methode retournant la somme du complexe manipulé avec la constante passé en argument
+  * Si la constante est un complexe, alors on effectue l'operation adequate
+  * si c'est une expression, on applique la somme pour l'expression et on renvoie une expression
+  * sinon, on transforme la constante en un complexe en fonction de son type
+  * \param c
+  * \return Constante*
+  */
 Constante* Complexe::operator+(const Constante& c) const
 {
     switch (c.getType())
@@ -213,6 +290,16 @@ Constante* Complexe::operator+(const Constante& c) const
     }
 }
 
+/*!
+  * \fn Constante* operator-(const Constante & c) const
+  * \brief operator-
+  * Methode retournant la différence du complexe manipulé avec la constante passé en argument
+  * Si la constante est un complexe, alors on effectue l'operation adequate
+  * si c'est une expression, on applique la différence pour l'expression et on renvoie une expression
+  * sinon, on transforme la constante en un complexe en fonction de son type
+  * \param c
+  * \return Constante*
+  */
 Constante* Complexe::operator-(const Constante & c) const
 {
     switch (c.getType())
@@ -252,6 +339,16 @@ Constante* Complexe::operator-(const Constante & c) const
     }
 }
 
+/*!
+  * \fn Constante* operator*(const Constante & c) const
+  * \brief operator*
+  * Methode retournant le produit du complexe manipulé avec la constante passé en argument
+  * Si la constante est un complexe, alors on effectue l'operation adequate
+  * si c'est une expression, on applique le produit pour l'expression et on renvoie une expression
+  * sinon, on transforme la constante en un complexe en fonction de son type
+  * \param c
+  * \return Constante*
+  */
 Constante* Complexe::operator*(const Constante & c) const
 {
     switch (c.getType())
@@ -297,6 +394,16 @@ Constante* Complexe::operator*(const Constante & c) const
     }
 }
 
+/*!
+  * \fn Constante* operator/(const Constante & c) const
+  * \brief operator/
+  * Methode retournant la division du complexe manipulé avec la constante passé en argument
+  * Si la constante est un complexe, alors on effectue l'operation adequate
+  * si c'est une expression, on applique la division pour l'expression et on renvoie une expression
+  * sinon, on transforme la constante en un complexe en fonction de son type
+  * \param c
+  * \return Constante*
+  */
 Constante* Complexe::operator/(const Constante & c) const
 {
     switch (c.getType())
@@ -348,10 +455,25 @@ Constante* Complexe::operator/(const Constante & c) const
     }
 }
 
+/*!
+  * \fn  Constante* operator-()const
+  * \brief operator-
+  * Methode retournant le contraire du complexe manipulé
+  * \return Constante*
+  */
 Constante* Complexe::operator-()const{
         return new Complexe((const Constante*)-(*this->_r),(const Constante*)-(*this->_i));
 }
 
+/*!
+  * bool operator==(const Constante& c) const
+  * \brief operator==
+  * Methode vérifiant si le complexe manipulé est égal à la constante passé en argument
+  * Si la constante est un complexe, alors on effectue l'operation adequate
+  * sinon, on transforme la constante en un complexe en fonction de son type
+  * \param c
+  * \return true si il y a égalité, false sinon
+  */
 bool Complexe::operator==(const Constante& c) const
 {
     switch (c.getType())
@@ -379,6 +501,15 @@ bool Complexe::operator==(const Constante& c) const
     }
 }
 
+/*!
+  * \fn bool operator<(const Constante& c)const
+  * \brief operator<
+  * Methode vérifiant si le complexe manipulé est inférieur à la constante passé en argument
+  * Si la constante est un complexe, alors on effectue l'operation adequate
+  * sinon, on transforme la constante en un complexe en fonction de son type
+  * \param c
+  * \return true si le complexe manipulé est inférieur, false sinon
+  */
 bool Complexe::operator <(const Constante& c)const
 {
     switch (c.getType())

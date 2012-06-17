@@ -37,7 +37,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>521</width>
+      <width>511</width>
       <height>331</height>
      </rect>
     </property>
@@ -81,13 +81,6 @@
          <property name="sizeConstraint">
           <enum>QLayout::SetFixedSize</enum>
          </property>
-         <item row="0" column="0">
-          <widget class="QPushButton" name="buttonQuote">
-           <property name="text">
-            <string>'</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="0">
           <widget class="QPushButton" name="button7">
            <property name="text">
@@ -109,7 +102,7 @@
            </property>
           </widget>
          </item>
-         <item row="4" column="0" colspan="2">
+         <item row="4" column="1">
           <widget class="QPushButton" name="button0">
            <property name="text">
             <string>0</string>
@@ -402,6 +395,23 @@
            </property>
           </widget>
          </item>
+         <item row="0" column="0">
+          <widget class="QPushButton" name="buttonFactoriel">
+           <property name="text">
+            <string>!</string>
+           </property>
+           <property name="shortcut">
+            <string>!</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QPushButton" name="buttonQuote">
+           <property name="text">
+            <string>'</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item row="1" column="2">
@@ -454,7 +464,7 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
+       <item row="3" column="1">
         <spacer name="verticalSpacerBasPile">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -467,7 +477,7 @@
          </property>
         </spacer>
        </item>
-       <item row="3" column="1">
+       <item row="4" column="1">
         <layout class="QGridLayout" name="layoutFonctionPile">
          <item row="1" column="0">
           <widget class="QPushButton" name="buttonSwap">
@@ -717,7 +727,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>radiant</string>
+    <string>radian</string>
    </property>
   </action>
   <action name="actionDegre">
