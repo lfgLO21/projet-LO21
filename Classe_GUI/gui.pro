@@ -14,7 +14,9 @@ SOURCES += main.cpp \
     operation.cpp \
     expression.cpp \
     complexe.cpp \
-    rationnel.cpp
+    rationnel.cpp \
+    logsystem.cpp \
+    undoredo.cpp
 HEADERS += mainwindow.h \
     pile.h \
     constante.h \
@@ -25,5 +27,7 @@ HEADERS += mainwindow.h \
     operation.h \
     expression.h \
     complexe.h \
-    rationnel.h
+    rationnel.h \
+    logsystem.h \
+    undoredo.h
 FORMS += mainwindow.ui

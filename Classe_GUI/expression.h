@@ -24,7 +24,7 @@ public:
     Expression(const std::string & str="");
     ~Expression();
 
-    std::string getExpression()const;
+    const std::string getExpression()const;
     void setExpression(const std::string & str = "");
 
     std::string toString() const;

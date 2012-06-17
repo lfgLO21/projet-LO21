@@ -5,9 +5,11 @@
 #include <QListView>
 #include <QStringListModel>
 #include <QActionGroup>
+#include <QShortcut>
 #include "pile.h"
 #include "parser.h"
 #include "constantefactory.h"
+#include "undoredo.h"
 
 namespace Ui {
 class MainWindow;
@@ -20,11 +22,16 @@ class MainWindow : public QMainWindow
         QStringListModel *modele;
         Ui::MainWindow *ui;
         Pile pile;
+        UndoRedo savepile;
+        unsigned int pileAffiche;
         ConstanteFactory CF;
+
 
     public:
         explicit MainWindow(QWidget *parent = 0);
         ~MainWindow();
+
+        void setPileAffiche(unsigned int i);
 
     public slots:
 
@@ -74,7 +81,18 @@ class MainWindow : public QMainWindow
         void dupPressed();
         void dropPressed();
 
-        void updatePile();
+        void UndoPressed();
+        void RedoPressed();
+
+        void actionComplexe();
+        void actionType();
+
+        void actionClavierOn();
+        void actionClavierOff();
+        void cacherClavier(const bool a);
+        void actionParametre();
+
+        void update();
 };
 
 #endif // MAINWINDOW_H

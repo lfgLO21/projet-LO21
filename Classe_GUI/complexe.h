@@ -17,15 +17,37 @@
 #include "rationnel.h"
 #include "entier.h"
 
+
+/*! \class Complexe
+  * \brief classe représentant les constantes qui sont des complexes
+  *
+  * La classe comporte deux attribut de type Constante*
+  */
 class Complexe : public Constante
 {
     private:
-        Constante*_r;
-        Constante*_i;
+        Constante*_r; /*! valeur de la partie reel du complexe */
+        Constante*_i; /*! valeur de la partie imaginaire du complexe */
 
     public:
+        /*!
+          * \brief Constructeur
+          * Constructeur de la classe Complexe
+          */
         Complexe();
+
+        /*!
+          * \brief Constructeur de copie
+          * Constructeur de la classe Complexe à partir d'un complexe déja existant
+          * \param c : référence sur un complexe existant
+          */
         Complexe(const Complexe & c);
+
+        /*!
+          * \brief Constructeur
+          * Constructeur de la classe Complexe
+          * \param d : valeur de l'attribut _entier
+          */
         Complexe(const Constante& c);
         Complexe(const Constante* r, const Constante* i);
         ~Complexe();

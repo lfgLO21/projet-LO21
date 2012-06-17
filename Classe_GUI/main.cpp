@@ -1,15 +1,24 @@
 #include <QApplication>
-#include <QString>
-#include <mainwindow.h>
 
 #include <iostream>
 
+#include "mainwindow.h"
+#include "logsystem.h"
+
 int main(int argc, char *argv[])
 {
+    int finaleValue;
+
+    LogSystem::printLog(LogMessage("Demarrage calculette",1));
     QApplication a(argc, argv);
     MainWindow w;
 
     w.show();
 
-    return a.exec();
+
+    finaleValue = a.exec();
+    LogSystem::printLog(LogMessage("Fin execution calculette",1));
+
+    return finaleValue;
+
 }
