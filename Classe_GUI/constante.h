@@ -29,7 +29,7 @@ class Constante
           * \brief Destructeur
           * Destructeur de la classe Constante
           */
-        virtual ~Constante();
+        virtual ~Constante(){}
 
         /*!
           * \brief setType

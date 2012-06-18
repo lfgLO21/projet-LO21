@@ -72,6 +72,7 @@ class MainWindow : public QMainWindow
         void invPressed();
         void signPressed();
         void moduloPressed();
+        void factPressed();
         void complexePressed();
         void cosPressed();
         void sinPressed();

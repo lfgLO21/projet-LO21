@@ -1,4 +1,4 @@
-/**
+/*!
  * \file undoredo.cpp
  * \brief Methode de la class UndoRedo
  */
