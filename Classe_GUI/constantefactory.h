@@ -14,6 +14,7 @@
 #include "operation.h"
 #include "pile.h"
 #include "parser.h"
+#include "logsystem.h"
 /*!
  *\class ConstanteFactory
  *\brief fabrique, a partir de chaine de caractere des Constantes et des operations

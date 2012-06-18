@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+#include "logsystem.h"
+
 using namespace std;
 
 /*!

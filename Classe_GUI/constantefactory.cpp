@@ -160,6 +160,7 @@ void ConstanteFactory::toConstante2(const std::string & str, Pile& P)
     {
         P.push(TMP.toConstante1(str));
     }
+    LogSystem::printLog(LogMessage("Fabrication des Operations",5));
 }
 /*!
  *\fn Constante * ConstanteFactory::toConstante1(string)
@@ -227,4 +228,5 @@ Constante * ConstanteFactory::toConstante1(const std::string & str)
            }
         }
     }
+    LogSystem::printLog(LogMessage("Fabrication des Constantes",5));
 }

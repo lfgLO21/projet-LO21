@@ -4,10 +4,6 @@
 
 #include <QFile>
 #include <iostream>
-#include <fstream>
-#include "qsettings.h"
-#include "qdebug.h"
-#include "QtXml/QDomDocument"
 
 #include "pile.h"
 #include "mainwindow.h"

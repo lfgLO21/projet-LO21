@@ -75,6 +75,7 @@ std::vector <std::string> Parser::parse(std::string str,char c)
             }
         }
     }
+    LogSystem::printLog(LogMessage("Parsage des Constantes hors Expression",4));
     return tokens;
 }
 
@@ -136,6 +137,7 @@ std::vector <std::string> Parser::parse2(std::string str, char c)
             }
         }
     }
+    LogSystem::printLog(LogMessage("Parsage des Expressions",4));
     return tokens;
 }
 

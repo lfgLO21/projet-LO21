@@ -242,6 +242,8 @@ void Contexte::saveContexte() const
 
     //cout << stringPile.c_str() << endl;
     flux << stringPile.c_str() << endl;
+
+    LogSystem::printLog(LogMessage("Sauvergarde du contexte",2));
 }
 
 /*!
@@ -280,4 +282,6 @@ void Contexte::loadContexte()
     MainWindow::getInstance()->setInputLineEdit(lecture[4]);
     MainWindow::getInstance()->enterPressed();
     MainWindow::getInstance()->chargerNouveauContexte();
+
+    LogSystem::printLog(LogMessage("Fin chargement contexte precedent",2));
 }
