@@ -1,6 +1,6 @@
 #include "parser.h"
 /*!
- *\fn
+ *\fn vector <string> Parser::traitementString(string)
  *\brief Methode de decoupe d'une chaine de caractere en vue d'un traitement par le constante factory
  *\param une chaine de caractere contenant ussi bien des constanes que des operations
  *\return un vector de chaines de caracteres dont chaque case est potentiellement soit une constante soit une ooperation
@@ -29,11 +29,12 @@ std::vector <std::string> Parser::traitementString(std::string str)
     }
     tokens = temp;
 
+    Parser::printVector(tokens);
     return tokens;
 }
 
 /*!
- *\fn
+ *\fn vector <string> Parser::parse(string ,char)
  *\brief Methode de decoupe de chaine de caractere supprimant le separateur
  *\param une chaine a decouper str et un separateur c
  *\return un vector de chaine de caractere correspondant a la chaine entre separee a l'emplacement des separateurs
@@ -78,7 +79,7 @@ std::vector <std::string> Parser::parse(std::string str,char c)
 }
 
 /*!
- *\fn
+ *\fn vector <string> Parser::parse2(str, c)
  *\brief Methode de decoupe de chaine de caractere concervant le separateur
  *\param une chaine a decouper str et un separateur c
  *\return un vector de chaine de caractere correspondant a la chaine entre separee a l'emplacement des separateurs
@@ -119,6 +120,7 @@ std::vector <std::string> Parser::parse2(std::string str, char c)
                         str.erase(0,1);
                         i--;
                     }
+                    
                     accumulator += str.substr(0,1);
                     str.erase(0,1);
                     i--;
