@@ -10,6 +10,7 @@
 #include "parser.h"
 #include "constantefactory.h"
 #include "undoredo.h"
+#include "contexte.h"
 
 namespace Ui {
 class MainWindow;
@@ -26,12 +27,22 @@ class MainWindow : public QMainWindow
         unsigned int pileAffiche;
         ConstanteFactory CF;
 
+        static MainWindow* _instance;
+
 
     public:
         explicit MainWindow(QWidget *parent = 0);
         ~MainWindow();
 
+        static MainWindow * getInstance();
+        static void libereInstance();
+
+        void chargerNouveauContexte();
+
+        Pile* getPile() {return (&pile);};
+
         void setPileAffiche(unsigned int i);
+        void setInputLineEdit(const QString &str);
 
     public slots:
 

@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+MainWindow * MainWindow::_instance = 0;
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),pileAffiche(20),
     ui(new Ui::MainWindow)
@@ -35,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->buttonComplexe->setEnabled(false);
     ui->buttonDot->setEnabled(false);
 
-    connect(ui->buttonDel,SIGNAL(clicked()),ui->inputLine,SLOT(clear()));
+    //connect(ui->buttonDel,SIGNAL(clicked()),ui->inputLine,SLOT(clear()));
 
     connect(ui->button0,SIGNAL(clicked()),this,SLOT(button0Pressed()));
     QShortcut * clavier0 = new QShortcut(QKeySequence(Qt::Key_0), this->ui->inputLine);
@@ -67,16 +69,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->button9,SIGNAL(clicked()),this,SLOT(button9Pressed()));
     QShortcut * clavier9 = new QShortcut(QKeySequence(Qt::Key_9), this->ui->inputLine);
     connect(clavier9, SIGNAL(activated()), this, SLOT(button9Pressed()));
-
     connect(ui->buttonEnter,SIGNAL(clicked()),this,SLOT(enterPressed()));
-    QShortcut * clavierEnter = new QShortcut(QKeySequence(Qt::Key_Execute), this->ui->inputLine);
+    QShortcut * clavierEnter = new QShortcut(QKeySequence(Qt::Key_Return), this->ui->inputLine);
     connect(clavierEnter, SIGNAL(activated()), this, SLOT(enterPressed()));
-
     connect(ui->buttonSpace,SIGNAL(clicked()),this,SLOT(spacePressed()));
     QShortcut * clavierSpace = new QShortcut(QKeySequence(Qt::Key_Space), this->ui->inputLine);
     connect(clavierSpace, SIGNAL(activated()), this, SLOT(spacePressed()));
     connect(ui->buttonDot,SIGNAL(clicked()),this,SLOT(dotPressed()));
-    QShortcut * clavierDot = new QShortcut(QKeySequence(Qt::Key_Enter), this);
+    QShortcut * clavierDot = new QShortcut(QKeySequence(Qt::Key_Period), this);
     connect(clavierDot, SIGNAL(activated()), this, SLOT(dotPressed()));
     QShortcut * clavierPlus = new QShortcut(QKeySequence(Qt::Key_Plus), this->ui->inputLine);
     connect(clavierPlus, SIGNAL(activated()), this, SLOT(plusPressed()));
@@ -91,11 +91,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QShortcut * clavierDiv = new QShortcut(QKeySequence(Qt::Key_Slash), this->ui->inputLine);
     connect(clavierDiv, SIGNAL(activated()), this, SLOT(divPressed()));
     connect(ui->buttonSuppr,SIGNAL(clicked()),this,SLOT(supprPressed()));
-    QShortcut * clavierSuppr = new QShortcut(QKeySequence(Qt::Key_Delete), this->ui->inputLine);
+    QShortcut * clavierSuppr = new QShortcut(QKeySequence(Qt::Key_Backspace), this->ui->inputLine);
     connect(clavierSuppr, SIGNAL(activated()), this, SLOT(supprPressed()));
+
     connect(ui->buttonDel,SIGNAL(clicked()),this,SLOT(delPressed()));
-    QShortcut * clavierDel = new QShortcut(QKeySequence(Qt::Key_Backspace), this->ui->inputLine);
+    QShortcut * clavierDel = new QShortcut(QKeySequence(Qt::Key_Delete), this->ui->inputLine);
     connect(clavierDel, SIGNAL(activated()), this, SLOT(delPressed()));
+
     connect(ui->buttonQuote,SIGNAL(clicked()),this,SLOT(quotePressed()));
     QShortcut * clavierQuote = new QShortcut(QKeySequence(Qt::Key_Apostrophe), this->ui->inputLine);
     connect(clavierQuote, SIGNAL(activated()), this, SLOT(quotePressed()));
@@ -150,9 +152,45 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::setPileAffiche(unsigned int i)
+MainWindow * MainWindow::getInstance()
 {
-    this->pileAffiche = i;
+    if(! _instance)
+        _instance = new MainWindow();
+    return _instance;
+}
+
+void MainWindow::libereInstance()
+{
+    if(! _instance)
+        delete _instance;
+}
+
+void MainWindow::setInputLineEdit(const QString & str) {
+    ui->inputLine->setText(str);
+    this->enterPressed();
+    update();
+}
+
+void MainWindow::chargerNouveauContexte()
+{
+    if(Etat::getInstance()->getTypeAngle() == Etat::RADIANS)
+        ui->actionRadian->setChecked(true);
+    else if(Etat::getInstance()->getTypeAngle() == Etat::DEGRES)
+        ui->actionDegre->setChecked(true);
+
+    if(Etat::getInstance()->getTypeDonnee() == Etat::ENTIER)
+        ui->actionInteger->setChecked(true);
+    else if(Etat::getInstance()->getTypeDonnee() == Etat::RATIONNEL)
+        ui->actionRational->setChecked(true);
+    else if(Etat::getInstance()->getTypeDonnee() == Etat::REEL)
+        ui->actionFloat->setChecked(true);
+
+    if(Etat::getInstance()->getUseComplexe() == Etat::NOCOMPLEXE)
+        ui->actionNo->setChecked(true);
+    else if(Etat::getInstance()->getUseComplexe() == Etat::COMPLEXE)
+        ui->actionYes->setChecked(true);
+
+    this->pileAffiche = Etat::getInstance()->getNbElementPileAffiche();
 }
 
 void MainWindow::button0Pressed()
@@ -278,7 +316,7 @@ void MainWindow::supprPressed()
 
 void MainWindow::delPressed()
 {
-    ui->inputLine->del();
+    ui->inputLine->clear();
 }
 
 void MainWindow::quotePressed()
@@ -395,6 +433,11 @@ void MainWindow::logPressed()
 void MainWindow::evalPressed()
 {
     ui->inputLine->setText(ui->inputLine->text().append("EVAL"));
+}
+
+void MainWindow::setPileAffiche(unsigned int i)
+{
+    this->pileAffiche = i;
 }
 
 void MainWindow::affichePressed()
