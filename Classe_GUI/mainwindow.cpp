@@ -67,9 +67,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->button9,SIGNAL(clicked()),this,SLOT(button9Pressed()));
     QShortcut * clavier9 = new QShortcut(QKeySequence(Qt::Key_9), this->ui->inputLine);
     connect(clavier9, SIGNAL(activated()), this, SLOT(button9Pressed()));
+
     connect(ui->buttonEnter,SIGNAL(clicked()),this,SLOT(enterPressed()));
-    QShortcut * clavierEnter = new QShortcut(QKeySequence(Qt::Key_Enter), this->ui->inputLine);
+    QShortcut * clavierEnter = new QShortcut(QKeySequence(Qt::Key_Return), this->ui->inputLine);
     connect(clavierEnter, SIGNAL(activated()), this, SLOT(enterPressed()));
+
     connect(ui->buttonSpace,SIGNAL(clicked()),this,SLOT(spacePressed()));
     QShortcut * clavierSpace = new QShortcut(QKeySequence(Qt::Key_Space), this->ui->inputLine);
     connect(clavierSpace, SIGNAL(activated()), this, SLOT(spacePressed()));

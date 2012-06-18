@@ -35,7 +35,7 @@ void LogSystem::printLog(const LogMessage& l)
 
     cerr<<l.getLog().toStdString()<<endl;
 
-    QFile file("stderr");
+    QFile file("stderr.pony");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
          return;
 

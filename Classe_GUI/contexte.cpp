@@ -209,7 +209,7 @@ void Contexte::saveContexte() const
     /*!
      *\brief sauvegarde avec QFile en attendant de trouver mieux
      */
-    QFile file("sauvegardeContexte");
+    QFile file("sauvegardeContexte.pony");
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         LogSystem::printLog(LogMessage("Errreur d'ouverture de fichier",2));
@@ -260,8 +260,12 @@ void Contexte::loadContexte()
     Etat* etat = Etat::getInstance();
     Pile * p = MainWindow::getInstance()->getPile();
 
-    QFile file("sauvegardeContexte");
-    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QFile file("sauvegardeContexte.pony");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        LogSystem::printLog(LogMessage("Errreur d'ouverture de fichier",2));
+        return;
+    }
     QTextStream flux(&file);
 
     QString ligne;

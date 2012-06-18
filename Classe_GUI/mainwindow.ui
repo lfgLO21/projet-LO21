@@ -311,6 +311,9 @@
                <pointsize>8</pointsize>
               </font>
              </property>
+             <property name="toolTip">
+              <string>H</string>
+             </property>
              <property name="text">
               <string>H</string>
              </property>
