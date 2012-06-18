@@ -37,8 +37,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->buttonComplexe->setEnabled(false);
     ui->buttonDot->setEnabled(false);
 
-    //connect(ui->buttonDel,SIGNAL(clicked()),ui->inputLine,SLOT(clear()));
-
     connect(ui->button0,SIGNAL(clicked()),this,SLOT(button0Pressed()));
     QShortcut * clavier0 = new QShortcut(QKeySequence(Qt::Key_0), this->ui->inputLine);
     connect(clavier0, SIGNAL(activated()), this, SLOT(button0Pressed()));

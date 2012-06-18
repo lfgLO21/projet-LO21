@@ -4,6 +4,7 @@
 
 #include "mainwindow.h"
 #include "logsystem.h"
+#include "contexte.h"
 
 int main(int argc, char *argv[])
 {
@@ -11,14 +12,17 @@ int main(int argc, char *argv[])
 
     LogSystem::printLog(LogMessage("Demarrage calculette",1));
     QApplication a(argc, argv);
-    MainWindow w;
 
-    w.show();
+    MainWindow * w = MainWindow::getInstance();
+    Contexte::getInstance()->loadContexte();
 
-
+    w->show();
     finaleValue = a.exec();
-    LogSystem::printLog(LogMessage("Fin execution calculette",1));
 
+    Contexte::getInstance()->saveContexte();
+    w->libereInstance();
+
+    LogSystem::printLog(LogMessage("Fin execution calculette",1));
     return finaleValue;
 
 }

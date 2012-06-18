@@ -204,7 +204,7 @@ void Contexte::saveContexte() const
      *\brief on pointe vers les données que l'on va manipuler, ici l'etat de la calculatrice et la pile
      */
     Etat* etat = Etat::getInstance();
-    Pile* p = MainWindow::getInstance()->getPile();
+    Pile * p = MainWindow::getInstance()->getPile();
 
     /*!
      *\brief sauvegarde avec QFile en attendant de trouver mieux
@@ -227,6 +227,7 @@ void Contexte::saveContexte() const
     Pile temp;
     std::string stringPile;
     unsigned int i = 0;
+
     while((i < etat->getNbElementPileAffiche()) && (p->getSize() != 0))
     {
         Constante * tmp = p->pop();
@@ -239,6 +240,7 @@ void Contexte::saveContexte() const
         i--;
     }
 
+    //cout << stringPile.c_str() << endl;
     flux << stringPile.c_str() << endl;
 }
 
@@ -267,16 +269,15 @@ void Contexte::loadContexte()
         ligne = flux.readLine();
         lecture.push_back(ligne);
     }
-    for (unsigned int i = 0; i < lecture.size(); i++)
-    {
-        cout << lecture[i].toStdString() << endl;
-    }
     /*!
      *\brief mise a jour des donnees de la calculatrice a l'aide des anciennes valeurs
      */
+    etat->setUseComplexe(atoi(lecture[0].toStdString().c_str()));
+    etat->setTypeAngle(atoi(lecture[1].toStdString().c_str()));
+    etat->setTypeDonnee(atoi(lecture[2].toStdString().c_str()));
+    etat->setNbElementPileAffiche(atoi(lecture[3].toStdString().c_str()));
 
-
-//MainWindow::getInstance()->setInputLineEdit(e.text());
-//MainWindow::getInstance()->enterPressed();
-//MainWindow::getInstance()->chargerNouveauContexte();
+    MainWindow::getInstance()->setInputLineEdit(lecture[4]);
+    MainWindow::getInstance()->enterPressed();
+    MainWindow::getInstance()->chargerNouveauContexte();
 }
