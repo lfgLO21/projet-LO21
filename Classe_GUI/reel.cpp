@@ -139,7 +139,7 @@ Constante * Reel::operator+(const Constante & r) const
     }
     case Constante::EXPRESSION:
     {
-        return new Expression("'"+static_cast<const Expression&>(r).toString()+this->toString()+"+'");
+        return new Expression("'"+static_cast<const Expression&>(r).getExpression()+this->toString()+"+'");
         break;
     }
     default:
@@ -181,7 +181,7 @@ Constante * Reel::operator-(const Constante & r) const
     }
     case Constante::EXPRESSION:
     {
-        return new Expression("'"+static_cast<const Expression&>(r).toString()+this->toString()+"-'");
+        return new Expression("'"+static_cast<const Expression&>(r).getExpression()+this->toString()+"-'");
         break;
     }
     default:
@@ -223,7 +223,7 @@ Constante * Reel::operator*(const Constante & r) const
     }
     case Constante::EXPRESSION:
     {
-        return new Expression("'"+static_cast<const Expression&>(r).toString()+this->toString()+"*'");
+        return new Expression("'"+static_cast<const Expression&>(r).getExpression()+this->toString()+"*'");
         break;
     }
     default:
@@ -264,7 +264,7 @@ Constante * Reel::operator/(const Constante & r) const
     }
     case Constante::EXPRESSION:
     {
-        return new Expression("'"+static_cast<const Expression&>(r).toString()+this->toString()+"/'");
+        return new Expression("'"+static_cast<const Expression&>(r).getExpression()+this->toString()+"/'");
         break;
     }
     default:

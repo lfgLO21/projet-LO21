@@ -290,7 +290,7 @@ Constante* Complexe::operator+(const Constante& c) const
                             static_cast<Constante*>(Addition::application(*this->_i,*static_cast<const Complexe&>(c)._i)));
             break;
     case Constante::EXPRESSION:
-        return new Expression("'"+static_cast<const Expression&>(c).toString()+this->toString()+"+'");
+        return new Expression("'"+static_cast<const Expression&>(c).getExpression()+this->toString()+"+'");
         break;
     }
 }
@@ -338,7 +338,7 @@ Constante* Complexe::operator-(const Constante & c) const
     }
     case Constante::EXPRESSION:
     {
-        return new Expression("'"+static_cast<const Expression&>(c).toString()+this->toString()+"-'");
+        return new Expression("'"+static_cast<const Expression&>(c).getExpression()+this->toString()+"-'");
         break;
     }
     }
@@ -393,7 +393,7 @@ Constante* Complexe::operator*(const Constante & c) const
     }
     case Constante::EXPRESSION:
     {
-        return new Expression("'"+static_cast<const Expression&>(c).toString()+this->toString()+"*'");
+        return new Expression("'"+static_cast<const Expression&>(c).getExpression()+this->toString()+"*'");
         break;
     }
     }
@@ -454,7 +454,7 @@ Constante* Complexe::operator/(const Constante & c) const
     }
     case Constante::EXPRESSION:
     {
-        return new Expression("'"+static_cast<const Expression&>(c).toString()+this->toString()+"/'");
+        return new Expression("'"+static_cast<const Expression&>(c).getExpression()+this->toString()+"/'");
         break;
     }
     }

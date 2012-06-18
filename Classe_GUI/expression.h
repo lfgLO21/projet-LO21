@@ -30,7 +30,7 @@ public:
     Expression(const std::string & str="");
     ~Expression();
 
-    const std::string getExpression()const;
+    std::string getExpression()const;
     void setExpression(const std::string & str = "");
 
     std::string toString() const;

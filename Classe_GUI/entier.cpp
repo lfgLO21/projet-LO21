@@ -127,7 +127,7 @@ Constante * Entier::operator-(Constante const & c) const
     return new Entier(this->_entier - static_cast<const Entier&>(c)._entier);
             break;
     case Constante::EXPRESSION:
-        return new Expression("'"+static_cast<const Expression&>(c).toString()+this->toString()+"-'");
+        return new Expression("'"+static_cast<const Expression&>(c).getExpression()+this->toString()+"-'");
         break;
     }
 }
@@ -148,7 +148,7 @@ Constante * Entier::operator*(Constante const & c) const
     return new Entier(this->_entier * static_cast<const Entier&>(c)._entier);
             break;
     case Constante::EXPRESSION:
-        return new Expression("'"+static_cast<const Expression&>(c).toString()+this->toString()+"*'");
+        return new Expression("'"+static_cast<const Expression&>(c).getExpression()+this->toString()+"*'");
         break;
     }
 }
@@ -169,7 +169,7 @@ Constante * Entier::operator/(Constante const& c) const
         return new Entier(this->_entier / static_cast<const Entier&>(c)._entier);
         break;
     case Constante::EXPRESSION:
-        return new Expression("'"+static_cast<const Expression&>(c).toString()+this->toString()+"/'");
+        return new Expression("'"+static_cast<const Expression&>(c).getExpression()+this->toString()+"/'");
         break;
     }
 }

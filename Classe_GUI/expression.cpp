@@ -14,10 +14,10 @@ Expression::~Expression()
 {}
 
 /*!
- *\fn string Expression::getExpression()
+ *\fn string Expression::toString()
  *\brief Methode renvoyant l'attribut contenant la chaine de caractere correspondant a l'expression
  */
-const std::string Expression::getExpression() const
+std::string Expression::toString() const
 {
     return this->_expression;
 }
@@ -32,10 +32,10 @@ void Expression::setExpression(const std::string & str)
 }
 
 /*!
- *\fn string Expression::toString() const
+ *\fn string Expression::getExpressiontoString() const
  * \brief Methode tranformant l'expression en une chaine de caractere en vue d'un traitemet de type affichage ou concatenation avec une chaine de caracteres
  */
-std::string Expression::toString() const
+std::string Expression::getExpression() const
 {
     std::string res = _expression;
     res[0]=' ';
@@ -58,7 +58,7 @@ void Expression::affiche(std::ostream &os) const
  */
 Constante * Expression::operator+(const Constante & c) const
 {
-    return new Expression("'"+c.toString()+" "+this->toString()+"+'");
+    return new Expression("'"+c.toString()+" "+this->getExpression()+"+'");
 }
 /*!
  *\fn Constante * Expression::operator-(Constante)
@@ -66,7 +66,7 @@ Constante * Expression::operator+(const Constante & c) const
  */
 Constante * Expression::operator-(const Constante & c) const
 {
-    return new Expression("'"+c.toString()+" "+this->toString()+"-'");
+    return new Expression("'"+c.toString()+" "+this->getExpression()+"-'");
 }
 
 /*!
@@ -75,7 +75,7 @@ Constante * Expression::operator-(const Constante & c) const
  */
 Constante * Expression::operator*(const Constante & c) const
 {
-    return new Expression("'"+c.toString()+" "+this->toString()+"*'");
+    return new Expression("'"+c.toString()+" "+this->getExpression()+"*'");
 }
 
 /*!
@@ -84,7 +84,7 @@ Constante * Expression::operator*(const Constante & c) const
  */
 Constante * Expression::operator/(const Constante & c) const
 {
-    return new Expression("'"+c.toString()+" "+this->toString()+"/'");
+    return new Expression("'"+c.toString()+" "+this->getExpression()+"/'");
 }
 
 /*!
@@ -93,5 +93,5 @@ Constante * Expression::operator/(const Constante & c) const
  */
 Constante * Expression::operator-()const
 {
-    return new Expression("'"+this->toString()+" "+"SIGN'");
+    return new Expression("'"+this->getExpression()+" "+"SIGN'");
 }

@@ -556,7 +556,7 @@ void MainWindow::dropPressed()
 }
 
 /*!
- *\brief Methode qui met Ã  jour l'interphace graphique lorsqu'on fait une operation sur la pile
+ *\brief Methode qui met Ã  jour l'interphace graphique lorsqu'on fait une operation sur la pile
  */
 void MainWindow::update()
 {
@@ -566,14 +566,7 @@ void MainWindow::update()
         //list.append(entree.at(i).c_str());
         Constante* c = pile.getConst(pile.getSize() -j-1);
         std::string tmp;
-        if(c->getType()==Constante::EXPRESSION)
-        {
-            tmp = static_cast<const Expression*>(c)->getExpression();
-        }
-        else
-        {
-            tmp = c->toString();
-        }
+        tmp = c->toString();
         list.append(tmp.c_str());
     }
     modele=new QStringListModel(list);
