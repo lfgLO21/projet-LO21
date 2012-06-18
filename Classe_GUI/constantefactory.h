@@ -14,11 +14,20 @@
 #include "operation.h"
 #include "pile.h"
 #include "parser.h"
-
+/*!
+ *\class ConstanteFactory
+ *\brief fabrique, a partir de chaine de caractere des Constantes et des operations
+ */
 class ConstanteFactory
 {
     public:
+        /*!
+         *\brief fabrique des constantes a partir de la chainde de caracteres passee en parametre
+         */
         static Constante* toConstante1(const string &str);
+        /*!
+         *\brief fabrique des operations et les effectue sur une pile de constantes
+         */
         static void toConstante2(const std::string & str, Pile& P);
 };
 

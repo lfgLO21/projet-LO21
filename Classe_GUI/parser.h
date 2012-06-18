@@ -8,6 +8,7 @@
 using namespace std;
 
 /*!
+ *\class Parser
  *\brief Classe de methodes statics splittant des String en vue de les traiter plus tard dans un ConstanteFactory
  * Chaque String en découper en element selon un séparateur définit et ajouter dans un vector<String> en attente du traitement
  */

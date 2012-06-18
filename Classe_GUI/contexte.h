@@ -14,7 +14,10 @@
 #include "logsystem.h"
 
 using namespace std;
-
+/*!
+ *\class Etat
+ *\brief enregistre l'etat de la calculatrice a sa fermeture
+ */
 class Etat
 {
     public:
@@ -48,7 +51,10 @@ class Etat
         void setTypeDonnee (int ct);
         void setNbElementPileAffiche(unsigned int n);
 };
-
+/*!
+ *\class Contexte
+ *\brief enregistre l'etat dans un fichier pour pouvoir e recharger a l'ouvertur d'une nouvelle calculatrice
+ */
 class Contexte
 {
     private:

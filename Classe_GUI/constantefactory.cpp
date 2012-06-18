@@ -1,5 +1,10 @@
 #include "constantefactory.h"
-
+/*!
+ *\fn void ConstanteFactory::toConstante2(string, Pile)
+ *\brief Methode construisant un objet de la classe Operation a partir d'un string
+ *\param prend un string en entree et une pile destinee a recevoir le resultat des calculs
+ *\return void
+ */
 void ConstanteFactory::toConstante2(const std::string & str, Pile& P)
 {
     ConstanteFactory TMP;
@@ -156,7 +161,12 @@ void ConstanteFactory::toConstante2(const std::string & str, Pile& P)
         P.push(TMP.toConstante1(str));
     }
 }
-
+/*!
+ *\fn Constante * ConstanteFactory::toConstante1(string)
+ *\brief Methode construisant des objets de la classe constante a partir de string
+ *\param une chaine de caractere et une pile ou l'empiler
+ *\return void
+ */
 Constante * ConstanteFactory::toConstante1(const std::string & str)
 {
     std::vector <std::string> temp;

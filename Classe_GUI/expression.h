@@ -3,7 +3,10 @@
 
 #include "constante.h"
 #include <string>
-
+/*!
+ *\class ExpressionException
+ *\brief lance une exception lorsque l'expression ne peut pas etre evaluee
+ */
 class Expression_exception
 {
     std::string _infos;
@@ -14,7 +17,10 @@ public:
     const std::string& getInfos()const{return _infos;}
 };
 
-
+/*!
+ *\class Expression
+ *\brief type de constante permettant de remettre a plus tard un calcul en le mettant entre simples quotes
+ */
 class Expression : public Constante
 {
 

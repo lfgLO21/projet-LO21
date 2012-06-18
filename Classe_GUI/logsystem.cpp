@@ -1,11 +1,20 @@
 #include "logsystem.h"
 
-LogMessage::LogMessage(const std::string& s,unsigned int i){
+/*!
+ *\fn void LogSystem::printLog(LogMessage)
+ *\brief Methode de creation d'un nouveau message de LogSystem decrivant une action efectuee par une procedure
+ */
+LogMessage::LogMessage(const std::string& s,unsigned int i)
+{
     this->_log = QString(s.c_str());
     this->_degree = i;
     this->_time = QDateTime::currentDateTime();
 }
 
+/*!
+ *\fn void LogSystem::printLog(LogMessage)
+ *\brief Methode d'affichage d'un LogMessage dans un format lisible, comprenant le moment ou est apparu le LogSystem, son intitule et son niveau
+ */
 QString LogMessage::getLog()const
 {
 
@@ -17,7 +26,12 @@ QString LogMessage::getLog()const
 
 }
 
-void LogSystem::printLog(const LogMessage& l){
+/*!
+ *\fn void LogSystem::printLog(LogMessage)
+ *\brief Methode d'ecriture du LogSystem dans un fichier recapitulatif lisible hors fonctionnement
+ */
+void LogSystem::printLog(const LogMessage& l)
+{
 
     cerr<<l.getLog().toStdString()<<endl;
 

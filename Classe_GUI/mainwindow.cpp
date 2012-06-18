@@ -188,7 +188,9 @@ MainWindow::~MainWindow()
 
     delete ui;
 }
-
+/*!
+ *\brief 'interface graphique etant unique ou la declare en singleton
+ */
 MainWindow * MainWindow::getInstance()
 {
     if(! _instance)
@@ -196,18 +198,26 @@ MainWindow * MainWindow::getInstance()
     return _instance;
 }
 
+/*!
+ *\brief 'interface graphique etant unique ou la declare en singleton
+ */
 void MainWindow::libereInstance()
 {
     if(! _instance)
         delete _instance;
 }
-
+/*!
+ *\brief Methode permettant d'ecrire un chaine de caracteres dans le champ texte inscriptible (utiliser pour eval et le chargement du la pile du contexte)
+ */
 void MainWindow::setInputLineEdit(const QString & str) {
     ui->inputLine->setText(str);
     this->enterPressed();
     update();
 }
 
+/*!
+ *\brief Methode mettant a jour le contexte
+ */
 void MainWindow::chargerNouveauContexte()
 {
     if(Etat::getInstance()->getTypeAngle() == Etat::RADIANS)
@@ -280,6 +290,9 @@ void MainWindow::button9Pressed()
     ui->inputLine->setText(ui->inputLine->text().append("9"));
 }
 
+/*!
+ *\brief Methode correspondant a la touche retour charriot et qui extrait la chaine de caracteres de l'inputLine, utilise le Parser et le ConstanteFactory pour la traiter mais gere aussi la sauvegarde des operations ayant eu lieu lors de la session
+ */
 void MainWindow::enterPressed()
 {
     QString str = ui->inputLine->text();
@@ -482,6 +495,9 @@ void MainWindow::setPileAffiche(unsigned int i)
     this->pileAffiche = i;
 }
 
+/*!
+ *\brief Methode qui depile un entier de la pile et affiche le nombre de constantes correspondant dans l'interface graphiqe
+ */
 void MainWindow::affichePressed()
 {
     Constante *n;
@@ -539,6 +555,9 @@ void MainWindow::dropPressed()
     update();
 }
 
+/*!
+ *\brief Methode qui met à jour l'interphace graphique lorsqu'on fait une operation sur la pile
+ */
 void MainWindow::update()
 {
     QStringList list;
@@ -561,6 +580,9 @@ void MainWindow::update()
     ui->listPile->setModel(modele);
 }
 
+/*!
+ *\brief retour en arriere
+ */
 void MainWindow::UndoPressed()
 {
     std::vector<std::string> CalculUndo=Parser::parse(savepile.Undo(),'@');
@@ -575,6 +597,9 @@ void MainWindow::UndoPressed()
 
 }
 
+/*!
+ *\brief retour en avant
+ */
 void MainWindow::RedoPressed()
 {
     std::vector<std::string> CalculUndo=Parser::parse(savepile.Redo(),'@');

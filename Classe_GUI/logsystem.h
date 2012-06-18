@@ -10,7 +10,10 @@
 #include <QDateTime>
 
 using namespace std;
-
+/*!
+ *\class LogMessage
+ *\brief type de messages lancer par les fonction afin de decrire l'activite de la calculatrice
+ */
 class LogMessage
 {
     QString _log;
@@ -20,7 +23,10 @@ public:
     LogMessage(const std::string&,unsigned int);
     QString getLog()const;
 };
-
+/*!
+ *\class LogSysteme
+ *\brief Class permettant l'affichage et le staockage des LogMessages
+ */
 class LogSystem
 {
 public:

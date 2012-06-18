@@ -15,7 +15,10 @@
 namespace Ui {
 class MainWindow;
 }
-
+/*!
+ *\class MainWindow
+ *\brief interface graphiqe de l'application (Qt) et ensemble des signaux et des slots permettant d'interagir avec l'utilisateur
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -45,7 +48,9 @@ class MainWindow : public QMainWindow
         void setInputLineEdit(const QString &str);
 
     public slots:
-
+        /*!
+         *\brief Methode correspondant au clic d'un bouton numerique
+         */
         void button0Pressed();
         void button1Pressed();
         void button2Pressed();
@@ -57,8 +62,14 @@ class MainWindow : public QMainWindow
         void button8Pressed();
         void button9Pressed();
 
+        /*!
+         *\brief Methode correspondant au clic de la touche de validation "entree"
+         */
         void enterPressed();
 
+        /*!
+         *\brief Methodes correspondant aux operations classiques sur les constantes
+         */
         void spacePressed();
         void dotPressed();
         void plusPressed();
@@ -69,6 +80,9 @@ class MainWindow : public QMainWindow
         void delPressed();
         void quotePressed();
 
+        /*!
+         *\brief Methodes correspondant aux operations "inhabituelles" sur les constantes, c'est a dire les methodes ne touchant pas la totalite des constantes
+         */
         void invPressed();
         void signPressed();
         void moduloPressed();
@@ -85,6 +99,9 @@ class MainWindow : public QMainWindow
         void logPressed();
         void evalPressed();
 
+        /*!
+         *\brief Methodes sur la pile
+         */
         void affichePressed();
         void swapPressed();
         void clearPilePressed();
@@ -93,9 +110,15 @@ class MainWindow : public QMainWindow
         void dupPressed();
         void dropPressed();
 
+        /*!
+         *\brief Methodes de retour en arriere et de retour en avant
+         */
         void UndoPressed();
         void RedoPressed();
 
+        /*!
+         *\brief Methodes de gestion des fonctionnalites de la calculatrice
+         */
         void actionComplexe();
         void actionType();
 
@@ -104,6 +127,9 @@ class MainWindow : public QMainWindow
         void cacherClavier(const bool a);
         void actionParametre();
 
+        /*!
+         *\brief Methode de mise a jour de l'interface graphique
+         */
         void update();
 };
 
