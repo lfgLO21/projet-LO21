@@ -78,6 +78,11 @@ public:
     }
 
     //affiche
+    /*!
+      * \brief affiche
+      * Methode permettant un affichage du reel manipulé
+      * \param os
+      */
     void affiche(std::ostream & os = std::cout) const;
 
     //operateur

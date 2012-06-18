@@ -1,3 +1,8 @@
+/*!
+ * \file complexe.cpp
+ * \brief Methode de la class Complexe
+ */
+
 #include "complexe.h"
 
 /*!

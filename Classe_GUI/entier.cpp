@@ -1,3 +1,8 @@
+/*!
+ * \file entier.cpp
+ * \brief Methode de la class Entier
+ */
+
 #include "entier.h"
 
 /*!

@@ -1,3 +1,8 @@
+/*!
+ * \file constante.cpp
+ * \brief Methode de la class Constante
+ */
+
 #include "constante.h"
 
 /*!
